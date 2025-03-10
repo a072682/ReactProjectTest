@@ -1,9 +1,18 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "helpers/variables";
+@import "helpers/variables-dark";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "./layout/custom";
-@import "./scss/test";
+@import "./scss/pages/aboutUS";
+@import './scss/pages/footer';
+@import './scss/pages/btn';
+@import './scss/pages/aboutUS';
+@import './scss/pages/qaPage';
+@import './scss/pages/oEstimate';
+@import './scss/pages/index';
+@import './scss/header2';
 @import "./scss/footer";
+
 
 
 

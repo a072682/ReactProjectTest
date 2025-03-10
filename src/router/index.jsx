@@ -1,7 +1,12 @@
 import { createHashRouter } from 'react-router-dom';
 import FrontLayout from '../layouts/FrontLayout';
-import Page0 from '../pages/Page0';
-import Page1 from '../pages/Page1';
+import IndexPage from '../pages/IndexPage';
+import OestimatePage from '../pages/OEstimatePage';
+import QaPage from '../pages/QaPage';
+import AboutusPage from '../pages/AboutusPage';
+
+
+
 
 
 const router = createHashRouter([ //createHashRouter為建立router的方法
@@ -10,12 +15,20 @@ const router = createHashRouter([ //createHashRouter為建立router的方法
 		element: <FrontLayout />,
         children:[
             {
-                path: "",
-                element: <Page0 />,
+                path: "IndexPage",
+                element: <IndexPage />,
             },
             {
-                path: "page1",
-                element: <Page1 />,
+                path: "OestimatePage",
+                element: <OestimatePage />,
+            },
+            {
+                path: "QaPage",
+                element: <QaPage />,
+            },
+            {
+                path: "AboutusPage",
+                element: <AboutusPage />,
             },
         ]
 	}
