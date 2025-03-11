@@ -15,6 +15,10 @@ const router = createHashRouter([ //createHashRouter為建立router的方法
 		element: <FrontLayout />,
         children:[
             {
+                path: "",
+                element: <IndexPage />,
+            },
+            {
                 path: "IndexPage",
                 element: <IndexPage />,
             },
