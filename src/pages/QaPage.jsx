@@ -1,3 +1,20 @@
+
+import qpMain1Img1 from "../assets/images/QaPage/qP-main1-img1.png";
+import qpMain1Img2 from "../assets/images/QaPage/qP-main1-img2.png";
+import qpMain1SmImg1 from "../assets/images/QaPage/qP-main1-sm-img1.png";
+import qpMain1SmImg2 from "../assets/images/QaPage/qP-main1-sm-img2.png";
+
+import qpMain2Img1 from "../assets/images/QaPage/qP-main2-img1.png";
+import qpMain2Img2 from "../assets/images/QaPage/qP-main2-img2.png";
+import qpMain2Img3 from "../assets/images/QaPage/qP-main2-img3.png";
+import qpMain2Img4 from "../assets/images/QaPage/qP-main2-img4.png";
+
+import qpMain2SmImg1 from "../assets/images/QaPage/qP-main2-sm-img1.png";
+import qpMain2SmImg2 from "../assets/images/QaPage/qP-main2-sm-img2.png";
+import qpMain2SmImg3 from "../assets/images/QaPage/qP-main2-sm-img3.png";
+import qpMain2SmImg4 from "../assets/images/QaPage/qP-main2-sm-img4.png";
+
+
 function QaPage(){
     return(
         <>
@@ -61,7 +78,7 @@ function QaPage(){
                                 <tr>
                                     <td className="qP-main1-table-td-set-sm">示意圖</td>
                                     <td className="qP-main1-table-td-set2-sm">
-                                        <img className="border border-primary3" src="../assets/images/qP-main1-sm-img1.png" alt="qP-main1-sm-img1" />
+                                        <img className="border border-primary3" src={qpMain1SmImg1} alt="qP-main1-sm-img1" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -108,7 +125,7 @@ function QaPage(){
                                 <tr>
                                     <td className="qP-main1-table-td-set-sm">示意圖</td>
                                     <td className="qP-main1-table-td-set2-sm">
-                                        <img className="border border-primary3" src="../assets/images/qP-main1-sm-img2.png" alt="qP-main1-sm-img2" />
+                                        <img className="border border-primary3" src={qpMain1SmImg2} alt="qP-main1-sm-img2" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -164,7 +181,7 @@ function QaPage(){
                                 <div className="qP-main2-sm-item1">
                                 <div className="qP-main2-sm-item1-set qP-main2-box d-flex align-items-center">
                                     <div className="qP-main2-sm-item1-img-box py-18 px-16">
-                                        <img src="../assets/images/qP-main2-sm-img1.png" alt="qP-main2-sm-img1" />
+                                        <img src={qpMain2SmImg1} alt="qP-main2-sm-img1" />
                                     </div>
                                     <div className="qP-main2-sm-item1-content-box d-flex flex-column row-gap-4 py-8">
                                         <div className="qP-main2-sm-item-title-box">
@@ -179,7 +196,7 @@ function QaPage(){
                                 <div className="qP-main2-sm-item2">
                                 <div className="qP-main2-sm-item2-set qP-main2-box d-flex align-items-center">
                                     <div className="qP-main2-sm-item2-img-box py-18 px-16">
-                                        <img src="../assets/images/qP-main2-sm-img2.png" alt="qP-main2-sm-img2" />
+                                        <img src={qpMain2SmImg2}alt="qP-main2-sm-img2" />
                                     </div>
                                     <div className="qP-main2-sm-item1-content-box d-flex flex-column row-gap-4 py-8">
                                         <div className="qP-main2-sm-item-title-box">
@@ -194,7 +211,7 @@ function QaPage(){
                                 <div className="qP-main2-sm-item3">
                                 <div className="qP-main2-sm-item3-set qP-main2-box d-flex align-items-center">
                                     <div className="qP-main2-sm-item3-img-box py-18 px-16">
-                                        <img src="../assets/images/qP-main2-sm-img3.png" alt="qP-main2-sm-img3" />
+                                        <img src={qpMain2SmImg3} alt="qP-main2-sm-img3" />
                                     </div>
                                     <div className="qP-main2-sm-item3-content-box d-flex flex-column row-gap-4 py-8">
                                         <div className="qP-main2-sm-item-title-box">
@@ -209,7 +226,7 @@ function QaPage(){
                                 <div className="qP-main2-sm-item4">
                                 <div className="qP-main2-sm-item4-set qP-main2-box d-flex align-items-center">
                                     <div className="qP-main2-sm-item4-img-box py-18 px-16">
-                                        <img src="../assets/images/qP-main2-sm-img4.png" alt="qP-main2-sm-img4" />
+                                        <img src={qpMain2SmImg4} alt="qP-main2-sm-img4" />
                                     </div>
                                     <div className="qP-main2-sm-item4-content-box d-flex flex-column row-gap-4 py-8">
                                         <div className="qP-main2-sm-item-title-box">
@@ -589,7 +606,7 @@ function QaPage(){
                                     </div>
                                     <div className="table-row2-box table-row-bg d-flex">
                                         <div className="py-24">
-                                        <img className="border border-primary3" src="../assets/images/qP-main1-img1.png" alt="qP-main1-img1" />
+                                        <img className="border border-primary3" src={qpMain1Img1} alt="qP-main1-img1" />
                                         </div>
                                         <div>壁厚大小</div>
                                         <div className="d-flex flex-column row-gap-12">
@@ -604,7 +621,7 @@ function QaPage(){
                                     </div>
                                     <div className="table-row2-box table-row-bg d-flex">
                                         <div className="py-24">
-                                        <img className="border border-primary3" src="../assets/images/qP-main1-img2.png" alt="qP-main1-img2" />
+                                        <img className="border border-primary3" src={qpMain1Img2} alt="qP-main1-img2" />
                                         </div>
                                         <div>支撐設計</div>
                                         <div></div>
@@ -631,7 +648,7 @@ function QaPage(){
                                             <div className="qP-main2-item1">
                                             <div className="qP-main2-item1-set qP-main2-box d-flex align-items-center">
                                                 <div className="qP-main2-item1-img-box py-12 px-24">
-                                                    <img src="../assets/images/qP-main2-img1.png" alt="qP-main2-img1" />
+                                                    <img src={qpMain2Img1} alt="qP-main2-img1" />
                                                 </div>
                                                 <div className="qP-main2-item1-content-box d-flex flex-column row-gap-8 py-22 ps-12">
                                                     <div className="qP-main2-item-title-box">
@@ -646,7 +663,7 @@ function QaPage(){
                                             <div className="qP-main2-item2">
                                             <div className="qP-main2-item2-set qP-main2-box d-flex align-items-center">
                                                 <div className="qP-main2-item2-img-box py-12 px-24">
-                                                    <img src="../assets/images/qP-main2-img2.png" alt="qP-main2-img2" />
+                                                    <img src={qpMain2Img2} alt="qP-main2-img2" />
                                                 </div>
                                                 <div className="qP-main2-item1-content-box d-flex flex-column row-gap-8 py-22 ps-12">
                                                     <div className="qP-main2-item-title-box">
@@ -661,7 +678,7 @@ function QaPage(){
                                             <div className="qP-main2-item3">
                                             <div className="qP-main2-item3-set qP-main2-box d-flex align-items-center">
                                                 <div className="qP-main2-item3-img-box py-12 px-24">
-                                                    <img src="../assets/images/qP-main2-img3.png" alt="qP-main2-img3" />
+                                                    <img src={qpMain2Img3} alt="qP-main2-img3" />
                                                 </div>
                                                 <div className="qP-main2-item3-content-box d-flex flex-column row-gap-8 py-22 ps-12">
                                                     <div className="qP-main2-item-title-box">
@@ -676,7 +693,7 @@ function QaPage(){
                                             <div className="qP-main2-item4">
                                             <div className="qP-main2-item4-set qP-main2-box d-flex align-items-center">
                                                 <div className="qP-main2-item4-img-box py-12 px-24">
-                                                    <img src="../assets/images/qP-main2-img4.png" alt="qP-main2-img4" />
+                                                    <img src={qpMain2Img4} alt="qP-main2-img4" />
                                                 </div>
                                                 <div className="qP-main2-item4-content-box d-flex flex-column row-gap-8 py-22 ps-12">
                                                     <div className="qP-main2-item-title-box">

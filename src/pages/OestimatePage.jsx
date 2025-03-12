@@ -1,6 +1,52 @@
 import { Link } from "react-router-dom"
 
 
+import oEstimateMain1Vector15 from "../assets/images/OestimatePage/oEstimate-main1-Vector 15.png"
+import oEstimateMain1Vector16 from "../assets/images/OestimatePage/oEstimate-main1-Vector 16.png"
+import oEstimateMain1Delete from "../assets/images/OestimatePage/oEstimate-main1-delete.png"
+import oEstimateMain1Image from "../assets/images/OestimatePage/oEstimate-main1-Image.png"
+import oEstimateMain1UpLordBtnSm from "../assets/images/OestimatePage/oEstimate-main1-upLord-btn-sm.png"
+import oEstimateMain1UpLordBtn from "../assets/images/OestimatePage/oEstimate-main1-upLord-btn.png"
+import oEstimateMain1InputDelete from "../assets/images/OestimatePage/oEstimate-main1-input-delete.png";
+import oEstimateMain1InputMinusPlus from "../assets/images/OestimatePage/oEstimate-main1-input-minus-plus.png";
+import oEstimateMain1InputMinus from "../assets/images/OestimatePage/oEstimate-main1-input-minus.png";
+import oEstimateMain1ModalBtnClose from "../assets/images/OestimatePage/oEstimate-main1-modal-btn-close.png";
+
+import oEstimateMain2TabArrowL from "../assets/images/OestimatePage/oEstimate-main2-tab-arrowL.png";
+import oEstimateMain2TabArrowR from "../assets/images/OestimatePage/oEstimate-main2-tab-arrowR.png";
+
+import oEstimateMain2TabImg1 from "../assets/images/OestimatePage/oEstimate-main2-tab-img1.png";
+import oEstimateMain2TabImg2 from "../assets/images/OestimatePage/oEstimate-main2-tab-img2.png";
+import oEstimateMain2TabImg3 from "../assets/images/OestimatePage/oEstimate-main2-tab-img3.png";
+
+import oEstimateMain2TabSmArrowL from "../assets/images/OestimatePage/oEstimate-main2-tab-sm-arrowL.png";
+import oEstimateMain2TabSmArrowR from "../assets/images/OestimatePage/oEstimate-main2-tab-sm-arrowR.png";
+
+import oEstimateMain2Tab2Img1 from "../assets/images/OestimatePage/oEstimate-main2-tab2-img1.png"
+import oEstimateMain2Tab2Img2 from "../assets/images/OestimatePage/oEstimate-main2-tab2-img2.png"
+import oEstimateMain2Tab2Img3 from "../assets/images/OestimatePage/oEstimate-main2-tab2-img3.png"
+
+import oEstimateMain3ArrowDOWN from "../assets/images/OestimatePage/oEstimate-main3-arrowDOWN.png"
+import oEstimateMain3ArrowUP from "../assets/images/OestimatePage/oEstimate-main3-arrowUP.png"
+
+import oEstimateMain3SmArrowDOWN from "../assets/images/OestimatePage/oEstimate-main3-sm-arrowDOWN.png"
+import oEstimateMain3SmArrowUP from "../assets/images/OestimatePage/oEstimate-main3-sm-arrowUP.png"
+
+import oEstimateMain4CalendarArrowL from "../assets/images/OestimatePage/oEstimate-main4-Calendar-arrowL.png"
+import oEstimateMain4CalendarArrowR from "../assets/images/OestimatePage/oEstimate-main4-Calendar-arrowR.png"
+
+import oEstimateMain4Calendar from "../assets/images/OestimatePage/oEstimate-main4-Calendar.png"
+
+import oEstimateMain4Keyboardarrowdown from "../assets/images/OestimatePage/oEstimate-main4-Keyboardarrowdown.png"
+
+import oEstimateMain4Sm數量調整按鈕 from "../assets/images/OestimatePage/oEstimate-main4-sm-數量調整按鈕.png"
+
+import oEstimateMain4SmCalendar from "../assets/images/OestimatePage/oEstimate-main4-sm-Calendar.png"
+
+import oEstimateMain4SmKeyboardarrowdown from "../assets/images/OestimatePage/oEstimate-main4-sm-Keyboardarrowdown.png"
+
+import oEstimateMain5ModalBtnClose from "../assets/images/OestimatePage/oEstimate-main5-modal-btn-close.png"
+
 
 function OestimatePage(){
     return(
@@ -34,7 +80,7 @@ function OestimatePage(){
                                         <div className="upLord-btn-sm-box d-none d-xl-block"> {/*xl用按鈕*/}
                                             <button className="upLord-btn-sm-box-set py-10 px-auto bg-primary2 d-flex justify-content-center align-items-center  py-xl-22 px-xl-22" id="oEstimate-main1-uploadBtn">
                                                 <div className="upLord-btn-img-sm-set">
-                                                    <img className="img-set" src="../assets/images/upLord-btn-sm.png" alt="upLord-btn" />
+                                                    <img className="img-set" src={oEstimateMain1UpLordBtn} alt="upLord-btn" />
                                                 </div>
                                             </button>
                                             <input type="file" id="fileInput" accept="image/*" className="d-none" />
@@ -52,7 +98,7 @@ function OestimatePage(){
                                         <div className="upLord-btn-sm-box d-block d-xl-none">{/*sm用按鈕*/}
                                             <button className="upLord-btn-sm-box-set py-10 px-auto bg-primary2 d-flex justify-content-center align-items-center" id="oEstimate-main1-uploadBtn2">
                                                 <div className="upLord-btn-img-sm-set">
-                                                    <img className="img-set" src="../assets/images/upLord-btn-sm.png" alt="upLord-btn" />
+                                                    <img className="img-set" src={oEstimateMain1UpLordBtnSm} alt="upLord-btn" />
                                                 </div>
                                             </button>
                                         </div>
@@ -72,7 +118,7 @@ function OestimatePage(){
                                                 <h5 className="modal-title" id="exampleModalLabel">檔案格式說明</h5>
                                                 <button type="button" className="oEstimate-main1-btn-close border-0 outline-0 p-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
                                                     <div className="oEstimate-main1-btn-img-box">
-                                                        <img className="img-set" src="../assets/images/oEstimate-main1-modal-btn-close.png" alt="oEstimate-main1-modal-btn-close" />
+                                                        <img className="img-set" src={oEstimateMain1ModalBtnClose} alt="oEstimate-main1-modal-btn-close" />
                                                     </div>
                                                 </button>
                                             </div>
@@ -204,7 +250,7 @@ function OestimatePage(){
                                     <div className="oEstimate-main1-upLord-img-sm-box" id="thumbnailArea">{/*圖檔上傳預覽*/}
                                         <div className="oEstimate-main1-upLord-img-sm-box-set py-16 px-12 py-xl-64 px-xl-auto row-gap-16 row-gap-xl-48 d-flex flex-column justify-content-center align-items-center">
                                             <div className="oEstimate-main1-upLord-btn-img-sm-set">
-                                                <img className="img-set" src="../assets/images/index-main1-Image.png" alt="index-main1-Image" />
+                                                <img className="img-set" src={oEstimateMain1Image} alt="index-main1-Image" />
                                             </div>
                                             <div className="oEstimate-main1-upLord-text-box d-flex flex-column justify-content-center align-items-center row-gap-xl-12">
                                                 <p className="fs-16 fw-500 lh-15 text-nautral-white d-block d-xl-none">目前無檔案，請上傳圖檔進行估價確認</p>
@@ -227,7 +273,7 @@ function OestimatePage(){
                                             <div className="title-row-set-2 w-100 lh-15 fs-24 p-12 fw-500 text-nautral-white">估價</div>
                                             <div className="title-row-set-2 w-100 lh-15 fs-24 p-12 fw-500 text-nautral-white">材質</div>
                                             <div className="row1-sm-img-set d-flex justify-content-center align-items-center">
-                                                <img className="img-set" src="../assets/images/delete.png" alt="delete-icon" />
+                                                <img className="img-set" src={oEstimateMain1Delete} alt="oEstimate-main1-delete-icon" />
                                             </div>
                                         </div>
                                         {/* 待辦事項 */}
@@ -243,7 +289,7 @@ function OestimatePage(){
                                     <button className="pagination-btn01">
                                         <a className="a-re" href="oEstimate.html#oEstimate-main2">
                                             <div className="pagination-img-box01">
-                                                <img className="pagination-img01-set" src="../assets/images/Vector 15.png" alt="Vector 15" />
+                                                <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="oEstimate-main1-Vector 15" />
                                             </div>
                                         </a>
                                     </button>
@@ -285,7 +331,7 @@ function OestimatePage(){
                                                             
                                                                 <div className="oEstimate-main2-card1-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="1">
                                                                     <div className="oEstimate-main2-card1-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src="../assets/images/oEstimate-main2-tab-img1.png" alt="oEstimate-main2-tab-img1" />     
+                                                                            <img className="img-set" src={oEstimateMain2TabImg1} alt="oEstimate-main2-tab-img1" />     
                                                                     </div>
                                                                     <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xxl-32">
                                                             
@@ -325,7 +371,7 @@ function OestimatePage(){
                                                             
                                                             <div className="oEstimate-main2-card2-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="2">
                                                                 <div className="oEstimate-main2-card2-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab-img2.png" alt="oEstimate-main2-tab-img2" />     
+                                                                        <img className="img-set" src={oEstimateMain2TabImg2} alt="oEstimate-main2-tab-img2" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
                                                         
@@ -365,7 +411,7 @@ function OestimatePage(){
                                                             
                                                                 <div className="oEstimate-main2-card3-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="3">
                                                                     <div className="oEstimate-main2-card3-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src="../assets/images/oEstimate-main2-tab-img3.png" alt="oEstimate-main2-tab-img3" />     
+                                                                            <img className="img-set" src={oEstimateMain2TabImg3} alt="oEstimate-main2-tab-img3" />     
                                                                     </div>
                                                                     <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
                                                             
@@ -405,7 +451,7 @@ function OestimatePage(){
                                                             
                                                             <div className="oEstimate-main2-card4-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="4">
                                                                 <div className="oEstimate-main2-card4-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab-img1.png" alt="oEstimate-main2-tab-img1" />     
+                                                                        <img className="img-set" src={oEstimateMain2TabImg1} alt="oEstimate-main2-tab-img1" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
                                                         
@@ -444,7 +490,7 @@ function OestimatePage(){
                 
                                                             <div className="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="5">
                                                                 <div className="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab-img2.png" alt="oEstimate-main2-tab-img2" />     
+                                                                        <img className="img-set" src={oEstimateMain2TabImg2} alt="oEstimate-main2-tab-img2" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
                                                         
@@ -484,7 +530,7 @@ function OestimatePage(){
                                                             
                                                             <div className="oEstimate-main2-card6-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="6">
                                                                 <div className="oEstimate-main2-card6-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab-img3.png" alt="oEstimate-main2-tab-img3" />     
+                                                                        <img className="img-set" src={oEstimateMain2TabImg3} alt="oEstimate-main2-tab-img3" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
                                                         
@@ -528,8 +574,8 @@ function OestimatePage(){
                                                     <button className="caroutsel-btn-R border-0 outline-0 bg-transparent">
                                                         <div className="img-box">
                                                             <picture>
-                                                                <source srcSet="../assets/images/oEstimate-main2-tab-arrowR.png" media="(min-width:992px)" />
-                                                                <img className="img-set" src="../assets/images/oEstimate-main2-tab-sm-arrowR.png" alt="215x144" />
+                                                                <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
+                                                                <img className="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
                                                             </picture> 
                                                         </div>
                                                     </button>
@@ -538,8 +584,8 @@ function OestimatePage(){
                                                     <button className="caroutsel-btn-L border-0 outline-0 bg-transparent">
                                                         <div className="img-box">
                                                             <picture>
-                                                                <source srcSet="../assets/images/oEstimate-main2-tab-arrowL.png" media="(min-width:992px)" />
-                                                                <img className="img-set" src="../assets/images/oEstimate-main2-tab-sm-arrowL.png" alt="215x144" />
+                                                                <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
+                                                                <img className="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
                                                             </picture>
                                                         </div>
                                                     </button>
@@ -559,7 +605,7 @@ function OestimatePage(){
                 
                                                                 <div className="oEstimate-main2-card1-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="7">
                                                                     <div className="oEstimate-main2-card1-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src="../assets/images/oEstimate-main2-tab2-img1.png" alt="oEstimate-main2-tab2-img1" />     
+                                                                            <img className="img-set" src={oEstimateMain2Tab2Img1} alt="oEstimate-main2-tab2-img1" />     
                                                                     </div>
                                                                     <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                             
@@ -599,7 +645,7 @@ function OestimatePage(){
                                                             
                                                             <div className="oEstimate-main2-card2-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="8">
                                                                 <div className="oEstimate-main2-card2-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-12">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab2-img2.png" alt="oEstimate-main2-tab2-img2" />     
+                                                                        <img className="img-set" src={oEstimateMain2Tab2Img2} alt="oEstimate-main2-tab2-img2" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                         
@@ -639,7 +685,7 @@ function OestimatePage(){
                                                             
                                                                 <div className="oEstimate-main2-card3-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="9">
                                                                     <div className="oEstimate-main2-card3-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src="../assets/images/oEstimate-main2-tab2-img3.png" alt="oEstimate-main2-tab2-img3" />     
+                                                                            <img className="img-set" src={oEstimateMain2Tab2Img3} alt="oEstimate-main2-tab2-img3" />     
                                                                     </div>
                                                                     <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                             
@@ -679,7 +725,7 @@ function OestimatePage(){
                                                             
                                                             <div className="oEstimate-main2-card4-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="10">
                                                                 <div className="oEstimate-main2-card4-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab2-img1.png" alt="oEstimate-main2-tab2-img1" />     
+                                                                        <img className="img-set" src={oEstimateMain2Tab2Img1} alt="oEstimate-main2-tab2-img1" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                         
@@ -719,7 +765,7 @@ function OestimatePage(){
                                                             
                                                             <div className="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="11">
                                                                 <div className="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab2-img2.png" alt="oEstimate-main2-tab2-img2" />     
+                                                                        <img className="img-set" src={oEstimateMain2Tab2Img2} alt="oEstimate-main2-tab2-img2" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                         
@@ -759,7 +805,7 @@ function OestimatePage(){
                                                             
                                                             <div className="oEstimate-main2-card6-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="12">
                                                                 <div className="oEstimate-main2-card6-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src="../assets/images/oEstimate-main2-tab2-img3.png" alt="oEstimate-main2-tab2-img3" />     
+                                                                        <img className="img-set" src={oEstimateMain2Tab2Img3} alt="oEstimate-main2-tab2-img3" />     
                                                                 </div>
                                                                 <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                         
@@ -801,7 +847,7 @@ function OestimatePage(){
                                                         <div className="img-box">
                                                             <picture>
                                                                 <source srcSet="../assets/images/oEstimate-main2-tab-arrowR.png" media="(min-width:992px)" />
-                                                                <img className="img-set" src="../assets/images/oEstimate-main2-tab-sm-arrowR.png" alt="215x144" />
+                                                                <img className="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
                                                             </picture> 
                                                         </div>
                                                     </button>
@@ -811,7 +857,7 @@ function OestimatePage(){
                                                         <div className="img-box">
                                                             <picture>
                                                                 <source srcSet="../assets/images/oEstimate-main2-tab-arrowL.png" media="(min-width:992px)" />
-                                                                <img className="img-set" src="../assets/images/oEstimate-main2-tab-sm-arrowL.png" alt="215x144" />
+                                                                <img className="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
                                                             </picture>
                                                         </div>
                                                     </button>
@@ -825,7 +871,7 @@ function OestimatePage(){
                                     <button className="pagination-btn02">
                                         <a className="a-re" href="oEstimate.html#oEstimate-main3">
                                             <div className="pagination-img-box02">
-                                                <img className="pagination-img02-set" src="../assets/images/Vector 16.png" alt="Vector 16" />
+                                                <img className="pagination-img02-set" src={oEstimateMain1Vector16} alt="Vector 16" />
                                             </div>
                                         </a>
                                     </button>
@@ -867,14 +913,14 @@ function OestimatePage(){
                                                     <input className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber01" placeholder="mm" value="1mm" />
                                                     <button className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment01">
                                                         <picture>
-                                                            <source srcSet="../assets/images/oEstimate-main3-arrowUP.png" media="(min-width:1200px)" />
-                                                            <img className="img-set" src="../assets/images/oEstimate-main3-sm-arrowUP.png" alt="home-section2-1" />
+                                                            <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
+                                                            <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
                                                         </picture>
                                                     </button>
                                                     <button className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement01">
                                                         <picture>
-                                                            <source srcSet="../assets/images/oEstimate-main3-arrowDOWN.png" media="(min-width:1200px)" />
-                                                            <img className="img-set" src="../assets/images/oEstimate-main3-sm-arrowDOWN.png" alt="home-section2-1" />
+                                                            <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
+                                                            <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
                                                         </picture>
                                                     </button>
                                                 </div>
@@ -889,14 +935,14 @@ function OestimatePage(){
                                                     <input className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber02" placeholder="%" value="10%" />
                                                     <button className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment02">
                                                         <picture>
-                                                            <source srcSet="../assets/images/oEstimate-main3-arrowUP.png" media="(min-width:1200px)" />
-                                                            <img className="img-set" src="../assets/images/oEstimate-main3-sm-arrowUP.png" alt="home-section2-1" />
+                                                            <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
+                                                            <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
                                                         </picture>
                                                     </button>
                                                     <button className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement02">
                                                         <picture>
-                                                            <source srcSet="../assets/images/oEstimate-main3-arrowDOWN.png" media="(min-width:1200px)" />
-                                                            <img className="img-set" src="../assets/images/oEstimate-main3-sm-arrowDOWN.png" alt="home-section2-1" />
+                                                            <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
+                                                            <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
                                                         </picture>
                                                     </button>
                                                 </div>
@@ -910,14 +956,14 @@ function OestimatePage(){
                                                     <input className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber03" placeholder="mm" value="1mm" />
                                                     <button className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment03">
                                                         <picture>
-                                                            <source srcSet="../assets/images/oEstimate-main3-arrowUP.png" media="(min-width:1200px)" />
-                                                            <img className="img-set" src="../assets/images/oEstimate-main3-sm-arrowUP.png" alt="home-section2-1" />
+                                                            <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
+                                                            <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
                                                         </picture>
                                                     </button>
                                                     <button className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement03">
                                                         <picture>
-                                                            <source srcSet="../assets/images/oEstimate-main3-arrowDOWN.png" media="(min-width:1200px)" />
-                                                            <img className="img-set" src="../assets/images/oEstimate-main3-sm-arrowDOWN.png" alt="home-section2-1" />
+                                                            <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
+                                                            <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
                                                         </picture>
                                                     </button>
                                                 </div>
@@ -932,7 +978,7 @@ function OestimatePage(){
                                     <button className="oEstimate-main3-btn03 pagination-btn01 d-block mx-auto">
                                         <a className="a-re" href="oEstimate.html#oEstimate-main4">
                                             <div className="pagination-img01-box">
-                                                <img className="pagination-img01-set" src="../assets/images/Vector 15.png" alt="Vector 15" />
+                                                <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="Vector 15" />
                                             </div>
                                         </a>
                                     </button>
@@ -975,8 +1021,8 @@ function OestimatePage(){
 
                                                     <div className="main4-img-box position-absolute main4-img-position1">
                                                         <picture>
-                                                            <source srcSet="../assets/images/oEstimate-main4-Keyboardarrowdown.png" media="(min-width:1200px)" />
-                                                            <img src="../assets/images/oEstimate-main4-sm-Keyboardarrowdown.png" alt="home-section2-1" />
+                                                            <source srcSet={oEstimateMain4Keyboardarrowdown} media="(min-width:1200px)" />
+                                                            <img src={oEstimateMain4SmKeyboardarrowdown} alt="home-section2-1" />
                                                         </picture>
                                                     </div>
                                                 </button>
@@ -998,15 +1044,15 @@ function OestimatePage(){
                                                     <Link className="calendar position-relative" data-bs-toggle="collapse" to="/" role="button" aria-expanded="false" aria-controls="collapseExample" id="calendar">
                                                         <div className="main4-img-box position-absolute main4-img-position2">
                                                             <picture>
-                                                                <source srcSet="../assets/images/oEstimate-main4-Calendar.png" media="(min-width:1200px)" />
-                                                                <img src="../assets/images/oEstimate-main4-sm-Calendar.png" alt="home-section2-1" />
+                                                                <source srcSet={oEstimateMain4Calendar} media="(min-width:1200px)" />
+                                                                <img src={oEstimateMain4SmCalendar} alt="home-section2-1" />
                                                             </picture>
                                                         </div>
                                                         <span id="selectedDateDisplay" className="fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12"> 年 / 月 / 日 </span> {/* 唯一 ID，顯示選擇的日期 */}
                                                         <div className="main4-img-box position-absolute main4-img-position3">
                                                             <picture>
-                                                                <source srcSet="../assets/images/oEstimate-main4-Keyboardarrowdown.png" media="(min-width:1200px)" />
-                                                                <img src="../assets/images/oEstimate-main4-sm-數量調整按鈕.png" alt="home-section2-1" />
+                                                                <source srcSet={oEstimateMain4Keyboardarrowdown} media="(min-width:1200px)" />
+                                                                <img src={oEstimateMain4Sm數量調整按鈕} alt="home-section2-1" />
                                                             </picture>
                                                         </div>
                                                     </Link>
@@ -1017,11 +1063,11 @@ function OestimatePage(){
                                                             {/* 日曆頭部 */}
                                                             <div className="calendar-head d-flex justify-content-between align-items-center mb-16">
                                                                 <button id="prevMonthBtn" className="prevMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
-                                                                        <img className="img-set bg-transparent" src="../assets/images/oEstimate-main4-Calendar-arrowL.png" alt="" />
+                                                                        <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowL} alt="" />
                                                                 </button>
                                                                 <div id="monthYear"></div>
                                                                 <button id="nextMonthBtn" className="nextMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
-                                                                    <img className="img-set bg-transparent" src="../assets/images/oEstimate-main4-Calendar-arrowR.png" alt="" />
+                                                                    <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowR} alt="" />
                                                                 </button>
                                                             </div>
                                                             {/* 日曆星期部分 */}
@@ -1038,7 +1084,7 @@ function OestimatePage(){
                                     <button className="oEstimate-main4-btn02 pagination-btn02 d-block mx-auto">
                                         <a className="a-re" href="oEstimate.html#oEstimate-main5">
                                             <div className="oEstimate-main4-img-box02">
-                                                <img className="oEstimate-main4-btn02-img-set" src="../assets/images/Vector 16.png" alt="Vector 16" />
+                                                <img className="oEstimate-main4-btn02-img-set" src={oEstimateMain1Vector16} alt="Vector 16" />
                                             </div>
                                         </a>
                                     </button>
@@ -1094,7 +1140,7 @@ function OestimatePage(){
                                                 </div>
                                                 <button type="button" className="oEstimate-main1-btn-close border-0 outline-0 p-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
                                                     <div className="oEstimate-main1-btn-img-box">
-                                                        <img className="img-set" src="../assets/images/oEstimate-main5-modal-btn-close.png" alt="oEstimate-main5-modal-btn-close" />
+                                                        <img className="img-set" src={oEstimateMain5ModalBtnClose} alt="oEstimate-main5-modal-btn-close" />
                                                     </div>
                                                 </button>
                                             </div>

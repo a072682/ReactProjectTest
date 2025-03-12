@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import footerLogo from "../../assets/images/footer-logo.png";
-import footerSmLogo from "../../assets/images/footer-sm-logo.png";
-import footerLocation from "../../assets/images/footer-Location.png";
-import footerEmail from "../../assets/images/footer-Email.png";
-import footerPhone from "../../assets/images/footer-Phone.png";
-import footerTime from "../../assets/images/footer-Time.png";
-import footerFacebook from "../../assets/images/footer-Facebook.png";
-import footerInstagram from "../../assets/images/footer-Instagram.png";
-import footerLine from "../../assets/images/footer-Line.png";
-import footerYouTube from "../../assets/images/footer-YouTube.png";
+import footerLogo from "../../assets/images/Footer/footer-logo.png";
+import footerSmLogo from "../../assets/images/Footer/footer-sm-logo.png";
+import footerLocation from "../../assets/images/Footer/footer-Location.png";
+import footerEmail from "../../assets/images/Footer/footer-Email.png";
+import footerPhone from "../../assets/images/Footer/footer-Phone.png";
+import footerTime from "../../assets/images/Footer/footer-Time.png";
+import footerFacebook from "../../assets/images/Footer/footer-Facebook.png";
+import footerInstagram from "../../assets/images/Footer/footer-Instagram.png";
+import footerLine from "../../assets/images/Footer/footer-Line.png";
+import footerYouTube from "../../assets/images/Footer/footer-YouTube.png";
 
 function Footer() {
   return (

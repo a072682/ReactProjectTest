@@ -1,3 +1,25 @@
+import aboutUsMain1Img01 from "../assets/images/AboutusPage/aboutUs-main1-img01.png";
+import aboutUsMain1SmImg01 from "../assets/images/AboutusPage/aboutUs-main1-sm-img01.png";
+
+import aboutUsMain2Img01 from "../assets/images/AboutusPage/aboutUs-main2-img01.png";
+import aboutUsMain2Img02 from "../assets/images/AboutusPage/aboutUs-main2-img02.png";
+import aboutUsMain2Img03 from "../assets/images/AboutusPage/aboutUs-main2-img03.png";
+import aboutUsMain2Img04 from "../assets/images/AboutusPage/aboutUs-main2-img04.png";
+import aboutUsMain2Img05 from "../assets/images/AboutusPage/aboutUs-main2-img05.png";
+import aboutUsMain2Img06 from "../assets/images/AboutusPage/aboutUs-main2-img06.png";
+
+import aboutUsMain2SmImg01 from "../assets/images/AboutusPage/aboutUs-main2-sm-img01.png";
+import aboutUsMain2SmImg02 from "../assets/images/AboutusPage/aboutUs-main2-sm-img02.png";
+import aboutUsMain2SmImg03 from "../assets/images/AboutusPage/aboutUs-main2-sm-img03.png";
+import aboutUsMain2SmImg04 from "../assets/images/AboutusPage/aboutUs-main2-sm-img04.png";
+import aboutUsMain2SmImg05 from "../assets/images/AboutusPage/aboutUs-main2-sm-img05.png";
+import aboutUsMain2SmImg06 from "../assets/images/AboutusPage/aboutUs-main2-sm-img06.png";
+
+import aboutUsMain3Img01 from "../assets/images/AboutusPage/aboutUs-main3-img01.png";
+import aboutUsMain3SmImg01 from "../assets/images/AboutusPage/aboutUs-main3-sm-img01.png";
+
+import abusMain4ModalBtnClose from "../assets/images/AboutusPage/abus-main4-modal-btn-close.png";
+
 function AboutusPage(){
     return(
         <>
@@ -22,8 +44,8 @@ function AboutusPage(){
                         <div className="abus-main1-content d-flex justify-content-center align-items-center">
                         <div className="abus-main1-img-box abus-main-img-box-set">
                             <picture>
-                            <source srcSet="../assets/images/aboutUs-main1-img01.png" media="(min-width:1200px)" />
-                            <img className="img-set" src="../assets/images/aboutUs-main1-sm-img01.png" alt="images/aboutUs-main1-img01" />
+                            <source srcSet={aboutUsMain1Img01} media="(min-width:1200px)" />
+                            <img className="img-set" src={aboutUsMain1SmImg01} alt="images/aboutUs-main1-img01" />
                             </picture>  
                         </div>
                         </div>
@@ -60,14 +82,14 @@ function AboutusPage(){
                             <div className="abus-main2-content d-flex flex-column row-gap-32">
                                 <div className="abus-main2-img-box pt-32 pt-xxl-50">
                                 <picture>
-                                    <source srcSet="../assets/images/aboutUs-main2-img01.png" media="(min-width:1200px)" />
-                                    <img className="img-set" src="../assets/images/aboutUs-main2-sm-img01.png" alt="aboutUs-main2-img01" />
+                                    <source srcSet={aboutUsMain2Img01} media="(min-width:1200px)" />
+                                    <img className="img-set" src={aboutUsMain2SmImg01} alt="aboutUs-main2-img01" />
                                 </picture>  
                                 </div>
                                 <div className="abus-main2-img-box">
                                 <picture>
-                                    <source srcSet="../assets/images/aboutUs-main2-img02.png" media="(min-width:1200px)" />
-                                    <img className="img-set" src="../assets/images/aboutUs-main2-sm-img02.png" alt="aboutUs-main2-sm-img02" />
+                                    <source srcSet={aboutUsMain2Img02} media="(min-width:1200px)" />
+                                    <img className="img-set" src={aboutUsMain2SmImg02} alt="aboutUs-main2-sm-img02" />
                                 </picture>  
                                 </div>
                             </div>
@@ -78,14 +100,14 @@ function AboutusPage(){
                             <div className="abus-main2-content d-flex flex-column row-gap-32">
                             <div className="abus-main2-img-box">
                                 <picture>
-                                <source srcSet="../assets/images/aboutUs-main2-img03.png" media="(min-width:1200px)" />
-                                <img className="img-set" src="../assets/images/aboutUs-main2-sm-img03.png" alt="aboutUs-main2-sm-img03" />
+                                <source srcSet={aboutUsMain2Img03} media="(min-width:1200px)" />
+                                <img className="img-set" src={aboutUsMain2SmImg03} alt="aboutUs-main2-sm-img03" />
                                 </picture>  
                             </div>
                             <div className="abus-main2-img-box">
                                 <picture>
-                                <source srcSet="../assets/images/aboutUs-main2-img04.png" media="(min-width:1200px)" />
-                                <img className="img-set" src="../assets/images/aboutUs-main2-sm-img04.png" alt="aboutUs-main2-sm-img04" />
+                                <source srcSet={aboutUsMain2Img04} media="(min-width:1200px)" />
+                                <img className="img-set" src={aboutUsMain2SmImg04} alt="aboutUs-main2-sm-img04" />
                                 </picture>  
                             </div>
                             </div>
@@ -95,14 +117,14 @@ function AboutusPage(){
                             <div className="abus-main2-content d-flex flex-column row-gap-32">
                             <div className="abus-main2-img-box pt-32 pt-xxl-50">
                                 <picture>
-                                <source srcSet="../assets/images/aboutUs-main2-img05.png" media="(min-width:1200px)" />
-                                <img className="img-set" src="../assets/images/aboutUs-main2-sm-img05.png" alt="aboutUs-main2-sm-img05" />
+                                <source srcSet={aboutUsMain2Img05} media="(min-width:1200px)" />
+                                <img className="img-set" src={aboutUsMain2SmImg05} />
                                 </picture>  
                             </div>
                             <div className="abus-main2-img-box">
                                 <picture>
-                                <source srcSet="../assets/images/aboutUs-main2-img06.png" media="(min-width:1200px)" />
-                                <img className="img-set" src="../assets/images/aboutUs-main2-sm-img06.png" alt="aboutUs-main2-sm-img06" />
+                                <source srcSet={aboutUsMain2Img06} media="(min-width:1200px)" />
+                                <img className="img-set" src={aboutUsMain2SmImg06} />
                                 </picture>  
                             </div>
                             </div>
@@ -144,8 +166,8 @@ function AboutusPage(){
                         <div className="abus-main3-content w-100 h-100 d-flex justify-content-center align-items-center justify-content-xxl-end">
                         <div className="abus-main3-img-box">
                             <picture>
-                            <source srcSet="../assets/images/aboutUs-main3-img01.png" media="(min-width:1200px)" />
-                            <img className="img-set" src="../assets/images/aboutUs-main3-sm-img01.png" alt="aboutUs-main3-sm-img01" />
+                            <source srcSet={aboutUsMain3Img01} media="(min-width:1200px)" />
+                            <img className="img-set" src={aboutUsMain3SmImg01} alt="aboutUs-main3-sm-img01" />
                             </picture>  
                         </div>
                         </div> 

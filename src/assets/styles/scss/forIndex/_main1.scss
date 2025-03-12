@@ -38,11 +38,12 @@
     @include media-breakpoint-up(xl){ 
         //height: auto; 
         background-image:
-            url(/assets/images/main1-bg.png);
+            url("/assets/images/Bg/main1-bg.png");
         //background-attachment:scroll;
         background-position: center bottom;
         background-repeat:no-repeat;
         background-size: 100% 100%;
+        
     }
 }
 .main1-content{

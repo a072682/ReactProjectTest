@@ -6,8 +6,8 @@
     border: 
         none;
     background-image: 
-        url(/assets/images/main2-bg-sm-top.png), 
-        url(/assets/images/main2-bg-sm-bottom.png),
+        url(/assets/images/Bg/main2-bg-sm-top.png), 
+        url(/assets/images/Bg/main2-bg-sm-bottom.png),
         linear-gradient(180deg, #000000, #000000);
     background-repeat: 
         no-repeat, 
@@ -23,8 +23,8 @@
         cover;
     @include media-breakpoint-up(lg){  
         background-image:
-            url(/assets/images/main2-bg-top.png), 
-            url(/assets/images/main2-bg-sm-bottom.png),
+            url(/assets/images/Bg/main2-bg-top.png), 
+            url(/assets/images/Bg/main2-bg-sm-bottom.png),
             linear-gradient(180deg, #000000, #000000);
         background-size: 
             auto,

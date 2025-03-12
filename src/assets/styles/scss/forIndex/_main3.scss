@@ -1,14 +1,14 @@
 .main3{
     height: calc(100% - 132px);
     background-color: #000000;
-    background-image:url(/assets/images/bg-01.png);
+    background-image:url("/assets/images/Bg/bg-01.png");
     background-attachment:scroll;
     background-repeat:repeat-x;
     background-position:top;
     @include media-breakpoint-up(lg){  
       background-image: 
-        url(/assets/images/bg-01.png), 
-        url(/assets/images/main3-bg-bottom.png);
+        url("/assets/images/Bg/bg-01.png"), 
+        url("/assets/images/Bg/main3-bg-bottom.png");
       background-position:
         top left,
         bottom right;
