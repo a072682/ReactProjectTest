@@ -3,7 +3,6 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";// 核心 CSS
 import "swiper/css/navigation";// 左右箭頭
-import "swiper/css/pagination"; // 分頁點
 
 
 //圖片引入

@@ -1,6 +1,7 @@
+
 @import "../../../node_modules/bootstrap/scss/functions";
-@import "helpers/variables";
-@import "helpers/variables-dark";
+@import "./helpers/variables";
+@import "./helpers/variables-dark";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "./layout/custom";
 @import "./scss/pages/aboutUS";
@@ -10,8 +11,10 @@
 @import './scss/pages/qaPage';
 @import './scss/pages/oEstimate';
 @import './scss/pages/index';
-@import './scss/header';
+@import './scss/Header';
 @import "./scss/footer";
+@import "./scss/materia-page";
+@import "./scss/test";
 
 
 
@@ -73,6 +76,19 @@ $utilities: map-merge(
 );
 //寬度
 //斷點
+$utilities: map-merge(
+  $utilities,
+  (
+    "display":
+      map-merge(
+        map-get($utilities, "display"),
+        (
+          responsive: true,
+        )
+      ),
+  )
+);
+
 $utilities: map-merge(
   $utilities,
   (

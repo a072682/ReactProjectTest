@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Offcanvas, Button, Nav, Navbar as BootstrapNavbar, Container, NavDropdown } from "react-bootstrap";
+import Login from "./Login";
 
 //圖片引入
 import Logo from "../../assets/images/Header/logo.png";
@@ -12,14 +13,19 @@ import Close from "../../assets/images/Header/Close.png";
 const routes = [
     { path: "/IndexPage", name: "IndexPage" },
     { path: "/OestimatePage", name: "OestimatePage" },
+    { path: "/MateriaPage", name: "MateriaPage" },
     { path: "/QaPage", name: "QaPage" },
     { path: "/AboutusPage", name: "AboutusPage" },
+    { path: "/MemberPage", name: "MemberPage" },
   ];
 
 function Header(){
     //快速渲染畫面
     const location = useLocation();
     //快速渲染畫面
+
+    //Login(登入狀態)
+    const[handleLoginPageModal,setHandleLoginPageModal]=useState(null);
 
     //Index
         //Index頁面下拉選單狀態
@@ -45,6 +51,18 @@ function Header(){
             setQaPageDropdownOpen(false);
         };
     //QaPage
+    //登入狀態
+        //登入狀態頁面下拉選單狀態
+        const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
+        // 點擊 Page3 時，切換下拉選單
+        const isLoginOpenDropdown = () => {
+            setIsLoginDropdownOpen(true);
+        };
+        // 點擊下拉選單的選項時，關閉下拉選單
+        const isLoginCloseDropdown = () => {
+            setIsLoginDropdownOpen(false);
+        };
+    //登入狀態
     
     //側邊狀態
         //控制側邊狀態
@@ -58,7 +76,8 @@ function Header(){
         const [isIndex, setIsIndex] = useState(false);
         //QaPage狀態
         const [isQaPage, setIsQaPage] = useState(false);
-    
+        //登入狀態
+        const [isLogin,setisLogin] = useState(false);
     //側邊狀態
 
 
@@ -99,7 +118,7 @@ function Header(){
                                 </ul>
                             </Nav>
                             <Nav.Link as={NavLink} to="/OestimatePage" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">線上估價</Nav.Link>
-                            <Nav.Link as={NavLink} to="/" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">材料選擇</Nav.Link>
+                            <Nav.Link as={NavLink} to="/MateriaPage" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">材料選擇</Nav.Link>
                             <Nav className="nav-item dropdown">
                                 <Link
                                     className={`nav-link fs-16 fs-xxl-20 d-flex justify-content-center align-items-center pt-24 px-8 mb-20 borderLow
@@ -123,9 +142,25 @@ function Header(){
                                 </ul>
                             </Nav>
                             <Nav.Link as={NavLink} to="/AboutusPage" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">聯絡我們</Nav.Link>
-                            <Link className="navbar-brand py-0 px-0 mx-0" to="/IndexPage"> {/*標格 or Logo標誌*/}
-                                <img src={Log01} alt="" />
-                            </Link>
+                            <Nav>
+                                <Link
+                                    className={`nav-link fs-16 fs-xxl-20 d-flex justify-content-center align-items-center pt-24 px-8 mb-20 borderLow
+                                        ${["/isLogin"].includes(location.pathname) ? "active" : ""}`}
+                                    to="/"
+                                    id="isLogin"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    onClick={isLoginOpenDropdown} // 點擊時開關下拉選單
+                                >
+                                    <img src={Log01} alt="" />
+                                </Link>
+                                <ul className={`dropdown-menu customDropdown  ${isLoginDropdownOpen ? "show" : ""}`}> 
+                                    <li><button className="dropdown-item dropdown-item-set" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();}}>會員中心</button></li>
+                                    <li><Link className="dropdown-item dropdown-item-set" to="/" onClick={isLoginCloseDropdown}>登出</Link></li>
+                                    <li><Link className="dropdown-item dropdown-item-set" to="/MemberPage" onClick={isLoginCloseDropdown}>測試用</Link></li>
+                                </ul>
+                            </Nav>
+                            <Nav.Link as={NavLink} to="/Manager/" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">管理者按鈕(測試)</Nav.Link>
                         </Nav>
                     </BootstrapNavbar.Collapse>
                 </Container>
@@ -174,12 +209,20 @@ function Header(){
                             </div>
                         </Nav>
                         <Nav.Link as={NavLink} to="/AboutusPage" className="fs-24 normalNavLink normalNavBtn" onClick={handleClose}>聯絡我們</Nav.Link>
-                        <Link className="navbar-brand py-0 px-0 mx-0" to="/IndexPage"> {/*標格 or Logo標誌*/}
-                            <img src={Log01} alt="" />
-                        </Link>
+                        <Nav className="nav-item dropdown sidebar-dropdown offcanvasQaPageNav pb-8">
+                            <button className="dropdown-toggle-btn d-flex justify-content-center align-items-center fs-24 qaPageBtn" 
+                            onClick={() => setisLogin(!isLogin)}>
+                                <img src={Log01} alt="" />
+                            </button>
+                            <div className={`dropdown-content gap-8 px-0 py-0 ${isLogin ? "show" : ""}`}>
+                                <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>會員中心</Link>
+                                <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>登出</Link>
+                            </div>
+                        </Nav>
                     </Nav>
                 </Offcanvas.Body>
             </Offcanvas>
+            <Login setHandleLoginPageModal={setHandleLoginPageModal}/>
         </>
     )
 }
