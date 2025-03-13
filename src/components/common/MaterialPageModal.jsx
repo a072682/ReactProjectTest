@@ -60,7 +60,7 @@ function MaterialPageModal({setHandleMaterialPageModal,singleMaterialPageModal,s
                         <div className="modal-header MaterialPageModalHeaderBgSet">
                             <h5 className="modal-title fs-32 text-nautral-white">PLE</h5>
                             <button onClick={btnByMaterialPageModalClose} type="button" className="materialPageModalBtnClose p-0 ms-auto border-0" aria-label="Close">
-                                <img className="materialPageModalBtnCloseImgSet" src="/assets/images/MateriaPage/btn-close.png" alt="Close" width="48" height="48" />
+                                <img className="materialPageModalBtnCloseImgSet" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/btn-close.png`} alt="Close" width="48" height="48" />
                             </button>
                         </div>
                         <div className="materialPageModal-body-set p-10 p-lg-58">
