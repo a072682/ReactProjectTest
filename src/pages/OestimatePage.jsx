@@ -846,7 +846,7 @@ function OestimatePage(){
                                                     <button className="caroutsel-btn-R border-0 outline-0 bg-transparent">
                                                         <div className="img-box">
                                                             <picture>
-                                                                <source srcSet="../assets/images/oEstimate-main2-tab-arrowR.png" media="(min-width:992px)" />
+                                                                <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
                                                                 <img className="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
                                                             </picture> 
                                                         </div>
@@ -856,7 +856,7 @@ function OestimatePage(){
                                                     <button className="caroutsel-btn-L border-0 outline-0 bg-transparent">
                                                         <div className="img-box">
                                                             <picture>
-                                                                <source srcSet="../assets/images/oEstimate-main2-tab-arrowL.png" media="(min-width:992px)" />
+                                                                <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
                                                                 <img className="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
                                                             </picture>
                                                         </div>

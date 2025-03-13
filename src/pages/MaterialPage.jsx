@@ -10,82 +10,82 @@ import { useState } from "react";
 
 const materiaPageMain1Card = [
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain1SwiperImg01.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain1SwiperSmImg01.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperImg01.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperSmImg01.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain1SwiperImg02.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain1SwiperSmImg02.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperImg02.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperSmImg02.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain1SwiperImg03.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain1SwiperSmImg03.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperImg03.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperSmImg03.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain1SwiperImg01.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain1SwiperSmImg01.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperImg01.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperSmImg01.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain1SwiperImg02.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain1SwiperSmImg02.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperImg02.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperSmImg02.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain1SwiperImg03.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain1SwiperSmImg03.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperImg03.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain1SwiperSmImg03.png`,
     },
 ];
 
 const materiaPageMain2Card = [
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain2SwiperImg01.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain2SwiperSmImg01.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperImg01.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperSmImg01.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain2SwiperImg02.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain2SwiperSmImg02.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperImg02.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperSmImg02.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain2SwiperImg03.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain2SwiperSmImg03.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperImg03.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperSmImg03.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain2SwiperImg01.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain2SwiperSmImg01.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperImg01.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperSmImg01.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain2SwiperImg02.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain2SwiperSmImg02.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperImg02.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperSmImg02.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain2SwiperImg03.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain2SwiperSmImg03.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperImg03.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain2SwiperSmImg03.png`,
     },
 ];
 
 const materiaPageMain3Card = [
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain3SwiperImg01.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain3SwiperSmImg01.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperImg01.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperSmImg01.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain3SwiperImg02.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain3SwiperSmImg02.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperImg02.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperSmImg02.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain3SwiperImg03.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain3SwiperSmImg03.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperImg03.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperSmImg03.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain3SwiperImg01.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain3SwiperSmImg01.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperImg01.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperSmImg01.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain3SwiperImg02.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain3SwiperSmImg02.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperImg02.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperSmImg02.png`,
     },
     {
-        img:"/assets/images/MateriaPage/MaterialPageMain3SwiperImg03.png",
-        imgSm:"/assets/images/MateriaPage/MaterialPageMain3SwiperSmImg03.png",
+        img:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperImg03.png`,
+        imgSm:`${import.meta.env.BASE_URL}assets/images/MateriaPage/MaterialPageMain3SwiperSmImg03.png`,
     },
 ];
 
@@ -115,12 +115,12 @@ function MateriaPage(){
                             <div className="d-flex gap-72 justify-content-end align-items-center MateriaPage-main1-swiper-btn-set">
                                 <button className="materiaPageSwiperMain1NextBtnL">
                                     <div className="img-box">
-                                        <img className="img-set" src="/assets/images/MateriaPage/MateriaPage-main1-arrowL.png" alt="MateriaPage-main1-arrowL" />
+                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/MateriaPage-main1-arrowL.png`} alt="MateriaPage-main1-arrowL" />
                                     </div>
                                 </button>
                                 <button className="materiaPageSwiperMain1NextBtnR">
                                     <div className="img-box">
-                                        <img className="img-set" src="/assets/images/MateriaPage/MateriaPage-main1-arrowR.png" alt="MateriaPage-main1-arrowR" />
+                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/MateriaPage-main1-arrowR.png`} alt="MateriaPage-main1-arrowR" />
                                     </div>
                                 </button>
                             </div>
@@ -186,12 +186,12 @@ function MateriaPage(){
                             <div className="d-flex gap-72 justify-content-end align-items-center MateriaPage-main1-swiper-btn-set">
                                 <button className="materiaPageSwiperMain2NextBtnL">
                                     <div className="img-box">
-                                        <img className="img-set" src="/assets/images/MateriaPage/MateriaPage-main1-arrowL.png" alt="MateriaPage-main1-arrowL" />
+                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/MateriaPage-main1-arrowL.png`} alt="MateriaPage-main1-arrowL" />
                                     </div>
                                 </button>
                                 <button className="materiaPageSwiperMain2NextBtnR">
                                     <div className="img-box">
-                                        <img className="img-set" src="/assets/images/MateriaPage/MateriaPage-main1-arrowR.png" alt="MateriaPage-main1-arrowR" />
+                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/MateriaPage-main1-arrowR.png`} alt="MateriaPage-main1-arrowR" />
                                     </div>
                                 </button>
                             </div>
@@ -256,12 +256,12 @@ function MateriaPage(){
                             <div className="d-flex gap-72 justify-content-end align-items-center MateriaPage-main1-swiper-btn-set">
                                 <button className="materiaPageSwiperMain3NextBtnL">
                                     <div className="img-box">
-                                        <img className="img-set" src="/assets/images/MateriaPage/MateriaPage-main1-arrowL.png" alt="MateriaPage-main1-arrowL" />
+                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/MateriaPage-main1-arrowL.png`} alt="MateriaPage-main1-arrowL" />
                                     </div>
                                 </button>
                                 <button className="materiaPageSwiperMain3NextBtnR">
                                     <div className="img-box">
-                                        <img className="img-set" src="/assets/images/MateriaPage/MateriaPage-main1-arrowR.png" alt="MateriaPage-main1-arrowR" />
+                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/MateriaPage-main1-arrowR.png`} alt="MateriaPage-main1-arrowR" />
                                     </div>
                                 </button>
                             </div>
