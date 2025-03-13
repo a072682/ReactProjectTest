@@ -1,12 +1,16 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Offcanvas, Button, Nav, Navbar as BootstrapNavbar, Container, NavDropdown } from "react-bootstrap";
+import { logoutUser } from "../../slice/loginSlice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Login from "./Login";
 
 //圖片引入
 import Logo from "../../assets/images/Header/logo.png";
 import LogoSm from "../../assets/images/Header/logo-sm.png";
 import Log01 from "../../assets/images/Header/log01.png";
+import Log02 from "../../assets/images/Header/log02.png";
 import Close from "../../assets/images/Header/Close.png";
 
 
@@ -32,7 +36,7 @@ function Header(){
         const [isIndexDropdownOpen, setIsIndexDropdownOpen] = useState(false);
         // 點擊 Page3 時，切換下拉選單
         const IndexOpenDropdown = () => {
-            setIsIndexDropdownOpen(true);
+            setIsIndexDropdownOpen(!isIndexDropdownOpen);
         };
         // 點擊下拉選單的選項時，關閉下拉選單
         const IndexCloseDropdown = () => {
@@ -44,7 +48,7 @@ function Header(){
         const [isQaPageDropdownOpen, setQaPageDropdownOpen] = useState(false);
         // 點擊 Page3 時，切換下拉選單
         const QaPageOpenDropdown = () => {
-            setQaPageDropdownOpen(true);
+            setQaPageDropdownOpen(!isQaPageDropdownOpen);
         };
         // 點擊下拉選單的選項時，關閉下拉選單
         const QaPageCloseDropdown = () => {
@@ -56,7 +60,7 @@ function Header(){
         const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
         // 點擊 Page3 時，切換下拉選單
         const isLoginOpenDropdown = () => {
-            setIsLoginDropdownOpen(true);
+            setIsLoginDropdownOpen(!isLoginDropdownOpen);
         };
         // 點擊下拉選單的選項時，關閉下拉選單
         const isLoginCloseDropdown = () => {
@@ -79,6 +83,19 @@ function Header(){
         //登入狀態
         const [isLogin,setisLogin] = useState(false);
     //側邊狀態
+
+    //登入相關
+        const loginState = useSelector((state)=>{
+            return(
+            state.login.isAuthenticated
+            )
+        })
+
+        const dispatch = useDispatch();
+
+        useEffect(()=>{
+            console.log("loginState狀態:",loginState);
+        },[loginState])
 
 
     return(
@@ -134,7 +151,7 @@ function Header(){
                                             arrow_drop_down
                                     </span>
                                 </Link>
-                                <ul className={`dropdown-menu customDropdown QaPagePosition ${isQaPageDropdownOpen ? "show" : ""}`}> {/* 手動控制選單開關 */}
+                                <ul className={`dropdown-menu customDropdown qaPagePosition ${isQaPageDropdownOpen ? "show" : ""}`}> {/* 手動控制選單開關 */}
                                     <li><Link className="dropdown-item dropdown-item-set" to="/QaPage" onClick={QaPageCloseDropdown}>客製化流程</Link></li>
                                     <li><Link className="dropdown-item dropdown-item-set" to="/QaPage" onClick={QaPageCloseDropdown}>設計需求介紹</Link></li>
                                     <li><Link className="dropdown-item dropdown-item-set" to="/QaPage" onClick={QaPageCloseDropdown}>運費說明</Link></li>
@@ -143,24 +160,53 @@ function Header(){
                             </Nav>
                             <Nav.Link as={NavLink} to="/AboutusPage" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">聯絡我們</Nav.Link>
                             <Nav>
-                                <Link
-                                    className={`nav-link fs-16 fs-xxl-20 d-flex justify-content-center align-items-center pt-24 px-8 mb-20 borderLow
-                                        ${["/isLogin"].includes(location.pathname) ? "active" : ""}`}
-                                    to="/"
-                                    id="isLogin"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    onClick={isLoginOpenDropdown} // 點擊時開關下拉選單
-                                >
-                                    <img src={Log01} alt="" />
-                                </Link>
-                                <ul className={`dropdown-menu customDropdown  ${isLoginDropdownOpen ? "show" : ""}`}> 
-                                    <li><button className="dropdown-item dropdown-item-set" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();}}>會員中心</button></li>
-                                    <li><Link className="dropdown-item dropdown-item-set" to="/" onClick={isLoginCloseDropdown}>登出</Link></li>
-                                    <li><Link className="dropdown-item dropdown-item-set" to="/MemberPage" onClick={isLoginCloseDropdown}>測試用</Link></li>
-                                </ul>
+                                {
+                                    loginState?(
+                                        <>
+                                            <Link
+                                                className={`nav-link fs-16 fs-xxl-20 d-flex justify-content-center align-items-center pt-24 px-8 mb-20 borderLow
+                                                    ${["/isLogin"].includes(location.pathname) ? "active" : ""}`}
+                                                to="/"
+                                                id="isLogin"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                onClick={isLoginOpenDropdown} // 點擊時開關下拉選單
+                                            >
+                                                <div className="userImgSet">
+                                                    <img className="imgSet" src={Log02} alt="" />
+                                                </div>
+                                            </Link>
+                                            <ul className={`dropdown-menu customDropdown loginPagePosition ${isLoginDropdownOpen ? "show" : ""}`}> 
+                                                <li><button className="dropdown-item dropdown-item-set" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();}}>會員中心</button></li>
+                                                <li><Link className="dropdown-item dropdown-item-set" to="/" onClick={()=>{dispatch(logoutUser());isLoginCloseDropdown();}}>登出</Link></li>
+                                                <li><Link className="dropdown-item dropdown-item-set" to="/MemberPage" onClick={isLoginCloseDropdown}>測試用</Link></li>
+                                            </ul>
+                                        </>
+                                    )
+                                    :
+                                    (
+                                        <>
+                                            <Link
+                                                className={`nav-link fs-16 fs-xxl-20 d-flex justify-content-center align-items-center pt-24 px-8 mb-20 borderLow
+                                                    ${["/isLogin"].includes(location.pathname) ? "active" : ""}`}
+                                                to="/"
+                                                id="isLogin"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                onClick={isLoginOpenDropdown} // 點擊時開關下拉選單
+                                            >
+                                                <div className="userImgSet">
+                                                    <img className="imgSet" src={Log01} alt="" />
+                                                </div>
+                                            </Link>
+                                            <ul className={`dropdown-menu customDropdown loginPagePosition ${isLoginDropdownOpen ? "show" : ""}`}> 
+                                                <li><button className="dropdown-item dropdown-item-set" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();}}>會員登入</button></li>
+                                            </ul>
+                                        </>
+                                    )
+                                }
                             </Nav>
-                            <Nav.Link as={NavLink} to="/Manager/" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">管理者按鈕(測試)</Nav.Link>
+                            {/* <Nav.Link as={NavLink} to="/Manager/" className="fs-16 fs-xxl-20 pt-24 px-8 mb-20 borderLow">管理者按鈕(測試)</Nav.Link> */}
                         </Nav>
                     </BootstrapNavbar.Collapse>
                 </Container>
@@ -171,7 +217,7 @@ function Header(){
                 <Offcanvas.Header >
                 <Offcanvas.Title></Offcanvas.Title>
                 <button className="custom-close-btn ms-auto offcanvasCloseBtn" onClick={handleClose}>
-                    <img src={Close} alt="Close" width="24" height="24" />
+                    <img src={Close} alt="Close" width="48" height="48" />
                 </button>
                 </Offcanvas.Header>
                 <Offcanvas.Body className="" >
@@ -192,7 +238,7 @@ function Header(){
                             </div>
                         </Nav>
                         <Nav.Link as={NavLink} to="/OestimatePage" className="fs-24 normalNavLink normalNavBtn" onClick={handleClose}>線上估價</Nav.Link>
-                        <Nav.Link as={NavLink} to="/" className="fs-24 normalNavLink normalNavBtn" onClick={handleClose}>材料選擇</Nav.Link>
+                        <Nav.Link as={NavLink} to="/MateriaPage" className="fs-24 normalNavLink normalNavBtn" onClick={handleClose}>材料選擇</Nav.Link>
                         <Nav className="nav-item dropdown sidebar-dropdown offcanvasQaPageNav pb-8">
                             <button className="dropdown-toggle-btn d-flex justify-content-center align-items-center fs-24 qaPageBtn" 
                             onClick={() => setIsQaPage(!isQaPage)}>
@@ -210,14 +256,37 @@ function Header(){
                         </Nav>
                         <Nav.Link as={NavLink} to="/AboutusPage" className="fs-24 normalNavLink normalNavBtn" onClick={handleClose}>聯絡我們</Nav.Link>
                         <Nav className="nav-item dropdown sidebar-dropdown offcanvasQaPageNav pb-8">
-                            <button className="dropdown-toggle-btn d-flex justify-content-center align-items-center fs-24 qaPageBtn" 
-                            onClick={() => setisLogin(!isLogin)}>
-                                <img src={Log01} alt="" />
-                            </button>
-                            <div className={`dropdown-content gap-8 px-0 py-0 ${isLogin ? "show" : ""}`}>
-                                <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>會員中心</Link>
-                                <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>登出</Link>
-                            </div>
+                            {
+                                loginState?(
+                                    <>
+                                        <button className="dropdown-toggle-btn d-flex justify-content-center align-items-center fs-24 qaPageBtn" 
+                                            onClick={() => setisLogin(!isLogin)}>
+                                            <div className="userImgSet">
+                                                <img className="imgSet" src={Log02} alt="" />
+                                            </div>
+                                        </button>
+                                        <div className={`dropdown-content gap-8 px-0 py-0 ${isLogin ? "show" : ""}`}>
+                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>會員中心</Link>
+                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>登出</Link>
+                                        </div>
+                                    </>
+                                )
+                                :
+                                (
+                                    <>
+                                        <button className="dropdown-toggle-btn d-flex justify-content-center align-items-center fs-24 qaPageBtn" 
+                                            onClick={() => setisLogin(!isLogin)}>
+                                            <div className="userImgSet">
+                                                <img className="imgSet" src={Log01} alt="" />
+                                            </div>
+                                        </button>
+                                        <div className={`dropdown-content gap-8 px-0 py-0 ${isLogin ? "show" : ""}`}>
+                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>會員登入</Link>
+                                        </div>
+                                    </>
+                                )
+                            }
+                            
                         </Nav>
                     </Nav>
                 </Offcanvas.Body>

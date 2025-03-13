@@ -1,51 +1,41 @@
-.main4,.main5{
-    padding-top: 97px;
-    margin-top: -97px;
-    @include media-breakpoint-up(lg){       
-        padding-top: 145px;
-        margin-top: -145px;
+//main1
+//最上方留出anvbar位置
+    .main1::before{
+        content:"";
+        display: block;
+        width: 100%;
+        height: 69px;
+        @include media-breakpoint-up(lg){ 
+            height: 117px;
+        }
+        @include media-breakpoint-up(xl){ 
+            height: 119px;
+        }
     }
-    @include media-breakpoint-up(xl){       
-        padding-top: 145px;
-        margin-top: -145px;
-    }
-    @include media-breakpoint-up(xxl){       
-        padding-top: 133px;
-        margin-top: -133px;
-    } 
-}
+//最上方留出anvbar位置
 
-.main1::before{
-    content:"";
-    display: block;
-    width: 100%;
-    height: 96.5px;
-    @include media-breakpoint-up(lg){ 
-        height: 132.5px;
+//背景
+    .main1{
+        width: 100%;
+        height: auto;
+        background-color: #000000;
     }
-}
-.main1{
-    width: 100%;
-    height: auto;
-    background-color: #000000;
-}
-.main1-bg{
-    background: 
-        linear-gradient(90deg, #000000 5%, #850017 100%);
-    background-repeat:no-repeat;
-    background-position:bottom right;
-    position: relative;
-    @include media-breakpoint-up(xl){ 
-        //height: auto; 
-        background-image:
-            url("/assets/images/Bg/main1-bg.png");
-        //background-attachment:scroll;
-        background-position: center bottom;
+    .main1-bg{
+        background: 
+            linear-gradient(90deg, #000000 5%, #850017 100%);
         background-repeat:no-repeat;
-        background-size: 100% 100%;
-        
+        background-position:bottom right;
+        position: relative;
+        @include media-breakpoint-up(xl){ 
+            //height: auto; 
+            background-image:
+                url("/assets/images/Bg/main1-bg.png");
+            background-position: center bottom;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }
     }
-}
+//背景
 .main1-content{
     @include media-breakpoint-up(xl){  
         border: 2px solid #fff;
@@ -75,9 +65,11 @@
         height: 648px;
     }
 }
+//角落貼圖
 .main-corner-img{
     position: absolute;
     bottom: 0;
     right: 0;
 }
+//角落貼圖
 

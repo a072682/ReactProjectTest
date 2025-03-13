@@ -10,6 +10,7 @@
 //按鈕下方紅條
     .borderLow{ /*按鈕下方的紅條*/
         padding-bottom: 3px; 
+        border-bottom:3px solid transparent;
     }
     .borderLow:hover{  /*按鈕下方的紅條(滑鼠放置狀態)*/
         border-bottom:3px solid #E22288;
@@ -37,6 +38,19 @@
     }
 //按鈕下方紅條
 
+//會員圖案設定
+    .userImgSet{
+        width: 48px;
+        height: 48px;
+        .imgSet{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius:50%;
+        }
+    }
+//會員圖案設定
+
 /*下拉按鈕設定*/
     /*最新消息選單設定和位置設定*/
         .customDropdown{
@@ -47,14 +61,23 @@
             border: 5px solid #E22288;
         }
         .indexPagePosition{
-            transform: translateX(-95px) translateY(20px);
+            transform: translateX(-95px) translateY(104px);
         }
     /*最新消息選單設定和位置設定*/
+
     /*新手指南選單設定和位置設定*/
-        .QaPagePosition{
-            transform: translateX(-75px) translateY(20px);
+        .qaPagePosition{
+            transform: translateX(-80px) translateY(102px);
         }
     /*新手指南選單設定和位置設定*/
+
+    /*會員登入選單設定和位置設定*/
+    .loginPagePosition{
+        transform: translateX(-120px) translateY(110px);
+    }
+    /*會員登入選單設定和位置設定*/
+
+
     /*下拉選單按鈕設定*/
         .dropdown-item-set{ 
             box-sizing: border-box;
