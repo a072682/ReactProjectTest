@@ -28,8 +28,27 @@ function Header(){
     const location = useLocation();
     //快速渲染畫面
 
+    //監控路徑
+    useEffect(() => {
+        console.log("🔄 路由變更了！當前路徑：", location.pathname);
+        window.scrollTo(0, 0);
+        console.log("已移動到頁面最上方");
+        if(loginModalShow){
+            console.log("loginModal還開著!");
+            handleLoginPageModal?.hide();
+            setLoginModalShow(false);
+            console.log("loginModal已關閉");
+        }else{
+            console.log("目前無特殊視窗開啟");
+        }
+    }, [location.pathname]); // 監聽 `pathname`，當變更時執行
+    //監控路徑
+
     //Login(登入狀態)
     const[handleLoginPageModal,setHandleLoginPageModal]=useState(null);
+
+    //登入狀態標記
+    const[loginModalShow,setLoginModalShow]=useState(false);
 
     //Index
         //Index頁面下拉選單狀態
@@ -200,7 +219,7 @@ function Header(){
                                                 </div>
                                             </Link>
                                             <ul className={`dropdown-menu customDropdown loginPagePosition ${isLoginDropdownOpen ? "show" : ""}`}> 
-                                                <li><button className="dropdown-item dropdown-item-set" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();}}>會員登入</button></li>
+                                                <li><button className="dropdown-item dropdown-item-set" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();setLoginModalShow(true);}}>會員登入</button></li>
                                             </ul>
                                         </>
                                     )
@@ -281,7 +300,7 @@ function Header(){
                                             </div>
                                         </button>
                                         <div className={`dropdown-content gap-8 px-0 py-0 ${isLogin ? "show" : ""}`}>
-                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>會員登入</Link>
+                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();setLoginModalShow(true);}}>會員登入</Link>
                                         </div>
                                     </>
                                 )
@@ -291,7 +310,7 @@ function Header(){
                     </Nav>
                 </Offcanvas.Body>
             </Offcanvas>
-            <Login setHandleLoginPageModal={setHandleLoginPageModal}/>
+            <Login setHandleLoginPageModal={setHandleLoginPageModal} setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow}/>
         </>
     )
 }

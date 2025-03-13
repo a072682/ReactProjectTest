@@ -98,6 +98,10 @@ function MateriaPage(){
     //單一資料狀態
     const [singleMaterialPageModal,setSingleMaterialPageModal]=useState({});
 
+    //監控Modal開啟狀態
+    const [materialPageModalShow, setMaterialPageModalShow] = useState(false);
+
+
 
 
     return(
@@ -149,7 +153,7 @@ function MateriaPage(){
                                                     <div className="textConentSet">
                                             
                                                         <div className="mt-16 mt-xl-32">
-                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
+                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
                                                                 選擇我
                                                             
                                                                 <span className="material-symbols-outlined sec-btn1-img-set">
@@ -219,7 +223,7 @@ function MateriaPage(){
                                                     <div className="textConentSet">
                                             
                                                         <div className="mt-16 mt-xl-32">
-                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
+                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
                                                                 選擇我
                                                             
                                                                 <span className="material-symbols-outlined sec-btn1-img-set">
@@ -289,7 +293,7 @@ function MateriaPage(){
                                                     <div className="textConentSet">
                                             
                                                         <div className="mt-16 mt-xl-32">
-                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
+                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
                                                                 選擇我
                                                             
                                                                 <span className="material-symbols-outlined sec-btn1-img-set">
@@ -313,7 +317,8 @@ function MateriaPage(){
                 </Container>
             </div>
 
-            <MaterialPageModal setHandleMaterialPageModal={setHandleMaterialPageModal} singleMaterialPageModal={singleMaterialPageModal}/>
+            <MaterialPageModal setHandleMaterialPageModal={setHandleMaterialPageModal} singleMaterialPageModal={singleMaterialPageModal} setMaterialPageModalShow={setMaterialPageModalShow}
+            materialPageModalShow={materialPageModalShow}/>
         </>
     )
 }

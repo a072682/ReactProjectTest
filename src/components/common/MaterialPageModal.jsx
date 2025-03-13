@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Modal } from "bootstrap";
 
 
-function MaterialPageModal({setHandleMaterialPageModal,singleMaterialPageModal}){
+function MaterialPageModal({setHandleMaterialPageModal,singleMaterialPageModal,setMaterialPageModalShow,materialPageModalShow}){
 
 
     //元件控制
@@ -32,8 +32,24 @@ function MaterialPageModal({setHandleMaterialPageModal,singleMaterialPageModal})
         }
         const btnByMaterialPageModalClose = ()=>{
             materialPageModal?.hide();
+            setMaterialPageModalShow(false);
         }
     //元件控制
+
+    //控制上一頁問題
+        useEffect(() => {
+            if (materialPageModalShow) {
+                document.body.style.overflow = "hidden"; // 🔒 禁止滾動
+                materialPageModal?.show(); // 開啟 Modal
+            } else {
+                document.body.style.overflow = "auto"; // ✅ 恢復滾動
+                materialPageModal?.hide(); // 關閉 Modal
+            }
+            return () => {
+                document.body.style.overflow = "auto"; // ✅ 確保組件卸載時恢復滾動
+            };
+        }, [materialPageModalShow]);
+    //控制上一頁問題
 
 
     return(

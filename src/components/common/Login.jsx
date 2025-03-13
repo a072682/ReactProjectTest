@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
-function Login ({setHandleLoginPageModal}){
+function Login ({setHandleLoginPageModal,loginModalShow,setLoginModalShow}){
 
 
     //元件控制
@@ -38,6 +38,7 @@ function Login ({setHandleLoginPageModal}){
         }
         const btnByLoginPageModalClose = ()=>{
             loginPageModal?.hide();
+            setLoginModalShow(false);
         }
     //元件控制
 
@@ -116,14 +117,21 @@ function Login ({setHandleLoginPageModal}){
         }
     },[]);
 
-    // useEffect(()=>{
-    //     if(test === "on"){
-    //         console.log("on");
-    //     }
-    //     if(test=== "off"){
-    //         console.log("off");
-    //     }
-    // },[test])
+    //控制上一頁問題
+        useEffect(() => {
+            if (loginModalShow) {
+                document.body.style.overflow = "hidden"; // 🔒 禁止滾動
+                console.log("滾動鎖住");
+            } else {
+                document.body.style.overflow = "auto"; // ✅ 恢復滾動
+                console.log("滾動解除");
+            }
+            return () => {
+                console.log("組件解散");
+                document.body.style.overflow = "auto"; // ✅ 確保組件卸載時恢復滾動
+            };
+        }, [loginModalShow]);
+    //控制上一頁問題
 
     
     //登入
@@ -135,7 +143,7 @@ function Login ({setHandleLoginPageModal}){
                 <div className="modal-dialog modal-dialog-centered modal-xl">
                     <div className="modal-content border-0 shadow">
                         <div className="modal-header border-bottom">
-                            <button onClick={()=>{btnByLoginPageModalClose()}} type="button" className="btn-close" aria-label="Close"></button>
+                            <button onClick={btnByLoginPageModalClose} type="button" className="btn-close" aria-label="Close"></button>
                         </div>
                         <div className="d-flex flex-column justify-content-center align-items-center vh-100">
                             <h1 className="mb-5">請先登入</h1>
