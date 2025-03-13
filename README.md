@@ -13,4 +13,5 @@ If you are developing a production application, we recommend using TypeScript an
 
 npm run build
 npm run deploy
+${import.meta.env.BASE_URL}
 

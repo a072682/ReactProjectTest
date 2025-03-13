@@ -1,3 +1,9 @@
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import "swiper/css";// 核心 CSS
+import "swiper/css/navigation";// 左右箭頭
+import "swiper/css/pagination"; // 分頁點
+import { useRef } from 'react';
 
 import qpMain1Img1 from "../assets/images/QaPage/qP-main1-img1.png";
 import qpMain1Img2 from "../assets/images/QaPage/qP-main1-img2.png";
@@ -16,6 +22,61 @@ import qpMain2SmImg4 from "../assets/images/QaPage/qP-main2-sm-img4.png";
 
 
 function QaPage(){
+
+    const main00SmRef = useRef(null);
+    const main01SmRef = useRef(null);
+    const main02SmRef = useRef(null);
+    const main03SmRef = useRef(null);
+    const main00Ref = useRef(null);
+    const main01Ref = useRef(null);
+    const main02Ref = useRef(null);
+    const main03Ref = useRef(null);
+
+    const scrollToSection = (ref) => {
+        if (ref.current) {
+            console.log("ref:",ref.current);
+            ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+
+    const navSmItems = [
+        {
+            content:"客製化流程",
+            ref: main00SmRef,
+        },
+        {
+            content:"設計需求介紹",
+            ref: main01SmRef,
+        },
+        {
+            content:"運費說明",
+            ref: main02SmRef,
+        },
+        {
+            content:"常見問題",
+            ref: main03SmRef,
+        },
+        {
+            content:"客製化流程",
+            ref: main00SmRef,
+        },
+        {
+            content:"設計需求介紹",
+            ref: main01SmRef,
+        },
+        {
+            content:"運費說明",
+            ref: main02SmRef,
+        },
+        {
+            content:"常見問題",
+            ref: main03SmRef,
+        },
+    ];
+
+
+
+
     return(
         <>
             <div className="qaPage-title qaPage-title-bg">
@@ -36,14 +97,28 @@ function QaPage(){
                     <div className="row ">
                         <div className="col-12">
 
-                        <div className="qP-aside-btn-sm-box d-flex">
-                            <div><a className="aside-navbar-btn-set-sm h-100" href="#qP-main0-sm">客製化流程</a></div>
-                            <div><a className="aside-navbar-btn-set-sm px-4 h-100" href="#qP-main1-sm">設計需求介紹</a></div>
-                            <div><a className="aside-navbar-btn-set-sm h-100" href="#qP-main2-sm">運費說明</a></div>
-                            <div><a className="aside-navbar-btn-set-sm h-100" href="#qP-main3-sm">常見問題</a></div>
-                        </div>
+                        
+                            <Swiper
+                                modules={[Navigation, Pagination, Autoplay]}// 註冊 Swiper 模組
+                                spaceBetween={0}
+                                slidesPerView={4}
+                                // navigation //啟用左右箭頭
+                                // pagination={{ clickable: true }}// 啟用分頁點（可點擊）
+                                loop={true} // 循環播放
+                                className="mySwiper"
+                            >
+                                {
+                                    navSmItems.map((item, index) => (
+                                        <SwiperSlide>
+                                            <div key={index} onClick={()=>{scrollToSection(item.ref)}} className="aside-navbar-btn-set-sm h-100">{item.content}</div>
+                                        </SwiperSlide>
+                                    ))
+                                }
+                                
+                            </Swiper>
+                        
 
-                        <div className="qP-main0" id="qP-main0-sm">
+                        <div ref={main00SmRef} className="qP-main0" id="qP-main0-sm">
                             <div className="content qP-main1-bg w-100 bg-nautral-black py-48">
                             <div className="qP-main1-title-sm-box mb-32">
                                 <h3 className="fs-32 fw-900 lh-15 text-primary3">客製化流程</h3>
@@ -68,7 +143,7 @@ function QaPage(){
                             </div>
                         </div>
 
-                        <div className="qP-main1" id="qP-main1-sm">
+                        <div ref={main01SmRef} className="qP-main1" id="qP-main1-sm">
                             <div className="content qP-main1-bg w-100 bg-nautral-black py-48">
                             <div className="qP-main1-title-sm-box mb-32">
                                 <h3 className="fs-32 fw-900 lh-15 text-primary3">設計需求介紹</h3>
@@ -170,7 +245,7 @@ function QaPage(){
                             </div>
                         </div>
 
-                        <div className="qP-main2" id="qP-main2-sm">
+                        <div ref={main02SmRef} className="qP-main2" id="qP-main2-sm">
                             <div className="content qP-main2-bg w-100 bg-nautral-black py-48">
                                 
                             <div className="qP-main2-title-sm-box mb-32">
@@ -243,7 +318,7 @@ function QaPage(){
                             </div>
                         </div>
 
-                        <div className="qP-main3 w-100 bg-nautral-black py-64" id="qP-main3-sm">
+                        <div ref={main03SmRef} className="qP-main3 w-100 bg-nautral-black py-64" id="qP-main3-sm">
                             <div className="content w-100 bg-nautral-black py-64">
                                 <div className="qP-main2-title-sm-box mb-32">
                                     <h3 className="fs-32 fw-900 text-primary3">常見問題</h3>
@@ -543,30 +618,30 @@ function QaPage(){
                         <div className="col-12 d-flex">
                             <div className="aside-box d-xl-flex flex-xl-column justify-content-xl-start align-items-xl-start position-sticky sticky-top">
                                     
-                                    <a className="aside-navbar-btn-set" href="#qP-main0">
+                                    <button className="aside-navbar-btn-set" onClick={()=>{scrollToSection(main00Ref)}}>
                                         客製化流程
-                                    </a>
+                                    </button>
                                     
                                     
-                                    <a className="aside-navbar-btn-set" href="#qP-main1">
+                                    <button className="aside-navbar-btn-set" onClick={()=>{scrollToSection(main01Ref)}}>
                                         設計需求介紹
-                                    </a>
+                                    </button>
                                     
                                     
-                                    <a className="aside-navbar-btn-set" href="#qP-main2">
+                                    <button className="aside-navbar-btn-set" onClick={()=>{scrollToSection(main02Ref)}}>
                                         運費說明
-                                    </a>
+                                    </button>
                                     
                                     
-                                    <a className="aside-navbar-btn-set" href="#qP-main3">
+                                    <button className="aside-navbar-btn-set" onClick={()=>{scrollToSection(main03Ref)}}>
                                         常見問題 
-                                    </a>
+                                    </button>
                                     
                             </div>
                             <div className="qP-main w-100">
                                 
                                 
-                                <div className="qP-main0" id="qP-main0">
+                                <div ref={main00Ref} className="qP-main0" id="qP-main0">
                                     <div className="content content-set qP-main1-bg py-100 px-116">
                                         <div className="title-box mb-48 ">
                                         <h3 className="text-center text-primary3">客製化流程</h3>
@@ -591,7 +666,7 @@ function QaPage(){
                                     </div>
                                 </div>
 
-                                <div className="qP-main1" id="qP-main1">
+                                <div ref={main01Ref} className="qP-main1" id="qP-main1">
                                 <div className="content content-set qP-main1-bg py-100 px-40 px-xxl-116">
                                     <div className="title-box mb-48 ">
                                     <h3 className="text-center text-primary3">設計需求介紹</h3>
@@ -639,7 +714,7 @@ function QaPage(){
                                 </div>
                                 </div>
 
-                                <div className="qP-main2" id="qP-main2">
+                                <div ref={main02Ref} className="qP-main2" id="qP-main2">
                                     <div className="content content-set py-100 px-116 ms-auto">
                                         <div className="qP-main2-title-box mb-48 ">
                                         <h3 className="text-center fs-32 fw-900 text-primary3">運費說明</h3>
@@ -709,7 +784,7 @@ function QaPage(){
                                     </div>
                                 </div> 
                                 
-                                <div className="qP-main3 d-none d-xl-block" id="qP-main3">
+                                <div ref={main03Ref} className="qP-main3 d-none d-xl-block" id="qP-main3">
                                     <div className="content content-set qP-main3-bg py-144 px-116 ms-auto">
                                         <div className="title-box mb-48 ">
                                         <h3 className="text-center fs-32 fw-900 text-primary3">常見問題</h3>
