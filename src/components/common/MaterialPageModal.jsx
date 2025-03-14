@@ -58,7 +58,7 @@ function MaterialPageModal({setHandleMaterialPageModal,singleMaterialPageModal,s
                 <div className="modal-dialog modal-dialog-centered modal-xl">
                     <div className="modal-content border-0 shadow">
                         <div className="modal-header MaterialPageModalHeaderBgSet">
-                            <h5 className="modal-title fs-32 text-nautral-white">PLE</h5>
+                            <h5 className="modal-title fs-32 text-nautral-white">{singleMaterialPageModal.title}</h5>
                             <button onClick={btnByMaterialPageModalClose} type="button" className="materialPageModalBtnClose p-0 ms-auto border-0" aria-label="Close">
                                 <img className="materialPageModalBtnCloseImgSet" src={`${import.meta.env.BASE_URL}assets/images/MateriaPage/btn-close.png`} alt="Close" width="48" height="48" />
                             </button>
@@ -68,31 +68,31 @@ function MaterialPageModal({setHandleMaterialPageModal,singleMaterialPageModal,s
                                 <div className="col-12 mb-16">
                                     <div className="d-flex flex-column gap-32 flex-lg-row align-items-center">
                                         <div className="d-block d-lg-none d-flex flex-column gap-12">
-                                            <h3 className="fs-32 text-primary3 text-center">PLA 材料簡介</h3>
-                                            <p className="fs-16 text-nautral-white text-center">PLA（聚乳酸）是一種可生物降解的熱塑性材料，源自玉米澱粉等可再生資源，環保又安全。</p>
+                                            <h3 className="fs-32 text-primary3 text-center">{`${singleMaterialPageModal.title}材料簡介`}</h3>
+                                            <p className="fs-16 text-nautral-white text-center">{singleMaterialPageModal.MaterialIntroduction}</p>
                                         </div>
                                         <img className="materialPageModal-Img-set" src={singleMaterialPageModal.img} alt="" />
                                         <div className="d-none d-lg-block ms-32 d-flex flex-column gap-12">
-                                            <h3 className="fs-32 text-primary3">PLA 材料簡介</h3>
-                                            <p className="fs-16 text-nautral-white">PLA（聚乳酸）是一種可生物降解的熱塑性材料，源自玉米澱粉等可再生資源，環保又安全。</p>
+                                            <h3 className="fs-32 text-primary3">{`${singleMaterialPageModal.title}材料簡介`}</h3>
+                                            <p className="fs-16 text-nautral-white">{singleMaterialPageModal.MaterialIntroduction}</p>
                                         </div>
                                     </div>      
                                 </div>
                                 <div className="col-12 col-xl-6 d-flex flex-column gap-12 mb-16">
                                     <h4 className="fs-24 fs-lg-16 text-primary3">環保特性</h4>
-                                    <p className="fs-16 fs-lg-12 text-nautral-white">PLA 是一種可降解的材料，在適當條件下可分解為水和二氧化碳，減少環境負擔。</p>
+                                    <p className="fs-16 fs-lg-12 text-nautral-white">{singleMaterialPageModal.content01}</p>
                                 </div>
                                 <div className="col-12 col-xl-6 d-flex flex-column gap-12 mb-16">
                                     <h4 className="fs-24  fs-lg-16 text-primary3">加工特性</h4>
-                                    <p className="fs-16 fs-lg-12 text-nautral-white">熔點低，易於3D列印成型，適合製作模型、裝飾品和低負載結構物品。</p>
+                                    <p className="fs-16 fs-lg-12 text-nautral-white">{singleMaterialPageModal.content02}</p>
                                 </div>
                                 <div className="col-12 col-xl-6 d-flex flex-column gap-12 mb-16">
                                     <h4 className="fs-24 fs-lg-16 text-primary3">使用注意事項</h4>
-                                    <p className="fs-16 fs-lg-12 text-nautral-white">PLA 不耐高溫，適用於室內或常溫環境，不建議用於戶外或高溫場合。</p>
+                                    <p className="fs-16 fs-lg-12 text-nautral-white">{singleMaterialPageModal.content03}</p>
                                 </div>
                                 <div className="col-12 col-xl-6 d-flex flex-column gap-12 mb-16">
                                     <h4 className="fs-24 fs-lg-16 text-primary3">應用範圍廣泛</h4>
-                                    <p className="fs-16 fs-lg-12 text-nautral-white">PLA 常用於教學模型、手工藝品和原型設計，深受3D列印愛好者喜愛。</p>
+                                    <p className="fs-16 fs-lg-12 text-nautral-white">{singleMaterialPageModal.content04}</p>
                                 </div>
                             </div>
                         </div>

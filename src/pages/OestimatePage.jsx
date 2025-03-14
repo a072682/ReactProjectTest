@@ -250,7 +250,8 @@ function OestimatePage(){
                                     <div className="oEstimate-main1-upLord-img-sm-box" id="thumbnailArea">{/*圖檔上傳預覽*/}
                                         <div className="oEstimate-main1-upLord-img-sm-box-set py-16 px-12 py-xl-64 px-xl-auto row-gap-16 row-gap-xl-48 d-flex flex-column justify-content-center align-items-center">
                                             <div className="oEstimate-main1-upLord-btn-img-sm-set">
-                                                <img className="img-set" src={oEstimateMain1Image} alt="index-main1-Image" />
+                                                <img className="img-set d-block mx-auto
+                                                " src={oEstimateMain1Image} alt="index-main1-Image" />
                                             </div>
                                             <div className="oEstimate-main1-upLord-text-box d-flex flex-column justify-content-center align-items-center row-gap-xl-12">
                                                 <p className="fs-16 fw-500 lh-15 text-nautral-white d-block d-xl-none">目前無檔案，請上傳圖檔進行估價確認</p>
