@@ -1,9 +1,8 @@
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";// 核心 CSS
-import "swiper/css/navigation";// 左右箭頭
-import "swiper/css/pagination"; // 分頁點
 import { useRef } from 'react';
+import { Accordion, Button, Card } from 'react-bootstrap';
 
 import qpMain1Img1 from "../assets/images/QaPage/qP-main1-img1.png";
 import qpMain1Img2 from "../assets/images/QaPage/qP-main1-img2.png";
@@ -19,6 +18,7 @@ import qpMain2SmImg1 from "../assets/images/QaPage/qP-main2-sm-img1.png";
 import qpMain2SmImg2 from "../assets/images/QaPage/qP-main2-sm-img2.png";
 import qpMain2SmImg3 from "../assets/images/QaPage/qP-main2-sm-img3.png";
 import qpMain2SmImg4 from "../assets/images/QaPage/qP-main2-sm-img4.png";
+
 
 
 function QaPage(){
@@ -108,7 +108,7 @@ function QaPage(){
                                 className="mySwiper"
                             >
                                 {
-                                    navSmItems.map((item, index) => (
+                                    navSmItems?.map((item, index) => (
                                         <SwiperSlide>
                                             <div key={index} onClick={()=>{scrollToSection(item.ref)}} className="aside-navbar-btn-set-sm h-100">{item.content}</div>
                                         </SwiperSlide>
@@ -325,286 +325,66 @@ function QaPage(){
                                 </div>
                                 
                                 <div className="qP-main3-sm-content d-flex flex-column row-gap-16">
-                                    <div className="qP-main2-sm-item1">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample1">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne1" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne1">
-                                                            如何上傳我的3D模型圖檔?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne1" 
-                                                    className="accordion-collapse collapse show"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample1">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        將圖片拖曳至圖片上傳區
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="qP-main2-sm-item2">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample2">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center collapsed" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne2" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne2">
-                                                            支持哪些3D文件格式?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne2" 
-                                                    className="accordion-collapse collapse"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample2">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        支持STL、OBJ、STEP等常見3D模型文件格式
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="qP-main2-sm-item3">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample3">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center collapsed" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne3" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne3">
-                                                            如何計算3D列印的費用?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne3" 
-                                                    className="accordion-collapse collapse"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample3">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        費用根據材料、模型尺寸和複雜度由專人計算
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="qP-main2-sm-item4">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample4">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center collapsed" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne4" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne4">
-                                                            列印需要多長時間?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne4" 
-                                                    className="accordion-collapse collapse"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample4">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        一般列印時間為3-7個工作天，視複雜度而定
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="qP-main2-sm-item5">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample5">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center collapsed" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne5" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne5">
-                                                                有哪些可用的材料選擇?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne5" 
-                                                    className="accordion-collapse collapse"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample5">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        我們提供PLA聚乳酸、光固化樹脂等市場主力的3D列印材料
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="qP-main2-sm-item6">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample6">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center collapsed" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne6" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne6">
-                                                                如何查看列印進度?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne6" 
-                                                    className="accordion-collapse collapse"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample6">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        登錄會員帳戶後，可以在訂單詳情中查看列印進度
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="qP-main2-sm-item7">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample7">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center collapsed" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne7" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne7">
-                                                                是否提供設計優化建議?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne7" 
-                                                    className="accordion-collapse collapse"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample7">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        是的,我們提供專業的設計優化服務，以確保最佳列印效果
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="qP-main2-sm-item8">
-                                    <div className="qP-main3-accordion-btn">
-                                        <div className="accordion accordion-flush" id="accordionExample8">{/*最外層*/}
-                                            {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                            {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                            <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                    <button className="accordion-button01 accordion-btn-sm-set fs-24 fw-700 lh-12 py-16 px-16 d-flex justify-content-between align-items-center collapsed" 
-                                                            type="button" 
-                                                            data-bs-toggle="collapse" 
-                                                            data-bs-target="#collapseOne8" 
-                                                            aria-expanded="true" 
-                                                            aria-controls="collapseOne8">
-                                                                可以取消或修改訂單嗎?
-                                                            {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                            {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                            {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                    </button>
-                                                </h5>
-                                                <div  id="collapseOne8" 
-                                                    className="accordion-collapse collapse"   
-                                                    aria-labelledby="headingOne" 
-                                                    data-bs-parent="#accordionExample8">
-                                                    {/*accordion-collapse為收合樣式*/}
-                                                    {/*collapse show為展開樣式*/}
-                                                    {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                    {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                    <div className="accordion-body-set fs-16 fw-500 px-16 pb-16 text-nautral-white">
-                                                        需要視各別情況而定，如想知道詳細資訊歡迎與我們聯繫。
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
+                                    <Accordion alwaysOpen defaultActiveKey="0" className="w-100 d-flex flex-column gap-16">
+                                        {/* 第一個手風琴項目 */}
+                                        <Accordion.Item className="accordionItemSet" eventKey="0" >
+                                            <Accordion.Header >如何上傳我的3D模型圖檔?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                將圖片拖曳至圖片上傳區
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        {/* 第二個手風琴項目 */}
+                                        <Accordion.Item className="accordionItemSet" eventKey="1">
+                                            <Accordion.Header>支持哪些3D文件格式?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                支持STL、OBJ、STEP等常見3D模型文件格式
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        {/* 第三個手風琴項目 */}
+                                        <Accordion.Item className="accordionItemSet" eventKey="2">
+                                            <Accordion.Header>如何計算3D列印的費用?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                費用根據材料、模型尺寸和複雜度由專人計算
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item className="accordionItemSet" eventKey="3">
+                                            <Accordion.Header>列印需要多長時間?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                一般列印時間為3-7個工作天，視複雜度而定
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item className="accordionItemSet" eventKey="4">
+                                            <Accordion.Header>有哪些可用的材料選擇?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                我們提供PLA聚乳酸、光固化樹脂等市場主力的3D列印材料
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item className="accordionItemSet" eventKey="5">
+                                            <Accordion.Header>如何查看列印進度?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                登錄會員帳戶後，可以在訂單詳情中查看列印進度
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item className="accordionItemSet" eventKey="6">
+                                            <Accordion.Header>是否提供設計優化建議?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                是的,我們提供專業的設計優化服務，以確保最佳列印效果
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item className="accordionItemSet" eventKey="7">
+                                            <Accordion.Header>可以取消或修改訂單嗎?</Accordion.Header>
+                                            <Accordion.Body className='accordion-body-set'>
+                                                需要視各別情況而定，如想知道詳細資訊歡迎與我們聯繫。
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
                                 </div>
                             </div>
                         </div>
@@ -790,286 +570,66 @@ function QaPage(){
                                         <h3 className="text-center fs-32 fw-900 text-primary3">常見問題</h3>
                                         </div>
                                         <div className="qP-main3-content d-flex flex-column row-gap-40">
-                                        <div className="qP-main3-item1">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample1">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-32 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne1" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne1">
-                                                                    如何上傳我的3D模型圖檔?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne1" 
-                                                            className="accordion-collapse collapse show"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample1">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                            將圖片拖曳至圖片上傳區
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="qP-main3-item2">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample2">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-24 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center collapsed" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne2" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne2">
-                                                                    支持哪些3D文件格式?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne2" 
-                                                            className="accordion-collapse collapse"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample2">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                                支持STL、OBJ、STEP等常見3D模型文件格式
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="qP-main3-item3">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample3">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-24 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center collapsed" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne3" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne3">
-                                                                    如何計算3D列印的費用?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne3" 
-                                                            className="accordion-collapse collapse"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample3">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                                費用根據材料、模型尺寸和複雜度由專人計算
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="qP-main3-item4">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample4">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-24 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center collapsed" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne4" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne4">
-                                                                    列印需要多長時間?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne4" 
-                                                            className="accordion-collapse collapse"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample4">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                                一般列印時間為3-7個工作天，視複雜度而定
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="qP-main3-item5">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample5">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-24 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center collapsed" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne5" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne5">
-                                                                    有哪些可用的材料選擇?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne5" 
-                                                            className="accordion-collapse collapse"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample5">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                                我們提供PLA聚乳酸、光固化樹脂等市場主力的3D列印材料
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="qP-main3-item6">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample6">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-24 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center collapsed" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne6" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne6">
-                                                                    如何查看列印進度?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne6" 
-                                                            className="accordion-collapse collapse"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample6">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                                登錄會員帳戶後，可以在訂單詳情中查看列印進度
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="qP-main3-item7">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample7">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-24 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center collapsed" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne7" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne7">
-                                                                    是否提供設計優化建議?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne7" 
-                                                            className="accordion-collapse collapse"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample7">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                                是的,我們提供專業的設計優化服務，以確保最佳列印效果
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="qP-main3-item8">
-                                            <div className="qP-main3-accordion-btn">
-                                            <div className="accordion accordion-flush" id="accordionExample8">{/*最外層*/}
-                                                {/*accordionExample為外層獨立id 與內層 data-bs-parent="#accordionExample" 為對應關係*/}
-                                                {/*accordion-flush為樣式 將外框的邊線給移除*/}
-                                                <div className="accordion-item bg-transparent">{/*主體1*/}
-                                                    <h5 className="accordion-header" id="headingOne">{/*標題列*/}
-                                                        <button className="accordion-button01 accordion-btn-set fs-24 fw-700 lh-15 py-36 px-48 d-flex justify-content-between align-items-center collapsed" 
-                                                                type="button" 
-                                                                data-bs-toggle="collapse" 
-                                                                data-bs-target="#collapseOne8" 
-                                                                aria-expanded="true" 
-                                                                aria-controls="collapseOne8">
-                                                                    可以取消或修改訂單嗎?
-                                                                {/*className="accordion-button01 外觀設定設定在此處*/}
-                                                                {/*data-bs-toggle="collapse" 為功能種類 在這邊的功能為收合觸發*/}
-                                                                {/*data-bs-target="#collapseOne" 定義目標 目標為內層 id="collapseOne" */}
-                                                        </button>
-                                                    </h5>
-                                                    <div  id="collapseOne8" 
-                                                            className="accordion-collapse collapse"   
-                                                            aria-labelledby="headingOne" 
-                                                            data-bs-parent="#accordionExample8">
-                                                            {/*accordion-collapse為收合樣式*/}
-                                                            {/*collapse show為展開樣式*/}
-                                                            {/*id="collapseOne"為內層獨立id且唯一的*/}
-                                                            {/*data-bs-parent="#accordionExample" 與外層 accordionExample 為對應關係*/}
-                                                            <div className="accordion-body-set fs-24 fw-700 px-48 pb-36 text-nautral-white">
-                                                                需要視各別情況而定，如想知道詳細資訊歡迎與我們聯繫。
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
+                                            <Accordion alwaysOpen defaultActiveKey="0" className="w-100 d-flex flex-column gap-40" >
+                                                {/* 第一個手風琴項目 */}
+                                                <Accordion.Item className="accordionItemSet" eventKey="0" >
+                                                    <Accordion.Header >如何上傳我的3D模型圖檔?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        將圖片拖曳至圖片上傳區
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+
+                                                {/* 第二個手風琴項目 */}
+                                                <Accordion.Item className="accordionItemSet" eventKey="1">
+                                                    <Accordion.Header>支持哪些3D文件格式?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        支持STL、OBJ、STEP等常見3D模型文件格式
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+
+                                                {/* 第三個手風琴項目 */}
+                                                <Accordion.Item className="accordionItemSet" eventKey="2">
+                                                    <Accordion.Header>如何計算3D列印的費用?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        費用根據材料、模型尺寸和複雜度由專人計算
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+
+                                                <Accordion.Item className="accordionItemSet" eventKey="3">
+                                                    <Accordion.Header>列印需要多長時間?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        一般列印時間為3-7個工作天，視複雜度而定
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+
+                                                <Accordion.Item className="accordionItemSet" eventKey="4">
+                                                    <Accordion.Header>有哪些可用的材料選擇?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        我們提供PLA聚乳酸、光固化樹脂等市場主力的3D列印材料
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+
+                                                <Accordion.Item className="accordionItemSet" eventKey="5">
+                                                    <Accordion.Header>如何查看列印進度?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        登錄會員帳戶後，可以在訂單詳情中查看列印進度
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+
+                                                <Accordion.Item className="accordionItemSet" eventKey="6">
+                                                    <Accordion.Header>是否提供設計優化建議?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        是的,我們提供專業的設計優化服務，以確保最佳列印效果
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+
+                                                <Accordion.Item className="accordionItemSet" eventKey="7">
+                                                    <Accordion.Header>可以取消或修改訂單嗎?</Accordion.Header>
+                                                    <Accordion.Body className='accordion-body-set'>
+                                                        需要視各別情況而定，如想知道詳細資訊歡迎與我們聯繫。
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+                                            </Accordion>
                                         </div>
                                     </div>
                                 </div>

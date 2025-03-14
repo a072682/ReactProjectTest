@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import aboutUsMain1Img01 from "../assets/images/AboutusPage/aboutUs-main1-img01.png";
 import aboutUsMain1SmImg01 from "../assets/images/AboutusPage/aboutUs-main1-sm-img01.png";
 
@@ -19,8 +21,63 @@ import aboutUsMain3Img01 from "../assets/images/AboutusPage/aboutUs-main3-img01.
 import aboutUsMain3SmImg01 from "../assets/images/AboutusPage/aboutUs-main3-sm-img01.png";
 
 import abusMain4ModalBtnClose from "../assets/images/AboutusPage/abus-main4-modal-btn-close.png";
+import AboutUsModal from "../components/common/AboutUsModal";
+
+
 
 function AboutusPage(){
+
+    const[aboutusPageMessage,setAboutusPageMessage]=useState(
+        {
+            name:"",
+            email:"",
+            message:""
+        }
+    )
+
+    // const handleAboutUsPageInput = (event)=>{
+    //     const{value,name}=event.target;
+    //     setAboutusPageMessage(
+    //         {
+    //             ...aboutusPageMessage,
+    //             [name]:value
+    //         }
+    //     )
+    //     if(name === "message"){
+    //         setMessageDataNum(value.length);
+    //     }
+    // }
+
+    useEffect(()=>{
+        console.log("目前聯絡我們的留言資訊:",aboutusPageMessage)
+    },[aboutusPageMessage])
+
+    //Modal狀態
+    const [handleAboutUsModal,setHandleAboutUsModal]=useState(null);
+
+    ////監控Modal開啟狀態
+    const [aboutUsPageModalShow, setAboutUsPageModalShow] = useState(false);
+
+    //
+    // const[messageDataNum,setMessageDataNum]=useState(0);
+
+    //初始化表格
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        watch,
+        reset
+      } = useForm(); // 初始化 useForm
+
+    const messageDataNum = watch("message", "").length; // 監聽 textarea 內容長度
+    const onSubmit = (data) => {
+        console.log("提交的資料:", data);
+        handleAboutUsModal?.show();
+        setAboutUsPageModalShow(true);
+        reset(); // 清除表單數據
+    };
+
     return(
         <>
             <div className="abus-main1 w-100 abus-main1-bg-set" id="abus-main1">
@@ -44,7 +101,7 @@ function AboutusPage(){
                         <div className="abus-main1-content d-flex justify-content-center align-items-center">
                         <div className="abus-main1-img-box abus-main-img-box-set">
                             <picture>
-                            <source srcSet={aboutUsMain1Img01} media="(min-width:1200px)" />
+                            <source srcSet={aboutUsMain1Img01} media="(min-width:1400px)" />
                             <img className="img-set" src={aboutUsMain1SmImg01} alt="images/aboutUs-main1-img01" />
                             </picture>  
                         </div>
@@ -81,16 +138,16 @@ function AboutusPage(){
 
                             <div className="abus-main2-content d-flex flex-column row-gap-32">
                                 <div className="abus-main2-img-box pt-32 pt-xxl-50">
-                                <picture>
-                                    <source srcSet={aboutUsMain2Img01} media="(min-width:1200px)" />
-                                    <img className="img-set" src={aboutUsMain2SmImg01} alt="aboutUs-main2-img01" />
-                                </picture>  
+                                    <picture>
+                                        <source srcSet={aboutUsMain2Img01} media="(min-width:992px)" />
+                                        <img className="img-set d-block ms-auto" src={aboutUsMain2SmImg01} alt="aboutUs-main2-img01" />
+                                    </picture>  
                                 </div>
                                 <div className="abus-main2-img-box">
-                                <picture>
-                                    <source srcSet={aboutUsMain2Img02} media="(min-width:1200px)" />
-                                    <img className="img-set" src={aboutUsMain2SmImg02} alt="aboutUs-main2-sm-img02" />
-                                </picture>  
+                                    <picture>
+                                        <source srcSet={aboutUsMain2Img02} media="(min-width:992px)" />
+                                        <img className="img-set d-block ms-auto" src={aboutUsMain2SmImg02} alt="aboutUs-main2-sm-img02" />
+                                    </picture>  
                                 </div>
                             </div>
 
@@ -100,14 +157,14 @@ function AboutusPage(){
                             <div className="abus-main2-content d-flex flex-column row-gap-32">
                             <div className="abus-main2-img-box">
                                 <picture>
-                                <source srcSet={aboutUsMain2Img03} media="(min-width:1200px)" />
-                                <img className="img-set" src={aboutUsMain2SmImg03} alt="aboutUs-main2-sm-img03" />
+                                <source srcSet={aboutUsMain2Img03} media="(min-width:992px)" />
+                                <img className="img-set d-block mx-auto" src={aboutUsMain2SmImg03} alt="aboutUs-main2-sm-img03" />
                                 </picture>  
                             </div>
                             <div className="abus-main2-img-box">
                                 <picture>
-                                <source srcSet={aboutUsMain2Img04} media="(min-width:1200px)" />
-                                <img className="img-set" src={aboutUsMain2SmImg04} alt="aboutUs-main2-sm-img04" />
+                                <source srcSet={aboutUsMain2Img04} media="(min-width:992px)" />
+                                <img className="img-set d-block mx-auto" src={aboutUsMain2SmImg04} alt="aboutUs-main2-sm-img04" />
                                 </picture>  
                             </div>
                             </div>
@@ -117,14 +174,14 @@ function AboutusPage(){
                             <div className="abus-main2-content d-flex flex-column row-gap-32">
                             <div className="abus-main2-img-box pt-32 pt-xxl-50">
                                 <picture>
-                                <source srcSet={aboutUsMain2Img05} media="(min-width:1200px)" />
-                                <img className="img-set" src={aboutUsMain2SmImg05} />
+                                <source srcSet={aboutUsMain2Img05} media="(min-width:992px)" />
+                                <img className="img-set d-block me-auto" src={aboutUsMain2SmImg05} />
                                 </picture>  
                             </div>
                             <div className="abus-main2-img-box">
                                 <picture>
-                                <source srcSet={aboutUsMain2Img06} media="(min-width:1200px)" />
-                                <img className="img-set" src={aboutUsMain2SmImg06} />
+                                <source srcSet={aboutUsMain2Img06} media="(min-width:992px)" />
+                                <img className="img-set d-block me-auto" src={aboutUsMain2SmImg06} />
                                 </picture>  
                             </div>
                             </div>
@@ -179,57 +236,99 @@ function AboutusPage(){
             <div className="abus-main4 w-100 abus-main4-bg-set" id="abus-main4">
                 <div className="container py-64 py-lg-100 "> 
                     <div className="row justify-content-lg-center">
-                    <div  className="col-12 col-lg-8 mb-24 mb-lg-0">
-            
-                        <div className="abus-main4-content h-100">
-                            <div className="abus-main4-article h-100 d-flex flex-column justify-content-center align-items-center  align-items-lg-center">
-                            <div className="abus-main4-title-box w-100 mb-24 mb-lg-72">
-                                <h3 className="text-center text-lg-start fs-lg-64 text-nautral-white">聯絡我們 </h3>
-                            </div>
-                            <form className="d-flex flex-column from-set w-100">
-                                <label className="aboutUs-label-set fs-24 fw-900 fw-lg-700 mb-12 text-nautral-white  mb-lg-24" htmlFor="aboutUs-name">姓氏</label>
-                                <input className="aboutUs-input-set mb-24 mb-lg-48 fs-16 fw-500 py-12 px-16 fs-lg-24 py-lg-20 px-lg-36" type="text" id="aboutUs-name" placeholder="請留下您的大名" />
-                        
-                                <label className="aboutUs-label-set fs-24 fw-900 fw-lg-700 mb-12 text-nautral-white  mb-lg-24" htmlFor="aboutUs-email">信箱</label>
-                                <input className="aboutUs-input-set mb-24 mb-lg-48 fs-16 fw-500 py-12 px-16 fs-lg-24 py-lg-20 px-lg-36" autocomplete="email" type="email" id="aboutUs-email" placeholder="請留下您的信箱" />
-
-                                <div className="aboutUs-textarea-box d-flex flex-column justify-content-start align-items-start mb-24 mb-lg-48">
-                                <label className="aboutUs-label-set fs-24 fw-900 fw-lg-700 mb-12 text-nautral-white mb-lg-24" htmlFor="aboutUs-textarea">留言</label>
-                                <textarea className="aboutUs-textarea-set w-100 fw-500 fs-16 fw-500 py-12 px-16 fs-lg-24 py-lg-20 px-lg-36" id="aboutUs-textarea" rows="4" maxlength="500" placeholder="請留下您想告知的內容"></textarea>
-                                <p className="aboutUs-textarea-result fs-16 fs-lg-24" id="result">0/500</p>
-                                </div>
-                                <button className="mian-btn1-set-sm fs-24 fw-900 fw-lg-700 w-100" type="button" id="submitBtn" data-bs-toggle="modal" data-bs-target="#abus-main4-Modal">送出留言 </button>
-                            </form> {/*data-bs-toggle="modal" data-bs-target="#exampleModal" */}
-                            </div>
-                        </div>
-                        {/* Modal 結構 */}
-                        <div className="modal fade" id="abus-main4-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            {/*className="modal fade"：modal 表示是 Modal 視窗，fade 表示彈出時會有淡入效果。
-                                id：exampleModal，這是 Modal 的唯一識別符號，用於在 JavaScript 中或透過觸發按鈕來控制此視窗。
-                                aria-hidden="true"：告訴螢幕讀取器此元素預設是隱藏的，當 Modal 開啟時會自動切換成 false。*/}
-                            <div className="modal-dialog modal-dialog-centered abus-main4-Modal-dialog">
-                            {/*modal-dialog 是彈出視窗的對話框容器。可使用 modal-dialog-centered 來將 Modal 置中顯示。*/}
-                                <div className="modal-content abus-main4-Modal-content bg-primary1">
-                                {/*modal-content 是彈出視窗的內容容器，包含標題、內容和頁腳區域。*/}
-                                    <div className="modal-body abus-main4-Modal-body d-flex">
-                                        <div className="oEstimate-main3-btn01-box w-100 p-16 fs-16 fw-500 lh-15 text-nautral-white bg-primary1 outline-0">
-                                        留言已送出，如有更新消息會再與您聯繫。
-                                        </div>
-                                        <button type="button" className="oEstimate-main1-btn-close border-0 outline-0 p-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
-                                            <div className="oEstimate-main1-btn-img-box">
-                                                <img className="img-set" src="../assets/images/abus-main4-modal-btn-close.png" alt="abus-main4-modal-btn-close" />
-                                            </div>
-                                        </button>
+                        <div  className="col-12 col-lg-8 mb-24 mb-lg-0">
+                
+                            <div className="abus-main4-content h-100">
+                                <div className="abus-main4-article h-100 d-flex flex-column justify-content-center align-items-center  align-items-lg-center">
+                                    <div className="abus-main4-title-box w-100 mb-24 mb-lg-72">
+                                        <h3 className="text-center text-lg-start fs-lg-64 text-nautral-white">聯絡我們 </h3>
                                     </div>
-                                    {/*modal-body：彈出視窗的主要內容區域，可以放入自訂的文字、圖片或表單等元素。*/}
+                                    <form className="d-flex flex-column from-set w-100" onSubmit={handleSubmit(onSubmit)}>
+                                        {/* 🔹 姓氏 */}
+                                        <label className="aboutUs-label-set fs-24 fw-900 fw-lg-700 mb-12 text-nautral-white mb-lg-24"    htmlFor="aboutUs-name">
+                                            姓氏
+                                        </label>
+                                        <input
+                                            {...register("name", { required: "請輸入您的姓名" })}
+                                            className={`aboutUs-input-set mb-24 fs-16 fw-500 py-12 px-16 fs-lg-24 py-lg-20 px-lg-36 
+                                            ${errors.name ? "is-invalid" : ""}`}
+                                            type="text"
+                                            id="aboutUs-name"
+                                            placeholder="請留下您的大名"
+                                        />
+                                        {errors.name && <p className="text-danger mb-24">{errors.name.message}</p>}
+
+                                        {/* 🔹 信箱 */}
+                                        <label
+                                            className="aboutUs-label-set fs-24 fw-900 fw-lg-700 mb-12 text-nautral-white mb-lg-24"
+                                            htmlFor="aboutUs-email"
+                                        >
+                                            信箱
+                                        </label>
+                                        <input
+                                            {...register("email", {
+                                            required: "請輸入您的信箱",
+                                            pattern: {
+                                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                                message: "請輸入有效的 Email"
+                                            }
+                                            })}
+                                            className={`aboutUs-input-set mb-24 fs-16 fw-500 py-12 px-16 fs-lg-24 py-lg-20 px-lg-36 ${
+                                            errors.email ? "is-invalid" : ""
+                                            }`}
+                                            autoComplete="email"
+                                            type="email"
+                                            id="aboutUs-email"
+                                            placeholder="請留下您的信箱"
+                                        />
+                                        {errors.email && <p className="text-danger mb-24">{errors.email.message}</p>}
+
+                                        {/* 🔹 留言 */}
+                                        <div className="d-flex flex-column justify-content-start align-items-start mb-24">
+                                            <label
+                                            className="aboutUs-label-set fs-24 fw-900 fw-lg-700 mb-12 text-nautral-white mb-lg-24"
+                                            htmlFor="aboutUs-textarea"
+                                            >
+                                            留言
+                                            </label>
+                                            <div className="w-100 aboutUs-textarea-box mb-24">
+                                                <textarea
+                                                {...register("message", {
+                                                    required: "請輸入您的留言",
+                                                    maxLength: { value: 500, message: "最多只能輸入 500 個字" }
+                                                })}
+                                                className={`aboutUs-textarea-set w-100 fw-500 fs-16 py-12 px-16 fs-lg-24 py-lg-20 px-lg-36 ${
+                                                    errors.message ? "is-invalid" : ""
+                                                }`}
+                                                id="aboutUs-textarea"
+                                                rows="4"
+                                                placeholder="請留下您想告知的內容">
+                                                </textarea>
+                                                <p className="aboutUs-textarea-result fs-16 fs-lg-24">{`${messageDataNum}/500`}</p>
+                                            </div>
+                                            {errors.message && <p className="text-danger mb-24">{errors.message.message}</p>}
+                                        </div>
+
+                                        {/* 🔹 送出按鈕 */}
+                                        <button
+                                            className="mian-btn1-set fs-24 fw-900 fw-lg-700 w-100"
+                                            type="submit"
+                                            id="submitBtn"
+                                        >
+                                            送出留言
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
+                            {/* Modal 結構 */}
+                            
 
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <AboutUsModal setHandleAboutUsModal={setHandleAboutUsModal} setAboutUsPageModalShow={setAboutUsPageModalShow} 
+            aboutUsPageModalShow={aboutUsPageModalShow}/>
         </>
     )
 }

@@ -76,57 +76,63 @@ function Footer() {
             <div className="text-content d-flex gap-32 justify-content-center mb-32 gap-xl-48 mb-xl-48">
               <div className="text-box d-flex flex-column row-gap-16 row-gap-xl-24">
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" to="/">
+                  <Link className="a-re text-white text-decoration-none" to="/OestimatePage">
                     線上估價
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" to="/#index-main4">
+                  <Link className="a-re text-white text-decoration-none" to="/IndexPage">
                     服務項目
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" to="/#index-main5">
+                  <Link className="a-re text-white text-decoration-none" to="/IndexPage">
                     最新消息
                   </Link>
                 </span>
               </div>
               <div className="text-box d-flex flex-column row-gap-16 row-gap-xl-24">
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  材料介紹
+                  <Link className="a-re text-white text-decoration-none" to="/IndexPage">
+                    材料介紹
+                  </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  設備介紹
+                  <Link className="a-re text-white text-decoration-none" to="/AboutusPage">
+                    設備介紹
+                  </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  專利介紹
+                  <Link className="a-re text-white text-decoration-none" to="/AboutusPage">
+                    專利介紹
+                  </Link>
                 </span>
               </div>
               <div className="text-box d-flex flex-column row-gap-16 row-gap-xl-24">
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re" to="/aboutUs#abus-main2">
+                  <Link className="a-re text-white text-decoration-none" to="/AboutusPage">
                     公司介紹
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re" to="/aboutUs#abus-main3">
+                  <Link className="a-re text-white text-decoration-none" to="/QaPage">
                     售後服務
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re" to="/qaPage">
+                  <Link className="a-re text-white text-decoration-none" to="/QaPage">
                     運費說明
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium d-xl-none footer-text-set">
-                  <Link className="a-re" to="/aboutUs#abus-main4">
+                  <Link className="a-re text-white text-decoration-none" to="/AboutusPage">
                     聯絡我們
                   </Link>
                 </span>
               </div>
               <div className="text-box d-flex flex-column d-none d-xl-block">
                 <span className="fs-xl-24 fw-medium footer-text-set">
-                  <Link className="a-re" to="/aboutUs#abus-main4">
+                  <Link className="a-re text-white text-decoration-none" to="/AboutusPage">
                     聯絡我們
                   </Link>
                 </span>
