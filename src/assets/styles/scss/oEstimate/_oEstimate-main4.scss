@@ -36,12 +36,12 @@
     }
 }
 .oEstimate-main4-item-set{
+    width: 100%;
     border:2px solid $nautral-white;
     border-radius: 5px;
     height: auto;
     @include media-breakpoint-up(xl){  
-        max-width:452px;
-        width: 100%;
+        width:452px;
     }
 }
 /*工期選擇*/

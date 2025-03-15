@@ -236,52 +236,52 @@ function MateriaPage(){
                             </div>
                             {/* 按鈕區塊 */}
                             {/* 頁籤的內容區塊 */}
-
-                            <Swiper
-                                modules={[Navigation, Pagination, Autoplay]}
-                                spaceBetween={10}
-                                slidesPerView={1}
-                                centeredSlides={true}
-                                breakpoints={{
-                                    1200: { slidesPerView: 3 }, // 電腦顯示 3 張
-                                  }}
-                                navigation={{ prevEl: ".materiaPageSwiperMain1NextBtnL", nextEl: ".materiaPageSwiperMain1NextBtnR" }}
-                                loop={true}
-                                className="mySwiper"
-                                >
-                                {materiaPageMain1Card?.map((item, index) => {
-                                    return(
-                                        <SwiperSlide className="pt-48">
-                                            <div key={index} className="materiaPageCardSet p-8 mx-auto" id="content-1">                       
-                                                <div className="cardContentSet">
-                                            
-                                                    <picture>
-                                                        <source srcSet={item.img} media="(min-width:1400px)" />
-                                                        <img className="img-set" src={item.imgSm} alt="home-section2-1" />
-                                                    </picture>   
-                                                
-                                                    <div className="textConentSet">
-                                            
-                                                        <div className="mt-16 mt-xl-32">
-                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
-                                                                選擇我
-                                                            
-                                                                <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                    chevron_right
-                                                                </span>
-                                                                
-                                                            </button>
-                                                        </div>
-            
-                                                    </div>   
-                                                </div>          
-                                            </div> 
-                                        </SwiperSlide>
-                                    )
-                                })}
-                            </Swiper>
-                            
-                                
+                            <div className="MaterialPageSwiperBgSet mx-auto">
+                                <Swiper
+                                    modules={[Navigation, Pagination, Autoplay]}
+                                    spaceBetween={10}
+                                    slidesPerView={1}
+                                    centeredSlides={true}
+                                    breakpoints={{
+                                        1200: { slidesPerView: 3 }, // 電腦顯示 3 張
+                                    }}
+                                    navigation={{ prevEl: ".materiaPageSwiperMain1NextBtnL", nextEl: ".materiaPageSwiperMain1NextBtnR" }}
+                                    loop={true}
+                                    className="mySwiper"
+                                    >
+                                    {
+                                        materiaPageMain1Card?.map((item, index) => {
+                                            return(
+                                                <SwiperSlide className="pt-48 ">
+                                                    <div key={index} className="materiaPageCardSet p-8 mx-auto rounded-3" id="content-1">                       
+                                                        <div className="cardContentSet">
+                                                    
+                                                            <picture>
+                                                                <source srcSet={item.img} media="(min-width:1400px)" />
+                                                                <img className="img-set" src={item.imgSm} alt="home-section2-1" />
+                                                            </picture>   
+                                                        
+                                                            <div className="textConentSet">
+                                                    
+                                                                <div className="mt-16 mt-xxl-32">
+                                                                    <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xxl-auto me-xxl-32">
+                                                                        選擇我
+                                                                    
+                                                                        <span className="material-symbols-outlined sec-btn1-img-set">
+                                                                            chevron_right
+                                                                        </span>
+                                                                        
+                                                                    </button>
+                                                                </div>
+                    
+                                                            </div>   
+                                                        </div>          
+                                                    </div> 
+                                                </SwiperSlide>
+                                        )
+                                    })}
+                                </Swiper>
+                            </div>
                         </div>
                     </div>
                 </Container>
@@ -307,51 +307,50 @@ function MateriaPage(){
                             </div>
                             {/* 按鈕區塊 */}
                             {/* 頁籤的內容區塊 */}
-
-                            <Swiper
-                                modules={[Navigation, Pagination, Autoplay]}
-                                spaceBetween={10}
-                                slidesPerView={1}
-                                centeredSlides={true}
-                                breakpoints={{
-                                    1200: { slidesPerView: 3,} // 電腦顯示 3 張
-                                  }}
-                                navigation={{ prevEl: ".materiaPageSwiperMain2NextBtnL", nextEl: ".materiaPageSwiperMain2NextBtnR" }}
-                                loop={true}
-                                >
-                                {materiaPageMain2Card?.map((item, index) => {
-                                    return(
-                                        <SwiperSlide className="pt-48">
-                                            <div key={index} className="materiaPageCardSet p-8 mx-auto" id="content-1">                       
-                                                <div className="cardContentSet">
-                                            
-                                                    <picture>
-                                                        <source srcSet={item.img} media="(min-width:1400px)" />
-                                                        <img className="img-set" src={item.imgSm} alt="home-section2-1" />
-                                                    </picture>   
+                            <div className="MaterialPageSwiperBgSet mx-auto">
+                                <Swiper
+                                    modules={[Navigation, Pagination, Autoplay]}
+                                    spaceBetween={10}
+                                    slidesPerView={1}
+                                    centeredSlides={true}
+                                    breakpoints={{
+                                        1200: { slidesPerView: 3,} // 電腦顯示 3 張
+                                    }}
+                                    navigation={{ prevEl: ".materiaPageSwiperMain2NextBtnL", nextEl: ".materiaPageSwiperMain2NextBtnR" }}
+                                    loop={true}
+                                    >
+                                    {materiaPageMain2Card?.map((item, index) => {
+                                        return(
+                                            <SwiperSlide className="pt-48">
+                                                <div key={index} className="materiaPageCardSet p-8 mx-auto" id="content-1">                       
+                                                    <div className="cardContentSet">
                                                 
-                                                    <div className="textConentSet">
-                                            
-                                                        <div className="mt-16 mt-xl-32">
-                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
-                                                                選擇我
-                                                            
-                                                                <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                    chevron_right
-                                                                </span>
+                                                        <picture>
+                                                            <source srcSet={item.img} media="(min-width:1400px)" />
+                                                            <img className="img-set" src={item.imgSm} alt="home-section2-1" />
+                                                        </picture>   
+                                                    
+                                                        <div className="textConentSet">
+                                                
+                                                            <div className="mt-16 mt-xxl-32">
+                                                                <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xxl-auto me-xxl-32">
+                                                                    選擇我
                                                                 
-                                                            </button>
-                                                        </div>
-            
-                                                    </div>   
-                                                </div>          
-                                            </div> 
-                                        </SwiperSlide>
-                                    )
-                                })}
-                            </Swiper>
-                            
-                                
+                                                                    <span className="material-symbols-outlined sec-btn1-img-set">
+                                                                        chevron_right
+                                                                    </span>
+                                                                    
+                                                                </button>
+                                                            </div>
+                
+                                                        </div>   
+                                                    </div>          
+                                                </div> 
+                                            </SwiperSlide>
+                                        )
+                                    })}
+                                </Swiper>
+                            </div>
                         </div>
                     </div>
                 </Container>
@@ -377,51 +376,50 @@ function MateriaPage(){
                             </div>
                             {/* 按鈕區塊 */}
                             {/* 頁籤的內容區塊 */}
-
-                            <Swiper
-                                modules={[Navigation, Pagination, Autoplay]}
-                                spaceBetween={10}
-                                slidesPerView={1}
-                                centeredSlides={true}
-                                breakpoints={{
-                                    1200: { slidesPerView: 3,}// 電腦顯示 3 張
-                                  }}
-                                navigation={{ prevEl: ".materiaPageSwiperMain3NextBtnL", nextEl: ".materiaPageSwiperMain3NextBtnR" }}
-                                loop={true}
-                                >
-                                {materiaPageMain3Card?.map((item, index) => {
-                                    return(
-                                        <SwiperSlide className="pt-48">
-                                            <div key={index} className="materiaPageCardSet p-8 mx-auto" id="content-1">                       
-                                                <div className="cardContentSet">
-                                            
-                                                    <picture>
-                                                        <source srcSet={item.img} media="(min-width:1400px)" />
-                                                        <img className="img-set" src={item.imgSm} alt="home-section2-1" />
-                                                    </picture>   
+                            <div className="MaterialPageSwiperBgSet mx-auto">
+                                <Swiper
+                                    modules={[Navigation, Pagination, Autoplay]}
+                                    spaceBetween={10}
+                                    slidesPerView={1}
+                                    centeredSlides={true}
+                                    breakpoints={{
+                                        1200: { slidesPerView: 3,}// 電腦顯示 3 張
+                                    }}
+                                    navigation={{ prevEl: ".materiaPageSwiperMain3NextBtnL", nextEl: ".materiaPageSwiperMain3NextBtnR" }}
+                                    loop={true}
+                                    >
+                                    {materiaPageMain3Card?.map((item, index) => {
+                                        return(
+                                            <SwiperSlide className="pt-48">
+                                                <div key={index} className="materiaPageCardSet p-8 mx-auto" id="content-1">                       
+                                                    <div className="cardContentSet">
                                                 
-                                                    <div className="textConentSet">
-                                            
-                                                        <div className="mt-16 mt-xl-32">
-                                                            <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xl-auto me-xl-32">
-                                                                選擇我
-                                                            
-                                                                <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                    chevron_right
-                                                                </span>
+                                                        <picture>
+                                                            <source srcSet={item.img} media="(min-width:1400px)" />
+                                                            <img className="img-set" src={item.imgSm} alt="home-section2-1" />
+                                                        </picture>   
+                                                    
+                                                        <div className="textConentSet">
+                                                
+                                                            <div className="mt-16 mt-xxl-32">
+                                                                <button onClick={()=>{handleMaterialPageModal?.show();setSingleMaterialPageModal(item);setMaterialPageModalShow(true)}} className="secondary-btn1-set d-flex align-items-center ms-auto me-auto ms-xxl-auto me-xxl-32">
+                                                                    選擇我
                                                                 
-                                                            </button>
-                                                        </div>
-            
-                                                    </div>   
-                                                </div>          
-                                            </div> 
-                                        </SwiperSlide>
-                                    )
-                                })}
-                            </Swiper>
-                            
-                                
+                                                                    <span className="material-symbols-outlined sec-btn1-img-set">
+                                                                        chevron_right
+                                                                    </span>
+                                                                    
+                                                                </button>
+                                                            </div>
+                
+                                                        </div>   
+                                                    </div>          
+                                                </div> 
+                                            </SwiperSlide>
+                                        )
+                                    })}
+                                </Swiper>
+                            </div>
                         </div>
                     </div>
                 </Container>

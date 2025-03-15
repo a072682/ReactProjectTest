@@ -38,8 +38,12 @@ function Login ({setHandleLoginPageModal,loginModalShow,setLoginModalShow}){
             loginPageModal?.show();
         }
         const btnByLoginPageModalClose = ()=>{
-            loginPageModal?.hide();
+            setAccount({
+                username:"",
+                password:""
+            });
             setLoginModalShow(false);
+            loginPageModal?.hide();
         }
     //元件控制
 
@@ -141,23 +145,28 @@ function Login ({setHandleLoginPageModal,loginModalShow,setLoginModalShow}){
     return(
         <>
             <div ref={loginPageModalRef} id="productModal" className="modal" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
-                <div className="modal-dialog modal-dialog-centered modal-xl">
-                    <div className="modal-content border-0 shadow">
-                        <div className="modal-header border-bottom">
-                            <button onClick={btnByLoginPageModalClose} type="button" className="btn-close" aria-label="Close"></button>
+                <div className="modal-dialog modal-dialog-centered modal">
+                    <div className="modal-content border-0 LoginModalHeaderBgSet">
+                        <div className="modal-header border-0">
+                            <button onClick={btnByLoginPageModalClose} type="button" className="LoginModalBtnClose d-block ms-auto" aria-label="Close">
+                                <img className="materialPageModalBtnCloseImgSet" src={`${import.meta.env.BASE_URL}assets/images/btn-close.png`} alt="Close" width="48" height="48" />
+                            </button>
                         </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center vh-100">
-                            <h1 className="mb-5">請先登入</h1>
+                        <div className="d-flex flex-column justify-content-center align-items-center
+                                        text-nautral-white LoginModal-body-set p-32">
+                                            {/* nautral-black primary4 nautral-white*/}
+                            <h1 className="mb-5 fs-32">會員登入</h1>
                             <form onSubmit={handleLogin} className="d-flex flex-column gap-3">
-                                <div className="form-floating mb-3">
-                                <input value={account.username} onChange={handleInputChange} name="username" type="email" className="form-control" id="username" placeholder="name@example.com" />
+                                
                                 <label htmlFor="username">Email address</label>
-                                </div>
-                                <div className="form-floating">
-                                <input value={account.password} onChange={handleInputChange} name="password" type="password" className="form-control" id="password" placeholder="Password" />
+                                <input value={account.username} onChange={handleInputChange} name="username" type="email" 
+                                className="form-control bg-transparent text-nautral-white" id="username" placeholder="name@example.com" />
+                                
                                 <label htmlFor="password">Password</label>
-                                </div>
-                                <button type="onSubmit" className="btn btn-primary">登入</button>
+                                <input value={account.password} onChange={handleInputChange} name="password" type="password" 
+                                className="form-control bg-transparent text-nautral-white" id="password" placeholder="Password" />
+                                
+                                <button type="onSubmit" className="mian-btn1-set mt-32">登入</button>
                             </form>
                         </div>
                     </div>

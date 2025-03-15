@@ -68,22 +68,24 @@
 }
 
 .todoList-decrease,.todoList-increase,.todoList-delete{
-    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
-.todoList-decrease{
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/images/oEstimate-main1-input-minus-plus.png);
-}
-.todoList-increase{
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/images/oEstimate-main1-input-minus.png);
-}
+// .todoList-decrease{
+//     width: 24px;
+//     height: 24px;
+//     background-image: url(/assets/images/oEstimate-main1-input-minus-plus.png);
+// }
+// .todoList-increase{
+//     width: 24px;
+//     height: 24px;
+//     background-image: url(/assets/images/oEstimate-main1-input-minus.png);
+// }
 .todoList-delete{
     width: 24px;
     height: 24px;
-    background-image: url(/assets/images/oEstimate-main1-input-delete.png);
 }
 
 .oEstimate-main1-numTable{
@@ -423,4 +425,11 @@
     background-image: linear-gradient(90deg, #000000, #60003a);
 }
 /*彈出視窗*/
+
+
+.img-set{
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 

@@ -43,6 +43,17 @@
     }
 }
 
+//swiper外框
+.MaterialPageSwiperBgSet{
+
+    width: calc(100% - 300px);
+
+    @include media-breakpoint-up(xxl){
+        width: 100%;
+    }
+}
+
+
 //MaterialPageModal
     .MaterialPageModalHeaderBgSet{
         background-color: #6E002C;

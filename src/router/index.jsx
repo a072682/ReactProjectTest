@@ -1,7 +1,7 @@
 import { createHashRouter } from 'react-router-dom';
 import FrontLayout from '../layouts/FrontLayout';
 import IndexPage from '../pages/IndexPage';
-import OestimatePage from '../pages/OEstimatePage';
+import OestimatePage from '../pages/OestimatePage';
 import QaPage from '../pages/QaPage';
 import AboutusPage from '../pages/AboutusPage';
 import MateriaPage from '../pages/MaterialPage';

@@ -196,9 +196,9 @@ function Header(){
                                                 </div>
                                             </Link>
                                             <ul className={`dropdown-menu customDropdown loginPagePosition ${isLoginDropdownOpen ? "show" : ""}`}> 
-                                                <li><button className="dropdown-item dropdown-item-set" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();}}>會員中心</button></li>
+                                                <li><Link className="dropdown-item dropdown-item-set" to="/" onClick={()=>{isLoginCloseDropdown();}}>會員中心</Link></li>
                                                 <li><Link className="dropdown-item dropdown-item-set" to="/" onClick={()=>{dispatch(logoutUser());isLoginCloseDropdown();}}>登出</Link></li>
-                                                <li><Link className="dropdown-item dropdown-item-set" to="/MemberPage" onClick={isLoginCloseDropdown}>測試用</Link></li>
+                                                {/* <li><Link className="dropdown-item dropdown-item-set" to="/MemberPage" onClick={isLoginCloseDropdown}>測試用</Link></li> */}
                                             </ul>
                                         </>
                                     )
@@ -286,7 +286,7 @@ function Header(){
                                         </button>
                                         <div className={`dropdown-content gap-8 px-0 py-0 ${isLogin ? "show" : ""}`}>
                                             <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>會員中心</Link>
-                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={handleClose}>登出</Link>
+                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={()=>{dispatch(logoutUser());handleClose();}}>登出</Link>
                                         </div>
                                     </>
                                 )
@@ -300,7 +300,7 @@ function Header(){
                                             </div>
                                         </button>
                                         <div className={`dropdown-content gap-8 px-0 py-0 ${isLogin ? "show" : ""}`}>
-                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();setLoginModalShow(true);}}>會員登入</Link>
+                                            <Link className="dropdown-item qaPageItemSet" to="/" onClick={()=>{handleLoginPageModal?.show();isLoginCloseDropdown();setLoginModalShow(true);handleClose();}}>會員登入</Link>
                                         </div>
                                     </>
                                 )

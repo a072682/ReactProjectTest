@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom"
 import { Dropdown, Nav, Tab } from "react-bootstrap"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
+import { useEffect, useRef, useState } from "react"
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";// 核心 CSS
-import "swiper/css/navigation";// 左右箭頭
 import OestimateModal from "../components/common/OestimateModal"
 import DatePicker from "react-datepicker"
-
+import Calendar from "../components/common/Calendar"
 
 
 
@@ -65,10 +63,20 @@ import oEstimateMain5ModalBtnClose from "../assets/images/OestimatePage/oEstimat
 
 
 
+
 function OestimatePage(){
 
     const[handleOestimateModal,setHandleOestimateModal]=useState(null);
     const[oestimateModalShow,setOestimateModalShow]=useState(false);
+
+    const [activeTab, setActiveTab] = useState("home");
+    const [swiperKey, setSwiperKey] = useState(0); // Swiper 重新渲染的 key
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSwiperKey((prev) => prev + 1); // 切換 Tab 時，重新渲染 Swiper
+        }, 50);
+    }, [activeTab]);
 
 
 
@@ -79,31 +87,37 @@ function OestimatePage(){
             img: oEstimateMain2TabImg1,
             title: "PLA白",
             MaterialIntroduction: "PLA聚乳酸",
+            price: 100,
         },
         {
             img: oEstimateMain2TabImg2,
             title: "PLA透明",
             MaterialIntroduction: "PLA聚乳酸",
+            price: 150,
         },
         {
             img: oEstimateMain2TabImg3,
             title: "PLA黑",
             MaterialIntroduction: "PLA聚乳酸",
+            price: 100,
         },
         {
             img: oEstimateMain2TabImg1,
             title: "PLA白",
             MaterialIntroduction: "PLA聚乳酸",
+            price: 100,
         },
         {
             img: oEstimateMain2TabImg2,
             title: "PLA透明",
             MaterialIntroduction: "PLA聚乳酸",
+            price: 150,
         },
         {
             img: oEstimateMain2TabImg3,
             title: "PLA黑",
             MaterialIntroduction: "PLA聚乳酸",
+            price: 100,
         },
     ];
 
@@ -112,31 +126,37 @@ function OestimatePage(){
             img: oEstimateMain2Tab2Img1,
             title: "光固化黑",
             MaterialIntroduction: "光固化樹酯",
+            price: 300,
         },
         {
             img: oEstimateMain2Tab2Img2,
             title: "光固化白",
             MaterialIntroduction: "光固化樹酯",
+            price: 300,
         },
         {
             img: oEstimateMain2Tab2Img3,
             title: "光固化透明",
             MaterialIntroduction: "光固化樹酯",
+            price: 450,
         },
         {
             img: oEstimateMain2Tab2Img1,
             title: "光固化黑",
             MaterialIntroduction: "光固化樹酯",
+            price: 300,
         },
         {
             img: oEstimateMain2Tab2Img2,
             title: "光固化白",
             MaterialIntroduction: "光固化樹酯",
+            price: 300,
         },
         {
             img: oEstimateMain2Tab2Img3,
             title: "光固化透明",
             MaterialIntroduction: "光固化樹酯",
+            price: 450,
         },
     ];
     
@@ -144,7 +164,6 @@ function OestimatePage(){
     const[oestimateMain4Btn,setOestimateMain4Btn]=useState(false);
     const[oestimateMain4text,setOestimateMain4text]=useState("選擇工期");
 
-    const[oestimateMain4Calendar,setOestimateMain4Calendar]=useState(false);
 
     const [supportMaterialValue,setSupportMaterialValue] = useState(1);
     const supportMaterialIncrement = () => {
@@ -185,7 +204,89 @@ function OestimatePage(){
         setSupportMaterialDensityValue(8);
     }
 
-    
+
+    //
+        const [oestimateMain4Calendar, setOestimateMain4Calendar] = useState(false);
+        const [selectedDate, setSelectedDate] = useState("年 / 月 / 日");
+      
+        // 處理日期選擇
+        const handleDateSelect = (date) => {
+          setSelectedDate(date); // 更新顯示的日期
+          setOestimateMain4Calendar(false); // 選擇後關閉日曆
+        };
+    //
+
+    //
+    const fileInputRef = useRef(null); // 創建一個 ref
+    const [previewImage, setPreviewImage] = useState(null); // 存放圖片的狀態
+
+    const handleButtonClick = () => {
+        fileInputRef.current.click(); // 觸發 input 點擊事件
+    };
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0]; // 取得選中的第一個檔案
+        if (file && file.type.startsWith("image/")) {
+            // 檢查是否為圖片
+            const imageUrl = URL.createObjectURL(file); // 產生本地圖片 URL
+            setPreviewImage(imageUrl);
+          } else {
+            console.log("請選擇圖片檔案！"); // 不是圖片則警告
+            setPreviewImage(null); // 清空圖片
+          }
+      };
+
+        // 狀態存儲已選擇的 item（陣列）
+        const [selectedItems, setSelectedItems] = useState([]);
+
+        // 點擊按鈕時，新增或移除 item
+        const handleItemClick = (item) => {
+            setSelectedItems((prevItems) => {
+                // 檢查 item 是否已經存在
+                const isExist = prevItems.some((i) => i.title === item.title);
+
+                if (isExist) {
+                    // 如果已經存在，則移除
+                    return prevItems.filter((i) => i.title !== item.title);
+                } else {
+                    // 如果不存在，則新增
+                    return [...prevItems, item];
+                }
+            });
+        };
+
+        const handleDelete = (title) => {
+            setSelectedItems(prevItems => prevItems.filter(item => item.title !== title));
+          };
+
+        const [quantities, setQuantities] = useState({}); // 用物件來存每個項目的數量
+
+        const increaseQuantity = (title) => {
+            setQuantities((prev) => ({
+                ...prev,
+                [title]: (prev[title] || 1) + 1, // 增加數量
+            }));
+        };
+          
+        const decreaseQuantity = (title) => {
+            setQuantities((prev) => ({
+                ...prev,
+                [title]: Math.max((prev[title] || 1) - 1, 1), // 最小為 1
+            }));
+        };
+
+        const resetAll =()=>{          
+            setOestimateMain4text("選擇工期");
+            setSelectedDate("年 / 月 / 日");
+            setSupportMaterialDensityValue(1);
+            setWallThicknessValue(10);
+            setSupportMaterialValue(1);
+            setSelectedItems([]);
+            setPreviewImage(null);
+            console.log("數據已清空");
+        }
+
+
 
     return(
         <>
@@ -216,12 +317,12 @@ function OestimatePage(){
                                         </div>
 
                                         <div className="upLord-btn-sm-box d-none d-xl-block"> {/*xl用按鈕*/}
-                                            <button className="upLord-btn-sm-box-set py-10 px-auto bg-primary2 d-flex justify-content-center align-items-center  py-xl-22 px-xl-22" id="oEstimate-main1-uploadBtn">
+                                            <button onClick={handleButtonClick} className="upLord-btn-sm-box-set py-10 px-auto bg-primary2 d-flex justify-content-center align-items-center  py-xl-22 px-xl-22" id="oEstimate-main1-uploadBtn">
                                                 <div className="upLord-btn-img-sm-set">
                                                     <img className="img-set" src={oEstimateMain1UpLordBtn} alt="upLord-btn" />
                                                 </div>
                                             </button>
-                                            <input type="file" id="fileInput" accept="image/*" className="d-none" />
+                                            <input ref={fileInputRef} onChange={handleFileChange} type="file" id="fileInput" accept="image/*" className="d-none" />
                                         </div>
 
                                         <div className="upLord-fileFormat-sm-box mb-24 mb-xl-0">
@@ -256,19 +357,37 @@ function OestimatePage(){
                                     <div className="oEstimate-main1-title2-sm-box mb-16 mb-xl-48">
                                         <h3 className="fs-32 fw-900 text-nautral-white">圖檔上傳預覽</h3>
                                     </div>
-
+                                    
                                     <div className="oEstimate-main1-upLord-img-sm-box" id="thumbnailArea">{/*圖檔上傳預覽*/}
-                                        <div className="oEstimate-main1-upLord-img-sm-box-set py-16 px-12 py-xl-64 px-xl-auto row-gap-16 row-gap-xl-48 d-flex flex-column justify-content-center align-items-center">
-                                            <div className="oEstimate-main1-upLord-btn-img-sm-set">
-                                                <img className="img-set d-block mx-auto
-                                                " src={oEstimateMain1Image} alt="index-main1-Image" />
-                                            </div>
-                                            <div className="oEstimate-main1-upLord-text-box d-flex flex-column justify-content-center align-items-center row-gap-xl-12">
-                                                <p className="fs-16 fw-500 lh-15 text-nautral-white d-block d-xl-none">目前無檔案，請上傳圖檔進行估價確認</p>
-                                                <p className="fs-24 fw-500 lh-12 text-nautral-white text-center d-none d-xl-block">目前無檔案</p>
-                                                <p className="fs-24 fw-500 lh-12 text-nautral-white text-center d-none d-xl-block">請上傳圖檔進行估價確認</p>
-                                            </div>
-                                        </div>
+                                        
+                                            {
+                                                previewImage?(
+                                                    <>
+                                                        
+                                                            <img className="img-set" src={previewImage} alt="" />
+                                                        
+                                                        {/* img-fluid */}
+                                                    </>
+                                                )
+                                                :
+                                                (
+                                                    <>
+                                                        <div className="oEstimate-main1-upLord-img-sm-box-set py-16 px-12 py-xl-64 px-xl-auto row-gap-16 row-gap-xl-48 d-flex flex-column justify-content-center align-items-center">
+                                                            <div className="oEstimate-main1-upLord-btn-img-sm-set">
+                                                                <img className="img-set d-block mx-auto" 
+                                                            src={oEstimateMain1Image} alt="index-main1-Image" />
+                                                            </div>
+                                                            <div className="oEstimate-main1-upLord-text-box d-flex flex-column justify-content-center align-items-center row-gap-xl-12">
+                                                                <p className="fs-16 fw-500 lh-15 text-nautral-white d-block d-xl-none">目前無檔案，請上傳圖檔進行估價確認</p>
+                                                                <p className="fs-24 fw-500 lh-12 text-nautral-white text-center d-none d-xl-block">目前無檔案</p>
+                                                                <p className="fs-24 fw-500 lh-12 text-nautral-white text-center d-none d-xl-block">請上傳圖檔進行估價確認</p>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )
+                                            }
+                                            
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +398,7 @@ function OestimatePage(){
                                     </div>
                                     <div className="oEstimate-main1-numTable">
                                         <div className="title-row d-flex align-items-center">
-                                            <div className="title-row-set-1 w-100 lh-15 fs-24 p-12 fw-500 text-nautral-white">檔案</div>
+                                            <div className="title-row-set-1 w-100 lh-15 fs-24 p-12 fw-500 text-nautral-white">縮圖</div>
                                             <div className="title-row-set-1 w-100 lh-15 fs-24 p-12 fw-500 text-nautral-white">數量</div>
                                             <div className="title-row-set-2 w-100 lh-15 fs-24 p-12 fw-500 text-nautral-white">估價</div>
                                             <div className="title-row-set-2 w-100 lh-15 fs-24 p-12 fw-500 text-nautral-white">材質</div>
@@ -290,6 +409,43 @@ function OestimatePage(){
                                         {/* 待辦事項 */}
                                         <div className="oEstimate-main1-todoList" id="oEstimate-main1-todoList">
                                         {/* 由javascript生成內容 */}
+                                            {
+
+                                                selectedItems?.map((item,index)=>{
+                                                    const num = quantities[item.title] || 1;
+                                                    return(
+                                                        <>
+                                                            
+                                                            <div key={index} className="row2 d-flex align-items-center">
+                                                                <div className="row2-sm-set-1 d-flex flex-column justify-content-center align-items-start">
+                                                                    <img className="oEstimate-main1-filename img-set" src={item.img} alt="Image" />
+                                                                </div>
+                                                                <div className="row2-sm-set-2 d-flex justify-content-start align-items-center gap-12">
+                                                                    <button onClick={() => decreaseQuantity(item.title)} className="todoList-increase">
+                                                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/minus.png`} alt="Image" />
+                                                                    </button>
+                                                                    <p className="oEstimate-main1-num" id="count-${index}">{num}</p>
+                                                                    <button onClick={() => increaseQuantity(item.title)} className="todoList-decrease">
+                                                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/minus-plus.png`} alt="Image" />
+                                                                    </button>
+                                                                </div>
+                                                                <div className="row2-sm-set-3 ms-50" id="a">
+                                                                    {item.price}
+                                                                </div>
+                                                                <div className="row2-sm-set-3">
+                                                                    {item.title}
+                                                                </div>
+                                                                <div className="row2-sm-img-set d-flex justify-content-center align-items-center">
+                                                                    <button onClick={()=>{handleDelete(item.title)}} className="todoList-delete">
+                                                                        <img className="img-set" src={`${import.meta.env.BASE_URL}assets/images/delete.png`} alt="Image" />
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    )
+                                                })
+                                                
+                                            }
                                         </div>
 
                                     </div>
@@ -297,13 +453,11 @@ function OestimatePage(){
                             </div>
                             <div className="col-12">
                                 <div className="oEstimate-main1-footer-btn d-block d-flex justify-content-center align-items-center">
-                                    <button className="pagination-btn01">
-                                        <a className="a-re" href="oEstimate.html#oEstimate-main2">
-                                            <div className="pagination-img-box01">
-                                                <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="oEstimate-main1-Vector 15" />
-                                            </div>
-                                        </a>
-                                    </button>
+                                    
+                                    <div className="pagination-img-box01">
+                                        <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="oEstimate-main1-Vector 15" />
+                                    </div>
+                                        
                                 </div>
                             </div>
                         </div>
@@ -318,7 +472,7 @@ function OestimatePage(){
                                     <h3 className="fs-32 fw-900 lh-15 text-center text-nautral-white fs-xl-64 text-xl-start">材料選擇</h3>
                                 </div>
                                         
-                                <Tab.Container className="oEstimate-main2-tab" defaultActiveKey="home" >
+                                <Tab.Container className="oEstimate-main2-tab" activeKey={activeTab} onSelect={(key) => setActiveTab(key)} >
                                     {/* 這是 TABS 的最外層，負責管理不同分頁的內容 */}
                                     <Nav >
                                     {/* variant="tabs" 👉 設定為 tabs 樣式（上方的標籤選單） */}
@@ -334,164 +488,168 @@ function OestimatePage(){
 
                                     {/* 🔹 內容區塊（一次只顯示一個頁面） */}
                                     <Tab.Content className="oEstimate-main2-swiper ">
-                                        <Tab.Pane className="oEstimate-main2-tab-content" eventKey="home">
-                                            <Swiper
-                                                modules={[Navigation, Pagination, Autoplay]}
-                                                spaceBetween={10}
-                                                slidesPerView={1}
-                                                breakpoints={{
-                                                    1200: { slidesPerView: 3 }, // 電腦顯示 3 張
-                                                    }}
-                                                navigation={{   prevEl: ".oEstimate-main2-swiper-next-L-btn", 
-                                                                nextEl: ".oEstimate-main2-swiper-next-R-btn" }}
-                                                loop={true}
-                                                centeredSlides={true}
-                                                className="mySwiper"
-                                                observer={true} // ✅ 監聽 DOM 變更
-                                                observeParents={true}
-                                                >
-                                                {
-                                                    PLAData?.map((item,index)=>{
-                                                        return(
-                                                            <>
-                                                            <SwiperSlide key={index}>
-                                                                <div class="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="11">
-                                                                    <div class="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img class="img-set" src={item.img} alt="oEstimate-main2-tab2-img2" />     
-                                                                    </div>
-                                                                    <div class="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                            
-                                                                        <div class="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                            <div class="oEstimate-main2-card1-text">
-                                                                                <p class="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">{item.title}</p>
-                                                                                <p class="fw-500 fs-16 fw-700 lh-12 text-nautral-white">{item.MaterialIntroduction}</p>
+                                        <Tab.Pane eventKey="home">
+                                            <div className="oEstimate-main2-tab-content mx-auto py-64">
+                                                <Swiper
+                                                    key={swiperKey}
+                                                    modules={[Navigation, Pagination, Autoplay]}
+                                                    spaceBetween={10}
+                                                    slidesPerView={1}
+                                                    breakpoints={{
+                                                        1200: { slidesPerView: 3 }, // 電腦顯示 3 張
+                                                        }}
+                                                    navigation={{   prevEl: ".oEstimate-main2-swiper-next-L-btn", 
+                                                                    nextEl: ".oEstimate-main2-swiper-next-R-btn" }}
+                                                    loop={true}
+                                                    centeredSlides={true}
+                                                    className="mySwiper"
+                                                    observer={true} // ✅ 監聽 DOM 變更
+                                                    observeParents={true}
+                                                    >
+                                                    {
+                                                        PLAData?.map((item,index)=>{
+                                                            return(
+                                                                
+                                                                <SwiperSlide key={index}>
+                                                                    <div class="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black">
+                                                                        <div class="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
+                                                                                <img class="img-set" src={item.img} alt="oEstimate-main2-tab2-img2" />     
+                                                                        </div>
+                                                                        <div class="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
+                                                                
+                                                                            <div class="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
+                                                                                <div class="oEstimate-main2-card1-text">
+                                                                                    <p class="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">{item.title}</p>
+                                                                                    <p class="fw-500 fs-16 fw-700 lh-12 text-nautral-white">{item.MaterialIntroduction}</p>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                            <button class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
-                                                                                選擇我
-                                                                            
-                                                                                <span class="material-symbols-outlined sec-btn1-img-set">
-                                                                                    chevron_right
-                                                                                </span>
+                                                                            <div class="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
+                                                                                <button onClick={()=>{handleItemClick(item)}} class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" >
+                                                                                    選擇我
                                                                                 
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                            <button class="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
-                                                                                選擇我
-                                                            
-                                                                                <span class="material-symbols-outlined sec-btn2-img-set">
-                                                                                    chevron_right
-                                                                                </span>
-                                                                            </button>
-                                                                        </div>
+                                                                                    <span class="material-symbols-outlined sec-btn1-img-set">
+                                                                                        chevron_right
+                                                                                    </span>
+                                                                                    
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="secondary-btn1-box d-block d-xl-none mb-16 mb-xl-0">
+                                                                                <button onClick={()=>{handleItemClick(item)}} class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" >
+                                                                                    選擇我
+                                                                
+                                                                                    <span class="material-symbols-outlined sec-btn2-img-set">
+                                                                                        chevron_right
+                                                                                    </span>
+                                                                                </button>
+                                                                            </div>
 
-                                                                    </div>   
-                                                                </div>
-                                                            </SwiperSlide>
-                                                            </>
-                                                        )
-                                                    })
-                                                }
-                                            </Swiper>
-                                            {/* swiper左右按鈕 */}
-                                            <button className="oEstimate-main2-swiper-next-R-btn">
-                                                    <picture>
-                                                        <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
-                                                        <img class="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
-                                                    </picture>
-                                            </button>
-                                            <button className="oEstimate-main2-swiper-next-L-btn">
-                                                    <picture>
-                                                        <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
-                                                        <img class="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
-                                                    </picture>
-                                            </button>
+                                                                        </div>   
+                                                                    </div>
+                                                                </SwiperSlide>
+                                                                
+                                                            )
+                                                        })
+                                                    }
+                                                </Swiper>
+                                                {/* swiper左右按鈕 */}
+                                                <button className="oEstimate-main2-swiper-next-R-btn">
+                                                        <picture>
+                                                            <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
+                                                            <img class="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
+                                                        </picture>
+                                                </button>
+                                                <button className="oEstimate-main2-swiper-next-L-btn">
+                                                        <picture>
+                                                            <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
+                                                            <img class="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
+                                                        </picture>
+                                                </button>
+                                            </div>
                                         </Tab.Pane>
-                                        <Tab.Pane className="oEstimate-main2-tab-content" eventKey="calendar">
-                                            <Swiper
-                                                modules={[Navigation, Pagination, Autoplay]}
-                                                spaceBetween={10}
-                                                slidesPerView={1}
-                                                breakpoints={{
-                                                    1200: { slidesPerView: 3 }, // 電腦顯示 3 張
-                                                    }}
-                                                navigation={{   prevEl: ".oEstimate-main2-swiper-next-L-btn02", 
-                                                                nextEl: ".oEstimate-main2-swiper-next-R-btn02" }}
-                                                loop={true}
-                                                centeredSlides={true}
-                                                className="mySwiper"
-                                                observer={true} // ✅ 監聽 DOM 變更
-                                                observeParents={true}
-                                                >
-                                                {
-                                                    SLAData?.map((item,index)=>{
-                                                        return(
-                                                            <SwiperSlide key={index}>
-                                                                <div class="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="11">
-                                                                    <div class="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img class="img-set" src={item.img} alt="oEstimate-main2-tab2-img2" />     
-                                                                    </div>
-                                                                    <div class="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                            
-                                                                        <div class="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                            <div class="oEstimate-main2-card1-text">
-                                                                                <p class="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">{item.title}</p>
-                                                                                <p class="fw-500 fs-16 fw-700 lh-12 text-nautral-white">{item.MaterialIntroduction}</p>
+                                        <Tab.Pane eventKey="calendar">
+                                            <div className="oEstimate-main2-tab-content mx-auto py-64">
+                                                <Swiper
+                                                    key={swiperKey}
+                                                    modules={[Navigation, Pagination, Autoplay]}
+                                                    spaceBetween={10}
+                                                    slidesPerView={1}
+                                                    breakpoints={{
+                                                        1200: { slidesPerView: 3 }, // 電腦顯示 3 張
+                                                        }}
+                                                    navigation={{   prevEl: ".oEstimate-main2-swiper-next-L-btn02", 
+                                                                    nextEl: ".oEstimate-main2-swiper-next-R-btn02" }}
+                                                    loop={true}
+                                                    centeredSlides={true}
+                                                    className="mySwiper"
+                                                    observer={true} // ✅ 監聽 DOM 變更
+                                                    observeParents={true}
+                                                    >
+                                                    {
+                                                        SLAData?.map((item,index)=>{
+                                                            return(
+                                                                <SwiperSlide key={index}>
+                                                                    <div class="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="11">
+                                                                        <div class="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
+                                                                                <img class="img-set" src={item.img} alt="oEstimate-main2-tab2-img2" />     
+                                                                        </div>
+                                                                        <div class="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
+                                                                
+                                                                            <div class="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
+                                                                                <div class="oEstimate-main2-card1-text">
+                                                                                    <p class="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">{item.title}</p>
+                                                                                    <p class="fw-500 fs-16 fw-700 lh-12 text-nautral-white">{item.MaterialIntroduction}</p>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                            <button class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
-                                                                                選擇我
-                                                                            
-                                                                                <span class="material-symbols-outlined sec-btn1-img-set">
-                                                                                    chevron_right
-                                                                                </span>
+                                                                            <div class="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
+                                                                                <button onClick={()=>{handleItemClick(item)}} class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
+                                                                                    選擇我
                                                                                 
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                            <button class="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
-                                                                                選擇我
-                                                            
-                                                                                <span class="material-symbols-outlined sec-btn2-img-set">
-                                                                                    chevron_right
-                                                                                </span>
-                                                                            </button>
-                                                                        </div>
+                                                                                    <span class="material-symbols-outlined sec-btn1-img-set">
+                                                                                        chevron_right
+                                                                                    </span>
+                                                                                    
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
+                                                                                <button onClick={()=>{handleItemClick(item)}} class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
+                                                                                    選擇我
+                                                                
+                                                                                    <span class="material-symbols-outlined sec-btn2-img-set">
+                                                                                        chevron_right
+                                                                                    </span>
+                                                                                </button>
+                                                                            </div>
 
-                                                                    </div>   
-                                                                </div>
-                                                            </SwiperSlide>
-                                                        )
-                                                    })
-                                                }
-                                            </Swiper>
-                                            {/* swiper左右按鈕 */}
-                                            <button className="oEstimate-main2-swiper-next-R-btn02">
-                                                    <picture>
-                                                        <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
-                                                        <img class="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
-                                                    </picture>
-                                            </button>
-                                            <button className="oEstimate-main2-swiper-next-L-btn02">
-                                                    <picture>
-                                                        <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
-                                                        <img class="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
-                                                    </picture>
-                                            </button>
+                                                                        </div>   
+                                                                    </div>
+                                                                </SwiperSlide>
+                                                            )
+                                                        })
+                                                    }
+                                                </Swiper>
+                                                {/* swiper左右按鈕 */}
+                                                <button className="oEstimate-main2-swiper-next-R-btn02">
+                                                        <picture>
+                                                            <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
+                                                            <img class="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
+                                                        </picture>
+                                                </button>
+                                                <button className="oEstimate-main2-swiper-next-L-btn02">
+                                                        <picture>
+                                                            <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
+                                                            <img class="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
+                                                        </picture>
+                                                </button>
+                                            </div>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
                                 <div className="oEstimate-main2-footer-btn-box d-flex justify-content-center align-items-center">
-                                    <button className="pagination-btn02 mt-24">
+                            
+                                    <div className="pagination-img-box02 mt-24">
+                                        <img className="pagination-img02-set" src={oEstimateMain1Vector16} alt="Vector 16" />
+                                    </div>
                                         
-                                            <div className="pagination-img-box02">
-                                                <img className="pagination-img02-set" src={oEstimateMain1Vector16} alt="Vector 16" />
-                                            </div>
-                                        
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -612,11 +770,9 @@ function OestimatePage(){
                                             </div>
                                         </div>
                                     </form>
-                                <button className="oEstimate-main3-btn03 pagination-btn01 d-block mx-auto">
-                                        <div className="pagination-img01-box">
-                                            <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="Vector 15" />
-                                        </div>
-                                </button>
+                                    <div className="pagination-img01-box text-center">
+                                        <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="Vector 15" />
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -688,58 +844,43 @@ function OestimatePage(){
                                         <div className="oEstimate-main4-calendar d-flex flex-column from-set row-gap-12 w-100 flex-xxl-row justify-content-xxl-between row-gap-xxl-0">   
                                             <div className="oEstimate-main4-text-set fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white ms-xl-auto me-xxl-40">日期選擇</div>
                                             <div className="oEstimate-main4-calendar-box">
-                                                <button onClick={()=>{setOestimateMain4Calendar(!oestimateMain4Calendar)}} className="oEstimate-main4-item2 oEstimate-main4-item-set d-xl-block ms-xl-auto bg-transparent text-center">
-                                                    <div className="calendar position-relative" id="calendar">
-                                                        <div className="main4-img-box position-absolute main4-img-position2">
-                                                            <picture>
-                                                                <source srcSet={oEstimateMain4Calendar} media="(min-width:1200px)" />
-                                                                <img src={oEstimateMain4SmCalendar} alt="home-section2-1" />
-                                                            </picture>
-                                                        </div>
-                                                        <span id="selectedDateDisplay" className="fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12"> 年 / 月 / 日 </span> {/* 唯一 ID，顯示選擇的日期 */}
-                                                        <div className="main4-img-box position-absolute main4-img-position3">
-                                                            <picture>
-                                                                <source srcSet={oEstimateMain4Keyboardarrowdown} media="(min-width:1200px)" />
-                                                                <img src={oEstimateMain4Sm數量調整按鈕} alt="home-section2-1" />
-                                                            </picture>
-                                                        </div>
+                                                {/* 按鈕：點擊開啟或關閉日曆 */}
+                                                <button
+                                                    onClick={() => setOestimateMain4Calendar(!oestimateMain4Calendar)}
+                                                    className="oEstimate-main4-item2 oEstimate-main4-item-set d-xl-block ms-xl-auto bg-transparent text-center"
+                                                >
+                                                    <div className="position-relative px-36 py-30" id="calendar">
+                                                    {/* 日曆 ICON */}
+                                                    <div className="main4-img-box position-absolute main4-img-position2">
+                                                        <picture>
+                                                        <source srcSet={oEstimateMain4Calendar} media="(min-width:1200px)" />
+                                                        <img src={oEstimateMain4SmCalendar} alt="calendar-icon" />
+                                                        </picture>
+                                                    </div>
+                                                    {/* 顯示選擇的日期 */}
+                                                    <span id="selectedDateDisplay" className="fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12">
+                                                        {selectedDate}
+                                                    </span>
+                                                    {/* 下拉箭頭 */}
+                                                    <div className="main4-img-box position-absolute main4-img-position3">
+                                                        <picture>
+                                                        <source srcSet={oEstimateMain4Keyboardarrowdown} media="(min-width:1200px)" />
+                                                        <img src={oEstimateMain4Sm數量調整按鈕} alt="toggle-arrow" />
+                                                        </picture>
+                                                    </div>
                                                     </div>
                                                 </button>
-                                                {
-                                                    oestimateMain4Calendar?(
-                                                        <>  
-                                                            <div>
-                                                                <DatePicker
-                                                                    // selected={selectedDate}
-                                                                    // onChange={(date) => {
-                                                                    // setSelectedDate(date);
-                                                                    // setIsOpen(false); // 選擇完日期後自動關閉
-                                                                    // }}
-                                                                    className="fs-5"
-                                                                    dateFormat="yyyy/MM/dd"
-                                                                    showPopperArrow={false}
-                                                                    inline // 讓日曆固定顯示
-                                                                />
-                                                            </div>
-                                                        </>
-                                                    )
-                                                    :
-                                                    (
-                                                        <></>
-                                                    )
+
+                                                {/* 日曆元件：點擊按鈕時顯示 */}
+                                                {   
+                                                    oestimateMain4Calendar?(<Calendar onSelectDate={handleDateSelect} />):(<></>)
                                                 }
-                                                
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
-
-                                    <button className="oEstimate-main4-btn02 pagination-btn02 d-block mx-auto">
-                                        <a className="a-re" href="oEstimate.html#oEstimate-main5">
-                                            <div className="oEstimate-main4-img-box02">
-                                                <img className="oEstimate-main4-btn02-img-set" src={oEstimateMain1Vector16} alt="Vector 16" />
-                                            </div>
-                                        </a>
-                                    </button>
+                                    <div className="oEstimate-main4-img-box02 text-center">
+                                        <img className="oEstimate-main4-btn02-img-set" src={oEstimateMain1Vector16} alt="Vector 16" />
+                                    </div>      
                             </div>
                         </div>
                     </div>
@@ -778,7 +919,7 @@ function OestimatePage(){
                                     </div>  
 
                                     <div className="oEstimate-main5-btn02-box d-flex justify-content-center align-items-center  justify-content-xl-start">
-                                        <button className="oEstimate-main5-btn02 mian-btn1-set" type="submit" id="oEstimate-main5" data-bs-toggle="modal" data-bs-target="#oEstimate-main5-Modal">送出估價</button>
+                                        <button onClick={()=>{resetAll()}} className="oEstimate-main5-btn02 mian-btn1-set" type="submit" id="oEstimate-main5" data-bs-toggle="modal" data-bs-target="#oEstimate-main5-Modal">送出估價</button>
                                     </div>
 
                                 </div>

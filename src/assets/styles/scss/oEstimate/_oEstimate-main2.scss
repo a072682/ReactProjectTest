@@ -39,7 +39,11 @@
     
     /* 頁籤內容 */
     .oEstimate-main2-tab-content{
-        display: none;
+
+        width:calc(100% - 290px);
+        @include media-breakpoint-up(xxl){ 
+            width:calc(100% - 240px);
+        }
     }
 
     /* 當前選中的頁籤內容 */

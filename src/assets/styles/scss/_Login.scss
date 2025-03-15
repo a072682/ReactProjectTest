@@ -1,0 +1,36 @@
+.LoginModalHeaderBgSet{
+  background-color: #6E002C;
+  border-color:#6E002C ;
+  
+}
+.LoginModal-body-set{
+  background: linear-gradient(90deg, #000000 0%,#60003A 100%);
+  border-radius: 5px;
+  
+  @include media-breakpoint-up(lg){
+      
+  }
+  .materialPageModal-Img-set{
+      border-radius: 5px;
+  }
+}
+.LoginModalBtnClose{
+  background-color: transparent;
+  border: none;
+  height: 48px;
+  width: 48px;
+  .materialPageModalBtnCloseImgSet{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+  }
+}
+
+.form-control:focus.form-control:focus{
+  border-color: $primary2;
+  box-shadow: none;
+}
+
+.form-control::placeholder{
+  color:rgba(255, 255, 255,0.5);
+}

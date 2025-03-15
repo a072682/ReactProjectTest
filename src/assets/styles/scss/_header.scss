@@ -130,7 +130,7 @@
     //offcanvas最新消息-NAV
     //offcanvas新手指南QA-NAV
     .offcanvasIndexNav,.offcanvasQaPageNav,.normalNavLink{
-        background-image: linear-gradient(90deg, #000000, #60003A);
+        // background-image: linear-gradient(90deg, #000000, #60003A);
     }
 
     //offcanvas最新消息-按鈕
@@ -140,7 +140,8 @@
         border: none;
         color: #ffffff;
         text-align: center;
-        background-image: linear-gradient(90deg, #000000, #60003A);
+        // background-image: linear-gradient(90deg, #000000, #60003A);
+        background-color: transparent;
         width: 280px;
         height: 84px;
         padding-top: 24px;
