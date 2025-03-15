@@ -335,7 +335,7 @@ function OestimatePage(){
                                         </div>
 
                                         <div className="upLord-btn-sm-box d-block d-xl-none">{/*sm用按鈕*/}
-                                            <button className="upLord-btn-sm-box-set py-10 px-auto bg-primary2 d-flex justify-content-center align-items-center" id="oEstimate-main1-uploadBtn2">
+                                            <button onClick={handleButtonClick} className="upLord-btn-sm-box-set py-10 px-auto bg-primary2 d-flex justify-content-center align-items-center" id="oEstimate-main1-uploadBtn2">
                                                 <div className="upLord-btn-img-sm-set">
                                                     <img className="img-set" src={oEstimateMain1UpLordBtnSm} alt="upLord-btn" />
                                                 </div>
