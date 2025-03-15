@@ -516,24 +516,18 @@
     content: "";
     position: absolute;
     inset: 0;
+    border:none;
     background:$nautral-white;
     clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%,0 0,2px  2px ,2px calc(100% - 2px),calc(100% - 2px) calc(100% - 2px),calc(100% - 2px) calc(10px + 0.83px),calc(100% - 10px - 0.83px) 2px,2px 2px);/*calc(60px + 0.83px)靠下方點 calc(100% - 80px - 0.83px) 靠下方點 由於是繞回來所以會反過來寫*/
 }
-.oEstimate-main2-btn:hover,.oEstimate-main2-btn:active,.oEstimate-main2-btn:focus{
-    background-color: $primary2;
-}
-.oEstimate-main2-btn:hover:before,.oEstimate-main2-btn:active:before,.oEstimate-main2-btn:focus:before{
-    background-color: $primary2;
-}
-.oEstimate-main2-btn-on{
-    background-color: $primary2;
-}
-.oEstimate-main2-btn-on:before {
-    content: "";
-    position: absolute;
-    inset: 0;
+
+.oEstimate-main2-btn:hover,.oEstimate-main2-btn:hover:before,
+.oEstimate-main2-btn.active.active,.oEstimate-main2-btn.active.active:before
+{
+    background-color:$primary2;
     background:$primary2;
-    clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%,0 0,2px  2px ,2px calc(100% - 2px),calc(100% - 2px) calc(100% - 2px),calc(100% - 2px) calc(10px + 0.83px),calc(100% - 10px - 0.83px) 2px,2px 2px);/*calc(60px + 0.83px)靠下方點 calc(100% - 80px - 0.83px) 靠下方點 由於是繞回來所以會反過來寫*/
+    color:#ffffff;
 }
+
 /*qP-main2-box*/
 

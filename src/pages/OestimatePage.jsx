@@ -1,4 +1,15 @@
 import { Link } from "react-router-dom"
+import { Dropdown, Nav, Tab } from "react-bootstrap"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import "swiper/css";// 核心 CSS
+import "swiper/css/navigation";// 左右箭頭
+import OestimateModal from "../components/common/OestimateModal"
+
+
+
 
 
 import oEstimateMain1Vector15 from "../assets/images/OestimatePage/oEstimate-main1-Vector 15.png"
@@ -48,7 +59,132 @@ import oEstimateMain4SmKeyboardarrowdown from "../assets/images/OestimatePage/oE
 import oEstimateMain5ModalBtnClose from "../assets/images/OestimatePage/oEstimate-main5-modal-btn-close.png"
 
 
+
+
+
+
 function OestimatePage(){
+
+    const[handleOestimateModal,setHandleOestimateModal]=useState(null);
+    const[oestimateModalShow,setOestimateModalShow]=useState(false);
+
+
+
+
+
+    const PLAData = [
+        {
+            img: oEstimateMain2TabImg1,
+            title: "PLA白",
+            MaterialIntroduction: "PLA聚乳酸",
+        },
+        {
+            img: oEstimateMain2TabImg2,
+            title: "PLA透明",
+            MaterialIntroduction: "PLA聚乳酸",
+        },
+        {
+            img: oEstimateMain2TabImg3,
+            title: "PLA黑",
+            MaterialIntroduction: "PLA聚乳酸",
+        },
+        {
+            img: oEstimateMain2TabImg1,
+            title: "PLA白",
+            MaterialIntroduction: "PLA聚乳酸",
+        },
+        {
+            img: oEstimateMain2TabImg2,
+            title: "PLA透明",
+            MaterialIntroduction: "PLA聚乳酸",
+        },
+        {
+            img: oEstimateMain2TabImg3,
+            title: "PLA黑",
+            MaterialIntroduction: "PLA聚乳酸",
+        },
+    ];
+
+    const SLAData = [
+        {
+            img: oEstimateMain2Tab2Img1,
+            title: "光固化黑",
+            MaterialIntroduction: "光固化樹酯",
+        },
+        {
+            img: oEstimateMain2Tab2Img2,
+            title: "光固化白",
+            MaterialIntroduction: "光固化樹酯",
+        },
+        {
+            img: oEstimateMain2Tab2Img3,
+            title: "光固化透明",
+            MaterialIntroduction: "光固化樹酯",
+        },
+        {
+            img: oEstimateMain2Tab2Img1,
+            title: "光固化黑",
+            MaterialIntroduction: "光固化樹酯",
+        },
+        {
+            img: oEstimateMain2Tab2Img2,
+            title: "光固化白",
+            MaterialIntroduction: "光固化樹酯",
+        },
+        {
+            img: oEstimateMain2Tab2Img3,
+            title: "光固化透明",
+            MaterialIntroduction: "光固化樹酯",
+        },
+    ];
+    
+
+    const[oestimateMain4Btn,setOestimateMain4Btn]=useState(false);
+    const[oestimateMain4text,setOestimateMain4text]=useState("選擇工期");
+
+    const[oestimateMain4Calendar,setOestimateMain4Calendar]=useState(false);
+
+    const [supportMaterialValue,setSupportMaterialValue] = useState(1);
+    const supportMaterialIncrement = () => {
+        let newsupportMaterialValue = Math.min(Number(supportMaterialValue) + 1, 10); // 最大值 10
+        setSupportMaterialValue(newsupportMaterialValue);
+    };
+
+    const supportMaterialDecrement = () => {
+        let newsupportMaterialValue = Math.max(Number(supportMaterialValue) - 1, 1); // 最小值 1
+        setSupportMaterialValue(newsupportMaterialValue);
+    };
+
+    const [wallThicknessValue,setWallThicknessValue] = useState(10);
+    const wallThicknessIncrement = () => {
+        let newWallThicknessValue = Math.min(Number(wallThicknessValue) + 10, 50); // 最大值 50
+        setWallThicknessValue(newWallThicknessValue);
+    };
+
+    const wallThicknessDecrement = () => {
+        let newWallThicknessValue = Math.max(Number(wallThicknessValue) - 10, 10); // 最小值 1
+        setWallThicknessValue(newWallThicknessValue);
+    };
+
+    const [supportMaterialDensityValue,setSupportMaterialDensityValue] = useState(1);
+    const supportMaterialDensityIncrement = () => {
+        let newSupportMaterialDensityValue = Math.min(Number(supportMaterialDensityValue) + 1, 10); // 最大值 10
+        setSupportMaterialDensityValue(newSupportMaterialDensityValue);
+    };
+
+    const supportMaterialDensityDecrement = () => {
+        let newSupportMaterialDensityValue = Math.max(Number(supportMaterialDensityValue) - 1, 1); // 最小值 1
+        setSupportMaterialDensityValue(newSupportMaterialDensityValue);
+    };
+
+    const materialDefault=()=>{
+        setSupportMaterialValue(5);
+        setWallThicknessValue(30);
+        setSupportMaterialDensityValue(8);
+    }
+
+    
+
     return(
         <>
             <div className="all">
@@ -87,7 +223,7 @@ function OestimatePage(){
                                         </div>
 
                                         <div className="upLord-fileFormat-sm-box mb-24 mb-xl-0">
-                                            <button className="upLord-fileFormat-sm-box-set d-flex align-items-center me-4" data-bs-toggle="modal" data-bs-target="#oEstimate-main1-Modal">
+                                            <button onClick={()=>{handleOestimateModal?.show();oestimateModalShow(true);}} className="upLord-fileFormat-sm-box-set d-flex align-items-center me-4" data-bs-toggle="modal" data-bs-target="#oEstimate-main1-Modal">
                                                 <span className="material-symbols-outlined">
                                                     error 
                                                 </span>
@@ -106,139 +242,11 @@ function OestimatePage(){
                                     </div>    
                                 </div>
 
-                                <div className="modal fade" id="oEstimate-main1-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">{/*檔案說明彈出視窗*/}
-                                    {/*className="modal fade"：modal 表示是 Modal 視窗，fade 表示彈出時會有淡入效果。
-                                        id：exampleModal，這是 Modal 的唯一識別符號，用於在 JavaScript 中或透過觸發按鈕來控制此視窗。
-                                        aria-hidden="true"：告訴螢幕讀取器此元素預設是隱藏的，當 Modal 開啟時會自動切換成 false。*/}
-                                    <div className="modal-dialog oEstimate-main1-dialog">
-                                    {/*modal-dialog 是彈出視窗的對話框容器。可使用 modal-dialog-centered 來將 Modal 置中顯示。*/}
-                                        <div className="modal-content oEstimate-main1-content">
-                                        {/*modal-content 是彈出視窗的內容容器，包含標題、內容和頁腳區域。*/}
-                                            <div className="modal-header oEstimate-main1-header text-primary3 d-flex justify-content-between py-16 px-32">
-                                                <h5 className="modal-title" id="exampleModalLabel">檔案格式說明</h5>
-                                                <button type="button" className="oEstimate-main1-btn-close border-0 outline-0 p-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
-                                                    <div className="oEstimate-main1-btn-img-box">
-                                                        <img className="img-set" src={oEstimateMain1ModalBtnClose} alt="oEstimate-main1-modal-btn-close" />
-                                                    </div>
-                                                </button>
-                                            </div>
-                                            {/*modal-header：標題部分，包含標題文本和關閉按鈕。
-                                                btn-close：Bootstrap 提供的按鈕樣式，設定 data-bs-dismiss="modal" 可點擊關閉彈出視窗。*/}
-                                            <div className="modal-body oEstimate-main1-body d-flex flex-column row-gap-40">
-                                                    <div className="oEstimate-main1-modal-item-box d-flex flex-column row-gap-12">
-                                                        <div className="fs-24 fw-700 lh-12 text-primary3 d-flex align-items-center">
-                                                                <span className="material-symbols-outlined text-nautral-white me-12">
-                                                                    error 
-                                                                </span>
-                                                                檔案格式
-                                                        </div>
-                                                        <div className="fs-16 fw-500 lh-15 text-nautral-white">
-                                                        </div>
-                                                        <div className="secondary-btn1-box">
-                                                            <button className="secondary-btn1-set">
-                                                                <a href="qaPage.html" className="fw-500 lh-15 text-primary4 d-flex align-items-center">
-                                                                    詳閱常見問題
-                                                                
-                                                                    <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                        chevron_right
-                                                                    </span>
-                                                                </a>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="oEstimate-main1-modal-item-box d-flex flex-column row-gap-12">
-                                                        <div className="fs-24 fw-700 lh-12 text-primary3 d-flex align-items-center">
-                                                                <span className="material-symbols-outlined text-nautral-white me-12">
-                                                                    error 
-                                                                </span>
-                                                                檔案大小
-                                                        </div>
-                                                        <div className="fs-16 fw-500 lh-15 text-nautral-white">
-                                                            30MB(如檔案過大請去背再上傳)
-                                                        </div>
-                                                        <div className="secondary-btn1-box">
-                                                            <button className="secondary-btn1-set">
-                                                                <a href="qaPage.html" className="fw-500 lh-15 text-primary4 d-flex align-items-center">
-                                                                    詳閱常見問題
-                                                                
-                                                                    <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                        chevron_right
-                                                                    </span>
-                                                                </a>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="oEstimate-main1-modal-item-box d-flex flex-column row-gap-12">
-                                                        <div className="fs-24 fw-700 lh-12 text-primary3 d-flex align-items-center">
-                                                                <span className="material-symbols-outlined text-nautral-white me-12">
-                                                                    error 
-                                                                </span>
-                                                                列印須知
-                                                        </div>
-                                                        <div className="fs-16 fw-500 lh-15 text-nautral-white">
-                                                            列印以材料原色為準,上色另計
-                                                        </div>
-                                                        <div className="secondary-btn1-box">
-                                                            <button className="secondary-btn1-set">
-                                                                <a href="qaPage.html" className="fw-500 lh-15 text-primary4 d-flex align-items-center">
-                                                                    詳閱常見問題
-                                                                
-                                                                    <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                        chevron_right
-                                                                    </span>
-                                                                </a>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="oEstimate-main1-modal-item-box d-flex flex-column row-gap-12">
-                                                        <div className="fs-24 fw-700 lh-12 text-primary3 d-flex align-items-center">
-                                                                <span className="material-symbols-outlined text-nautral-white me-12">
-                                                                    error 
-                                                                </span>
-                                                                複數物件
-                                                        </div>
-                                                        <div className="fs-16 fw-500 lh-15 text-nautral-white">
-                                                            如有多個物件需要列印,請務必分成不同檔案及分別點選數量
-                                                        </div>
-                                                        <div className="secondary-btn1-box">
-                                                            <button className="secondary-btn1-set">
-                                                                <a href="qaPage.html" className="fw-500 lh-15 text-primary4 d-flex align-items-center">
-                                                                    詳閱常見問題
-                                                                
-                                                                    <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                        chevron_right
-                                                                    </span>
-                                                                </a>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="oEstimate-main1-modal-item-box d-flex flex-column row-gap-12">
-                                                        <div className="fs-24 fw-700 lh-12 text-primary3 d-flex align-items-center">
-                                                                <span className="material-symbols-outlined text-nautral-white me-12">
-                                                                    error 
-                                                                </span>
-                                                                檔案破面、無法列印
-                                                        </div>
-                                                        <div className="fs-16 fw-500 lh-15 text-nautral-white">
-                                                            如有檔案破面等無法列印之情形,將由專人與您聯繫
-                                                        </div>
-                                                        <div className="secondary-btn1-box">
-                                                            <button className="secondary-btn1-set">
-                                                                <a href="qaPage.html" className="fw-500 lh-15 text-primary4 d-flex align-items-center">
-                                                                    詳閱常見問題
-                                                                
-                                                                    <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                        chevron_right
-                                                                    </span>
-                                                                </a>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            {/*modal-body：彈出視窗的主要內容區域，可以放入自訂的文字、圖片或表單等元素。*/}
-                                        </div>
-                                    </div>
-                                </div>
+                                {/* //123 */}
+                                <OestimateModal setHandleOestimateModal={setHandleOestimateModal} setOestimateModalShow={setOestimateModalShow}
+                                                oestimateModalShow={oestimateModalShow}
+                                />
+                                
 
                             </div>
                             <div className="col-12 col-xl-4">
@@ -307,567 +315,173 @@ function OestimatePage(){
                                 <div className="oEstimate-main2-title-sm-box mb-24 mb-xl-64">
                                     <h3 className="fs-32 fw-900 lh-15 text-center text-nautral-white fs-xl-64 text-xl-start">材料選擇</h3>
                                 </div>
-                                <div className="oEstimate-main2-tab">
+                                        
+                                <Tab.Container className="oEstimate-main2-tab" defaultActiveKey="home" >
+                                    {/* 這是 TABS 的最外層，負責管理不同分頁的內容 */}
+                                    <Nav >
+                                    {/* variant="tabs" 👉 設定為 tabs 樣式（上方的標籤選單） */}
+                                    <Nav.Item>
+                                        <Nav.Link className="oEstimate-main2-btn border-0 d-block " eventKey="home">3D列印</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link className="oEstimate-main2-btn border-0 d-block" eventKey="calendar">光固化</Nav.Link>
+                                    </Nav.Item>
+                                    </Nav>
                                     
-                                        <div className="d-flex">
-                                            <button className="oEstimate-main2-btn oEstimate-main2-btn-on d-block" data-tab="1">
-                                                3D列印
-                                            </button>
-                                            <button className="oEstimate-main2-btn d-block" data-tab="2">
-                                                光固化
-                                            </button>
-                                        </div>
-                                    
-                            
                                     {/* 頁籤的內容區塊 */}
-                                    <div className="oEstimate-main2-tab-content oEstimate-main2-active-tab" id="content-1">
-                                        <div className="oEstimate-main2-swiper w-100 py-20 d-flex justify-content-center align-items-center mb-32 mb-xl-72">
-                                            <div className="oEstimate-main2-swiper-box w-100">{/*內層外框*/}
-                
-                                                <div className="swiper mySwiper oEstimate-main2-mySwiper oEstimate-main2-mySwiper-set"> {/*swiper為整個輪播插件的最外層 輪播整體的尺寸由此設定 mySwiper則是細項部份的設定*/}
-                                                    <div className="swiper-wrapper"> {/*swiper-wrapper為包住輪播圖片的容器*/}
 
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                                <div className="oEstimate-main2-card1-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="1">
-                                                                    <div className="oEstimate-main2-card1-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src={oEstimateMain2TabImg1} alt="oEstimate-main2-tab-img1" />     
+                                    {/* 🔹 內容區塊（一次只顯示一個頁面） */}
+                                    <Tab.Content className="oEstimate-main2-swiper ">
+                                        <Tab.Pane className="oEstimate-main2-tab-content" eventKey="home">
+                                            <Swiper
+                                                modules={[Navigation, Pagination, Autoplay]}
+                                                spaceBetween={10}
+                                                slidesPerView={1}
+                                                breakpoints={{
+                                                    1200: { slidesPerView: 3 }, // 電腦顯示 3 張
+                                                    }}
+                                                navigation={{   prevEl: ".oEstimate-main2-swiper-next-L-btn", 
+                                                                nextEl: ".oEstimate-main2-swiper-next-R-btn" }}
+                                                loop={true}
+                                                centeredSlides={true}
+                                                className="mySwiper"
+                                                observer={true} // ✅ 監聽 DOM 變更
+                                                observeParents={true}
+                                                >
+                                                {
+                                                    PLAData?.map((item,index)=>{
+                                                        return(
+                                                            <>
+                                                            <SwiperSlide key={index}>
+                                                                <div class="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="11">
+                                                                    <div class="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
+                                                                            <img class="img-set" src={item.img} alt="oEstimate-main2-tab2-img2" />     
                                                                     </div>
-                                                                    <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xxl-32">
+                                                                    <div class="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                             
-                                                                        <div className="oEstimate-main2-card1-text-box mb-24 mb-xl-0">
-                                                                            <div className="oEstimate-main2-card1-text">
-                                                                                <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">PLA 白</p>
-                                                                                <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">PLA聚乳酸</p>
+                                                                        <div class="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
+                                                                            <div class="oEstimate-main2-card1-text">
+                                                                                <p class="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">{item.title}</p>
+                                                                                <p class="fw-500 fs-16 fw-700 lh-12 text-nautral-white">{item.MaterialIntroduction}</p>
                                                                             </div>
                                                                         </div>
-                                                                        <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="1">
+                                                                        <div class="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
+                                                                            <button class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
                                                                                 選擇我
                                                                             
-                                                                                <span className="material-symbols-outlined sec-btn1-img-set">
+                                                                                <span class="material-symbols-outlined sec-btn1-img-set">
                                                                                     chevron_right
                                                                                 </span>
                                                                                 
                                                                             </button>
                                                                         </div>
-                                                                        <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="1">
+                                                                        <div class="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
+                                                                            <button class="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
                                                                                 選擇我
                                                             
-                                                                                <span className="material-symbols-outlined sec-btn2-img-set">
+                                                                                <span class="material-symbols-outlined sec-btn2-img-set">
                                                                                     chevron_right
                                                                                 </span>
                                                                             </button>
                                                                         </div>
-                
+
                                                                     </div>   
-                                                                </div>  
-                                                            
-                
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                            <div className="oEstimate-main2-card2-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="2">
-                                                                <div className="oEstimate-main2-card2-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src={oEstimateMain2TabImg2} alt="oEstimate-main2-tab-img2" />     
                                                                 </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">PLA 透明</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">PLA聚乳酸</p>
-                                                                        </div>
+                                                            </SwiperSlide>
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+                                            </Swiper>
+                                            {/* swiper左右按鈕 */}
+                                            <button className="oEstimate-main2-swiper-next-R-btn">
+                                                    <picture>
+                                                        <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
+                                                        <img class="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
+                                                    </picture>
+                                            </button>
+                                            <button className="oEstimate-main2-swiper-next-L-btn">
+                                                    <picture>
+                                                        <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
+                                                        <img class="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
+                                                    </picture>
+                                            </button>
+                                        </Tab.Pane>
+                                        <Tab.Pane className="oEstimate-main2-tab-content" eventKey="calendar">
+                                            <Swiper
+                                                modules={[Navigation, Pagination, Autoplay]}
+                                                spaceBetween={10}
+                                                slidesPerView={1}
+                                                breakpoints={{
+                                                    1200: { slidesPerView: 3 }, // 電腦顯示 3 張
+                                                    }}
+                                                navigation={{   prevEl: ".oEstimate-main2-swiper-next-L-btn02", 
+                                                                nextEl: ".oEstimate-main2-swiper-next-R-btn02" }}
+                                                loop={true}
+                                                centeredSlides={true}
+                                                className="mySwiper"
+                                                observer={true} // ✅ 監聽 DOM 變更
+                                                observeParents={true}
+                                                >
+                                                {
+                                                    SLAData?.map((item,index)=>{
+                                                        return(
+                                                            <SwiperSlide key={index}>
+                                                                <div class="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="11">
+                                                                    <div class="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
+                                                                            <img class="img-set" src={item.img} alt="oEstimate-main2-tab2-img2" />     
                                                                     </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="2">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="2">
-                                                                            選擇我
-                                                        
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-            
-                                                                </div>   
-                                                            </div>  
-                                                        
-            
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
+                                                                    <div class="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
                                                             
-                                                                <div className="oEstimate-main2-card3-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="3">
-                                                                    <div className="oEstimate-main2-card3-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src={oEstimateMain2TabImg3} alt="oEstimate-main2-tab-img3" />     
-                                                                    </div>
-                                                                    <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
-                                                            
-                                                                        <div className="oEstimate-main2-card1-text-box mb-24 mb-xl-0">
-                                                                            <div className="oEstimate-main2-card1-text">
-                                                                                <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">PLA 黑</p>
-                                                                                <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">PLA聚乳酸</p>
+                                                                        <div class="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
+                                                                            <div class="oEstimate-main2-card1-text">
+                                                                                <p class="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">{item.title}</p>
+                                                                                <p class="fw-500 fs-16 fw-700 lh-12 text-nautral-white">{item.MaterialIntroduction}</p>
                                                                             </div>
                                                                         </div>
-                                                                        <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="3">
+                                                                        <div class="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
+                                                                            <button class="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
                                                                                 選擇我
                                                                             
-                                                                                <span className="material-symbols-outlined sec-btn1-img-set">
+                                                                                <span class="material-symbols-outlined sec-btn1-img-set">
                                                                                     chevron_right
                                                                                 </span>
                                                                                 
                                                                             </button>
                                                                         </div>
-                                                                        <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="3">
+                                                                        <div class="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
+                                                                            <button class="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
                                                                                 選擇我
                                                             
-                                                                                <span className="material-symbols-outlined sec-btn2-img-set">
+                                                                                <span class="material-symbols-outlined sec-btn2-img-set">
                                                                                     chevron_right
                                                                                 </span>
                                                                             </button>
                                                                         </div>
-                
+
                                                                     </div>   
-                                                                </div>  
-                                                            
-                
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                            <div className="oEstimate-main2-card4-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="4">
-                                                                <div className="oEstimate-main2-card4-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src={oEstimateMain2TabImg1} alt="oEstimate-main2-tab-img1" />     
                                                                 </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">PLA 白</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">PLA聚乳酸</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="4">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="4">
-                                                                            選擇我
-                                                        
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-            
-                                                                </div>   
-                                                            </div>  
-                                                        
-            
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            <div className="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="5">
-                                                                <div className="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src={oEstimateMain2TabImg2} alt="oEstimate-main2-tab-img2" />     
-                                                                </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">PLA 透明</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">PLA聚乳酸</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="5">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="5">
-                                                                            選擇我
-                                                        
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-
-                                                                </div>   
-                                                            </div>  
-                                                    
-
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                            <div className="oEstimate-main2-card6-box oEstimate-main2-card-box-set mx-auto p-4 bg-nautral-black" data-card="6">
-                                                                <div className="oEstimate-main2-card6-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src={oEstimateMain2TabImg3} alt="oEstimate-main2-tab-img3" />     
-                                                                </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xl-flex justify-content-xl-between align-items-xl-center py-xl-32 px-xl-12 p-xl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">PLA 黑</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">PLA聚乳酸</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="6">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="6">
-                                                                            選擇我
-                                                        
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-
-                                                                </div>   
-                                                            </div>  
-                                                
-
-                                                        </div>
-                                            
-                                                        
-                                                        
-                                                    </div>
-                                                </div>
-                                                <div className="oEstimate-main2-swiper-next-R-btn">
-                                                    <button className="caroutsel-btn-R border-0 outline-0 bg-transparent">
-                                                        <div className="img-box">
-                                                            <picture>
-                                                                <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
-                                                                <img className="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
-                                                            </picture> 
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                                <div className="oEstimate-main2-swiper-next-L-btn">
-                                                    <button className="caroutsel-btn-L border-0 outline-0 bg-transparent">
-                                                        <div className="img-box">
-                                                            <picture>
-                                                                <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
-                                                                <img className="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
-                                                            </picture>
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="oEstimate-main2-tab-content" id="content-2">{/* tab-分頁 */}
-                                        <div className="oEstimate-main2-swiper w-100 py-20 d-flex justify-content-center align-items-center mb-32 mb-xl-72">
-                                            <div className="oEstimate-main2-swiper-box w-100">{/*內層外框*/}
-                
-                                                <div className="swiper mySwiper oEstimate-main2-mySwiper2 oEstimate-main2-mySwiper-set"> {/*swiper為整個輪播插件的最外層 輪播整體的尺寸由此設定 mySwiper則是細項部份的設定*/}
-                                                    <div className="swiper-wrapper"> {/*swiper-wrapper為包住輪播圖片的容器*/}
-
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                                <div className="oEstimate-main2-card1-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="7">
-                                                                    <div className="oEstimate-main2-card1-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src={oEstimateMain2Tab2Img1} alt="oEstimate-main2-tab2-img1" />     
-                                                                    </div>
-                                                                    <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                            
-                                                                        <div className="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                            <div className="oEstimate-main2-card1-text">
-                                                                                <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">光固化黑</p>
-                                                                                <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">光固化樹酯</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="7">
-                                                                                選擇我
-                                                                            
-                                                                                <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                    chevron_right
-                                                                                </span>
-                                                                                
-                                                                            </button>
-                                                                        </div>
-                                                                        <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="7">
-                                                                                選擇我
-                                                            
-                                                                                <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                    chevron_right
-                                                                                </span>
-                                                                            </button>
-                                                                        </div>
-                
-                                                                    </div>   
-                                                                </div>  
-                                                            
-                
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                            <div className="oEstimate-main2-card2-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="8">
-                                                                <div className="oEstimate-main2-card2-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-12">
-                                                                        <img className="img-set" src={oEstimateMain2Tab2Img2} alt="oEstimate-main2-tab2-img2" />     
-                                                                </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-0">光固化白</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">光固化樹酯</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="8">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="8">
-                                                                            選擇我
-                                                        
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-            
-                                                                </div>   
-                                                            </div>  
-                                                        
-            
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                                <div className="oEstimate-main2-card3-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="9">
-                                                                    <div className="oEstimate-main2-card3-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                            <img className="img-set" src={oEstimateMain2Tab2Img3} alt="oEstimate-main2-tab2-img3" />     
-                                                                    </div>
-                                                                    <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                            
-                                                                        <div className="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                            <div className="oEstimate-main2-card1-text">
-                                                                                <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">光固化透明</p>
-                                                                                <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">光固化樹酯</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="9">
-                                                                                選擇我
-                                                                            
-                                                                                <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                    chevron_right
-                                                                                </span>
-                                                                                
-                                                                            </button>
-                                                                        </div>
-                                                                        <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                            <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="9">
-                                                                                選擇我
-                                                            
-                                                                                <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                    chevron_right
-                                                                                </span>
-                                                                            </button>
-                                                                        </div>
-                
-                                                                    </div>   
-                                                                </div>  
-                                                            
-                
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                            <div className="oEstimate-main2-card4-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="10">
-                                                                <div className="oEstimate-main2-card4-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src={oEstimateMain2Tab2Img1} alt="oEstimate-main2-tab2-img1" />     
-                                                                </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">光固化黑</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">光固化樹酯</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="10">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="10">
-                                                                            選擇我
-                                                        
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-            
-                                                                </div>   
-                                                            </div>  
-                                                        
-            
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                            <div className="oEstimate-main2-card5-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="11">
-                                                                <div className="oEstimate-main2-card5-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src={oEstimateMain2Tab2Img2} alt="oEstimate-main2-tab2-img2" />     
-                                                                </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">光固化白</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">光固化樹酯</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="11">
-                                                                            選擇我
-                                                        
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-
-                                                                </div>   
-                                                            </div>  
-                                                        
-
-                                                        </div>
-                                                        <div className="swiper-slide">{/*swiper-slide為輪播圖片容器*/}
-                
-                                                            
-                                                            <div className="oEstimate-main2-card6-box oEstimate-main2-card-box-set mx-auto p-8 bg-nautral-black" data-card="12">
-                                                                <div className="oEstimate-main2-card6-img-box oEstimate-main2-card-img-box-set mb-16 mb-xl-0">
-                                                                        <img className="img-set" src={oEstimateMain2Tab2Img3} alt="oEstimate-main2-tab2-img3" />     
-                                                                </div>
-                                                                <div className="oEstimate-main2-card1-text&btn-box d-xxl-flex justify-content-xxl-between align-items-xxl-center py-xl-12 px-xl-12 p-xxl-32">
-                                                        
-                                                                    <div className="oEstimate-main2-card1-text-box mb-24 mb-xxl-0">
-                                                                        <div className="oEstimate-main2-card1-text">
-                                                                            <p className="fw-500 fs-24 fw-700 lh-12 text-nautral-white mb-8 mb-xl-12">光固化透明</p>
-                                                                            <p className="fw-500 fs-16 fw-700 lh-12 text-nautral-white">光固化樹酯</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="secondary-btn1-box d-none d-xl-block mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn1-set d-flex align-items-center me-4 oE-main2-bt" data-card="12">
-                                                                            選擇我
-                                                                        
-                                                                            <span className="material-symbols-outlined sec-btn1-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                            
-                                                                        </button>
-                                                                    </div>
-                                                                    <div className="secondary-btn2-box d-block d-xl-none mb-16 mb-xl-0">
-                                                                        <button className="secondary-btn2-set d-flex align-items-center me-4 oE-main2-bt" data-card="12">
-                                                                            選擇我
-                                                                            <span className="material-symbols-outlined sec-btn2-img-set">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-
-                                                                </div>   
-                                                            </div>  
-                                                
-
-                                                        </div>
-                                            
-                                                    </div>
-                                                </div>
-                                                <div className="oEstimate-main2-swiper-next-R-btn02">
-                                                    <button className="caroutsel-btn-R border-0 outline-0 bg-transparent">
-                                                        <div className="img-box">
-                                                            <picture>
-                                                                <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
-                                                                <img className="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
-                                                            </picture> 
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                                <div className="oEstimate-main2-swiper-next-L-btn02">
-                                                    <button className="caroutsel-btn-L border-0 outline-0 bg-transparent">
-                                                        <div className="img-box">
-                                                            <picture>
-                                                                <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
-                                                                <img className="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
-                                                            </picture>
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
+                                                            </SwiperSlide>
+                                                        )
+                                                    })
+                                                }
+                                            </Swiper>
+                                            {/* swiper左右按鈕 */}
+                                            <button className="oEstimate-main2-swiper-next-R-btn02">
+                                                    <picture>
+                                                        <source srcSet={oEstimateMain2TabArrowR} media="(min-width:992px)" />
+                                                        <img class="img-set" src={oEstimateMain2TabSmArrowR} alt="215x144" />
+                                                    </picture>
+                                            </button>
+                                            <button className="oEstimate-main2-swiper-next-L-btn02">
+                                                    <picture>
+                                                        <source srcSet={oEstimateMain2TabArrowL} media="(min-width:992px)" />
+                                                        <img class="img-set" src={oEstimateMain2TabSmArrowL} alt="215x144" />
+                                                    </picture>
+                                            </button>
+                                        </Tab.Pane>
+                                    </Tab.Content>
+                                </Tab.Container>
                                 <div className="oEstimate-main2-footer-btn-box d-flex justify-content-center align-items-center">
                                     <button className="pagination-btn02">
                                         <a className="a-re" href="oEstimate.html#oEstimate-main3">
@@ -886,7 +500,8 @@ function OestimatePage(){
                     <div className="container py-64 py-xxl-144">
                         <div className="row">
                             <div  className="col-12">
-
+                                    
+                                
                                     <div className="oEstimate-main3-title-sm-box mb-24 mb-xl-64">
                                         <h3 className="fs-32 fw-900 text-center text-nautral-white fs-xl-64 text-xl-start">規格設置</h3>
                                     </div>
@@ -903,87 +518,103 @@ function OestimatePage(){
                                             </div>
                                         </div>
                                     </div>
+                                    <form>
+                                        <div className="oEstimate-main3-container-box d-flex flex-column justify-content-center align-items-center  flex-xl-row justify-content-xl-between mb-32 mb-xl-72">
+                                            <div className="oEstimate-main3-input-box oEstimate-main3-outsidematerial-box-set w-100 d-flex flex-column justify-content-center align-items-center mb-32 w-xl-auto mb-xl-0">
+                                                <div className="oEstimate-main3-input-item01 d-flex flex-column from-set w-100 mb-36  flex-xl-row row-gap-xl-0 gap-xl-40 flex-xl-wrap">
+                                                    <div className="oEstimate-main3-text-set fs-24 fw-700 lh-12 text-nautral-white mb-12">
+                                                        支撐材
+                                                    </div>
+                                                    <div className="oEstimate-main3-item1-box position-relative mb-12">
+                                                        <input
+                                                            className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12"
+                                                            type="text" id="oEstimate-main3-inputNumber01" placeholder="1mm" 
+                                                            value={`${supportMaterialValue}mm`}
+                                                            onChange={(e) => {
+                                                            const value = parseInt(e.target.value.replace(/\D/g, ""), 10) || 1; // 移除非數字部分
+                                                            setSupportMaterialValue(Math.min(Math.max(value, 1), 10)); // 限制範圍
+                                                          }}
+                                                        />
 
-                                    <div className="oEstimate-main3-container-box d-flex flex-column justify-content-center align-items-center  flex-xl-row justify-content-xl-between mb-32 mb-xl-72">
-                                        <div className="oEstimate-main3-input-box oEstimate-main3-outsidematerial-box-set w-100 d-flex flex-column justify-content-center align-items-center mb-32 w-xl-auto mb-xl-0">
-                                            <div className="oEstimate-main3-input-item01 d-flex flex-column from-set w-100 mb-36  flex-xl-row row-gap-xl-0 gap-xl-40 flex-xl-wrap">
-                                                <div className="oEstimate-main3-text-set fs-24 fw-700 lh-12 text-nautral-white mb-12">
-                                                    支撐材
+                                                        <button onClick={()=>{supportMaterialIncrement()}} className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment01">
+                                                            <picture>
+                                                                <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
+                                                                <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
+                                                            </picture>
+                                                        </button>
+                                                        <button onClick={()=>{supportMaterialDecrement()}} className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement01">
+                                                            <picture>
+                                                                <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
+                                                                <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
+                                                            </picture>
+                                                        </button>
+                                                    </div>
+                                                    <div id="oEstimate-main3-errorMessage" className="w-100 fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white px-24 px-xl-36 ms-xl-124"></div>
                                                 </div>
-                                                <div className="oEstimate-main3-item1-box position-relative mb-12">
-                                                    <input className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber01" placeholder="mm" value="1mm" />
-                                                    <button className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment01">
-                                                        <picture>
-                                                            <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
-                                                            <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
-                                                        </picture>
-                                                    </button>
-                                                    <button className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement01">
-                                                        <picture>
-                                                            <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
-                                                            <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
-                                                        </picture>
-                                                    </button>
+                                                
+                                                <div className="oEstimate-main3-input-item02 d-flex flex-column from-set w-100 mb-36  flex-xl-row row-gap-xl-0 gap-xl-40 flex-xl-wrap">  
+                                                    <div className="oEstimate-main3-text-set fs-24 fw-700 lh-12 text-nautral-white mb-12">
+                                                        壁厚
+                                                    </div>
+                                                    <div className="oEstimate-main3-item1-box position-relative mb-12">
+                                                        <input 
+                                                            className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber02" placeholder="%" 
+                                                            value={`${wallThicknessValue}%`} 
+                                                            onChange={(e) => {
+                                                                const value = parseInt(e.target.value.replace(/\D/g, ""), 10) || 1; // 移除非數字部分
+                                                                setWallThicknessValue(Math.min(Math.max(value, 10), 50)); // 限制範圍
+                                                            }}
+                                                            />
+                                                        <button onClick={()=>{wallThicknessIncrement()}}  className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment02">
+                                                            <picture>
+                                                                <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
+                                                                <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
+                                                            </picture>
+                                                        </button>
+                                                        <button onClick={()=>{wallThicknessDecrement()}}  className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement02">
+                                                            <picture>
+                                                                <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
+                                                                <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
+                                                            </picture>
+                                                        </button>
+                                                    </div>
+                                                    <div id="oEstimate-main3-errorMessage02" className="w-100 fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white px-24 px-xl-36 ms-xl-124"></div>
                                                 </div>
-                                                <div id="oEstimate-main3-errorMessage" className="w-100 fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white px-24 px-xl-36 ms-xl-124"></div>
+                                                <div className="oEstimate-main3-input-item03 d-flex flex-column from-set w-100  flex-xl-row row-gap-xl-0 gap-xl-40 flex-xl-wrap">
+                                                    <div className="oEstimate-main3-text-set fs-24 fw-700 lh-12 text-nautral-white mb-12">
+                                                        支撐材密度
+                                                    </div>
+                                                    <div className="oEstimate-main3-item1-box position-relative mb-12">
+                                                        <input 
+                                                        className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber03" placeholder="mm" 
+                                                        value={`${supportMaterialDensityValue}mm`} 
+                                                        />
+                                                        <button onClick={()=>{supportMaterialDensityIncrement()}} className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment03">
+                                                            <picture>
+                                                                <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
+                                                                <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
+                                                            </picture>
+                                                        </button>
+                                                        <button onClick={()=>{supportMaterialDensityDecrement()}} className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement03">
+                                                            <picture>
+                                                                <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
+                                                                <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
+                                                            </picture>
+                                                        </button>
+                                                    </div>
+                                                    <div id="oEstimate-main3-errorMessage03" className="w-100 fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white px-24 px-xl-36 ms-xl-124"></div>
+                                                </div>
                                             </div>
-                                            
-                                            <div className="oEstimate-main3-input-item02 d-flex flex-column from-set w-100 mb-36  flex-xl-row row-gap-xl-0 gap-xl-40 flex-xl-wrap">  
-                                                <div className="oEstimate-main3-text-set fs-24 fw-700 lh-12 text-nautral-white mb-12">
-                                                    壁厚
-                                                </div>
-                                                <div className="oEstimate-main3-item1-box position-relative mb-12">
-                                                    <input className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber02" placeholder="%" value="10%" />
-                                                    <button className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment02">
-                                                        <picture>
-                                                            <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
-                                                            <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
-                                                        </picture>
-                                                    </button>
-                                                    <button className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement02">
-                                                        <picture>
-                                                            <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
-                                                            <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
-                                                        </picture>
-                                                    </button>
-                                                </div>
-                                                <div id="oEstimate-main3-errorMessage02" className="w-100 fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white px-24 px-xl-36 ms-xl-124"></div>
-                                            </div>
-                                            <div className="oEstimate-main3-input-item03 d-flex flex-column from-set w-100  flex-xl-row row-gap-xl-0 gap-xl-40 flex-xl-wrap">
-                                                <div className="oEstimate-main3-text-set fs-24 fw-700 lh-12 text-nautral-white mb-12">
-                                                    支撐材密度
-                                                </div>
-                                                <div className="oEstimate-main3-item1-box position-relative mb-12">
-                                                    <input className="oEstimate-main3-item1 oEstimate-main3-item-set py-16 px-24 bg-nautral-black text-nautral-white fs-16 fw-500 lh-15  py-xl-28 px-xl-36 fs-xl-24 fw-xl-700 lh-xl-12" type="text" id="oEstimate-main3-inputNumber03" placeholder="mm" value="1mm" />
-                                                    <button className="position-absolute main3-img-position1 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-increment03">
-                                                        <picture>
-                                                            <source srcSet={oEstimateMain3ArrowUP} media="(min-width:1200px)" />
-                                                            <img className="img-set" src={oEstimateMain3SmArrowUP} alt="home-section2-1" />
-                                                        </picture>
-                                                    </button>
-                                                    <button className="position-absolute main3-img-position2 border-0 outline-0 bg-transparent p-0" type="button" id="oEstimate-main3-decrement03">
-                                                        <picture>
-                                                            <source srcSet={oEstimateMain3ArrowDOWN} media="(min-width:1200px)" />
-                                                            <img className="img-set" src={oEstimateMain3SmArrowDOWN} alt="home-section2-1" />
-                                                        </picture>
-                                                    </button>
-                                                </div>
-                                                <div id="oEstimate-main3-errorMessage03" className="w-100 fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white px-24 px-xl-36 ms-xl-124"></div>
+                                            <div className="oEstimate-main3-btn02-box">
+                                                <button onClick={()=>{materialDefault()}} className="oEstimate-main3-btn02 mian-btn1-set" type="submit" id="main3-default-btn">預設配置</button>
                                             </div>
                                         </div>
-                                        <div className="oEstimate-main3-btn02-box">
-                                            <button className="oEstimate-main3-btn02 mian-btn1-set-sm" type="submit" id="main3-default-btn">預設配置</button>
+                                    </form>
+                                <button className="oEstimate-main3-btn03 pagination-btn01 d-block mx-auto">
+                                        <div className="pagination-img01-box">
+                                            <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="Vector 15" />
                                         </div>
-                                    </div>
-
-                                    <button className="oEstimate-main3-btn03 pagination-btn01 d-block mx-auto">
-                                        <a className="a-re" href="oEstimate.html#oEstimate-main4">
-                                            <div className="pagination-img01-box">
-                                                <img className="pagination-img01-set" src={oEstimateMain1Vector15} alt="Vector 15" />
-                                            </div>
-                                        </a>
-                                    </button>
-
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -993,7 +624,7 @@ function OestimatePage(){
                     <div className="container py-64 py-lg-100 "> 
                         <div className="row">
                             <div  className="col-12">
-
+                            
                                     <div className="oEstimate-main4-title-box mb-32 mb-xl-72">
                                         <h3 className="fs-32 fw-900 text-center text-nautral-white fs-xl-64 text-xl-start">時程選擇</h3>
                                     </div>
@@ -1015,11 +646,11 @@ function OestimatePage(){
 
                                         <div className="oEstimate-main4-timework d-flex flex-column from-set justify-content-center row-gap-12 w-100 mb-48 mb-xl-0 flex-xxl-row row-gap-xxl-0 gap-xxl-40">
                                             <div className="oEstimate-main4-text-set fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white">工期選擇</div>
-
-                                            <div className="oEstimate-main4-timework-box page-dropdown oEstimate-main4-item1 oEstimate-main4-item-set text-center me-xl-auto position-relative">
-                                                <button className="timework w-100 bg-transparent border-0 outline-0 py-12 px-24 py-xl-30 px-xl-36 fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white position-relative" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <span className="text-start fs-16 lh-15 fw-500 fs-xl-24 lh-xl-12 fw-xl-700 text-nautral-white d-block me-auto">選擇工期</span>
-
+                                            
+                                            <Dropdown className="oEstimate-main4-timework-box page-dropdown oEstimate-main4-item1 oEstimate-main4-item-set text-center me-xl-auto position-relative">
+                                                <button onClick={()=>{setOestimateMain4Btn(!oestimateMain4Btn)}} className="timework w-100 bg-transparent border-0 outline-0 py-12 px-24 py-xl-30 px-xl-36 fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white position-relative" id="dropdownMenuButton">
+                                                    {/* timework w-100 bg-transparent border-0 outline-0 py-12 px-24 py-xl-30 px-xl-36 fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white position-relative */}
+                                                    <span className="text-start fs-16 lh-15 fw-500 fs-xl-24 lh-xl-12 fw-xl-700 text-nautral-white d-block me-auto">{oestimateMain4text}</span>
                                                     <div className="main4-img-box position-absolute main4-img-position1">
                                                         <picture>
                                                             <source srcSet={oEstimateMain4Keyboardarrowdown} media="(min-width:1200px)" />
@@ -1027,22 +658,36 @@ function OestimatePage(){
                                                         </picture>
                                                     </div>
                                                 </button>
-                                                <ul className="dropdown-menu oEstimate-main4-timework-list bg-nautral-black" aria-labelledby="dropdownMenuButton">
-                                                    <li><span className="dropdown-item oEstimate-main4-timework-item fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white py-24" onclick="selectOption('急單 3個工作天')">急單 3個工作天</span></li>
-                                                    <li><span className="dropdown-item oEstimate-main4-timework-item fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white py-24" onclick="selectOption('一般單 3-6個工作天')">一般單 3-6個工作天</span></li>
-                                                    <li><span className="dropdown-item oEstimate-main4-timework-item fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white py-24" onclick="selectOption('不急單 6-10個工作天')">不急單 6-10個工作天</span></li>
-                                                    {/* <li><a className="dropdown-item">: 這是下拉選單中的每個項目，dropdown-item 是 Bootstrap 樣式，讓這些選項看起來是下拉選單的一部分。
-                                    
-                                                        onclick="selectOption('選項 1')": 當使用者點擊選單中的某個項目時，會執行 JavaScript 函數 selectOption，並傳入該選項的文字內容，如 '選項 1'。這個函數用來更新按鈕上的文字。 */}
-                                                </ul>
-                                            </div>
+                                                {
+                                                    oestimateMain4Btn?(
+                                                        <>
+                                                            <div className="oEstimate-main4-timework-item fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white py-24" onClick={() => 
+                                                            {setOestimateMain4text("急單 3個工作天");setOestimateMain4Btn(false);}}>
+                                                                急單 3個工作天
+                                                            </div>
+                                                            <div className="oEstimate-main4-timework-item fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white py-24" onClick={() => 
+                                                            {setOestimateMain4text("一般單 3-6個工作天");setOestimateMain4Btn(false);}}>
+                                                                一般單 3-6個工作天
+                                                            </div>
+                                                            <div className="oEstimate-main4-timework-item fs-16 fw-500 lh-15 fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white py-24" onClick={() => 
+                                                            {setOestimateMain4text("不急單 6-10個工作天");setOestimateMain4Btn(false);}}>
+                                                                不急單 6-10個工作天
+                                                            </div>
+                                                        </>
+                                                    )
+                                                    :
+                                                    (
+                                                        <></>
+                                                    )
+                                                }
+                                            </Dropdown>
                                         </div>
 
                                         <div className="oEstimate-main4-calendar d-flex flex-column from-set row-gap-12 w-100 flex-xxl-row justify-content-xxl-between row-gap-xxl-0">   
                                             <div className="oEstimate-main4-text-set fs-16 fw-500 lh-15  fs-xl-24 fw-xl-700 lh-xl-12 text-nautral-white ms-xl-auto me-xxl-40">日期選擇</div>
                                             <div className="oEstimate-main4-calendar-box">
-                                                <div className="oEstimate-main4-item2 oEstimate-main4-item-set ms-xl-auto bg-transparent text-center">
-                                                    <Link className="calendar position-relative" data-bs-toggle="collapse" to="/" role="button" aria-expanded="false" aria-controls="collapseExample" id="calendar">
+                                                <button onClick={()=>{setOestimateMain4Calendar(!oestimateMain4Calendar)}} className="oEstimate-main4-item2 oEstimate-main4-item-set d-xl-block ms-xl-auto bg-transparent text-center">
+                                                    <div className="calendar position-relative" id="calendar">
                                                         <div className="main4-img-box position-absolute main4-img-position2">
                                                             <picture>
                                                                 <source srcSet={oEstimateMain4Calendar} media="(min-width:1200px)" />
@@ -1056,28 +701,38 @@ function OestimatePage(){
                                                                 <img src={oEstimateMain4Sm數量調整按鈕} alt="home-section2-1" />
                                                             </picture>
                                                         </div>
-                                                    </Link>
-                                                </div>
-                                                <div className="collapse" id="collapseExample">
-                                                    
-                                                        <div className="calendar-box ms-auto py-16 px-12">
-                                                            {/* 日曆頭部 */}
-                                                            <div className="calendar-head d-flex justify-content-between align-items-center mb-16">
-                                                                <button id="prevMonthBtn" className="prevMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
-                                                                        <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowL} alt="" />
-                                                                </button>
-                                                                <div id="monthYear"></div>
-                                                                <button id="nextMonthBtn" className="nextMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
-                                                                    <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowR} alt="" />
-                                                                </button>
+                                                    </div>
+                                                </button>
+                                                {
+                                                    oestimateMain4Calendar?(
+                                                        <>  
+                                                            <div>aa</div>
+                                                            <div className="collapse" id="collapseExample">
+                                                                <div className="calendar-box ms-auto py-16 px-12">
+                                                                    {/* 日曆頭部 */}
+                                                                    <div className="calendar-head d-flex justify-content-between align-items-center mb-16">
+                                                                        <button id="prevMonthBtn" className="prevMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
+                                                                                <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowL} alt="" />
+                                                                        </button>
+                                                                        <div id="monthYear"></div>
+                                                                        <button id="nextMonthBtn" className="nextMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
+                                                                            <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowR} alt="" />
+                                                                        </button>
+                                                                    </div>
+                                                                    {/* 日曆星期部分 */}
+                                                                    <div id="weekbox" className="weekbox mb-20"></div>
+                                                                    {/* 日曆日期部分 */}
+                                                                    <div id="daybox" className="daybox row-gap-20"></div>  
+                                                                </div>
                                                             </div>
-                                                            {/* 日曆星期部分 */}
-                                                            <div id="weekbox" className="weekbox mb-20"></div>
-                                                            {/* 日曆日期部分 */}
-                                                            <div id="daybox" className="daybox row-gap-20"></div>  
-                                                        </div>
-                                                    
-                                                </div>
+                                                        </>
+                                                    )
+                                                    :
+                                                    (
+                                                        <></>
+                                                    )
+                                                }
+                                                
                                             </div>
                                         </div>
                                     </div>
