@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css";// 核心 CSS
 import "swiper/css/navigation";// 左右箭頭
 import OestimateModal from "../components/common/OestimateModal"
+import DatePicker from "react-datepicker"
 
 
 
@@ -57,6 +58,7 @@ import oEstimateMain4SmCalendar from "../assets/images/OestimatePage/oEstimate-m
 import oEstimateMain4SmKeyboardarrowdown from "../assets/images/OestimatePage/oEstimate-main4-sm-Keyboardarrowdown.png"
 
 import oEstimateMain5ModalBtnClose from "../assets/images/OestimatePage/oEstimate-main5-modal-btn-close.png"
+
 
 
 
@@ -483,12 +485,12 @@ function OestimatePage(){
                                     </Tab.Content>
                                 </Tab.Container>
                                 <div className="oEstimate-main2-footer-btn-box d-flex justify-content-center align-items-center">
-                                    <button className="pagination-btn02">
-                                        <a className="a-re" href="oEstimate.html#oEstimate-main3">
+                                    <button className="pagination-btn02 mt-24">
+                                        
                                             <div className="pagination-img-box02">
                                                 <img className="pagination-img02-set" src={oEstimateMain1Vector16} alt="Vector 16" />
                                             </div>
-                                        </a>
+                                        
                                     </button>
                                 </div>
                             </div>
@@ -606,7 +608,7 @@ function OestimatePage(){
                                                 </div>
                                             </div>
                                             <div className="oEstimate-main3-btn02-box">
-                                                <button onClick={()=>{materialDefault()}} className="oEstimate-main3-btn02 mian-btn1-set" type="submit" id="main3-default-btn">預設配置</button>
+                                                <button onClick={()=>{materialDefault()}} className="oEstimate-main3-btn02 mian-btn1-set" type="button" id="main3-default-btn">預設配置</button>
                                             </div>
                                         </div>
                                     </form>
@@ -706,24 +708,18 @@ function OestimatePage(){
                                                 {
                                                     oestimateMain4Calendar?(
                                                         <>  
-                                                            <div>aa</div>
-                                                            <div className="collapse" id="collapseExample">
-                                                                <div className="calendar-box ms-auto py-16 px-12">
-                                                                    {/* 日曆頭部 */}
-                                                                    <div className="calendar-head d-flex justify-content-between align-items-center mb-16">
-                                                                        <button id="prevMonthBtn" className="prevMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
-                                                                                <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowL} alt="" />
-                                                                        </button>
-                                                                        <div id="monthYear"></div>
-                                                                        <button id="nextMonthBtn" className="nextMonth-btn-img-box p-0 m-0 border-0 bg-transparent">
-                                                                            <img className="img-set bg-transparent" src={oEstimateMain4CalendarArrowR} alt="" />
-                                                                        </button>
-                                                                    </div>
-                                                                    {/* 日曆星期部分 */}
-                                                                    <div id="weekbox" className="weekbox mb-20"></div>
-                                                                    {/* 日曆日期部分 */}
-                                                                    <div id="daybox" className="daybox row-gap-20"></div>  
-                                                                </div>
+                                                            <div>
+                                                                <DatePicker
+                                                                    // selected={selectedDate}
+                                                                    // onChange={(date) => {
+                                                                    // setSelectedDate(date);
+                                                                    // setIsOpen(false); // 選擇完日期後自動關閉
+                                                                    // }}
+                                                                    className="fs-5"
+                                                                    dateFormat="yyyy/MM/dd"
+                                                                    showPopperArrow={false}
+                                                                    inline // 讓日曆固定顯示
+                                                                />
                                                             </div>
                                                         </>
                                                     )
