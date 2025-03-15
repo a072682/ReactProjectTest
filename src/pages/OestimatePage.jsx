@@ -782,7 +782,7 @@ function OestimatePage(){
                                     </div>  
 
                                     <div className="oEstimate-main5-btn02-box d-flex justify-content-center align-items-center  justify-content-xl-start">
-                                        <button className="oEstimate-main5-btn02 mian-btn1-set-sm" type="submit" id="oEstimate-main5" data-bs-toggle="modal" data-bs-target="#oEstimate-main5-Modal">送出估價</button>
+                                        <button className="oEstimate-main5-btn02 mian-btn1-set" type="submit" id="oEstimate-main5" data-bs-toggle="modal" data-bs-target="#oEstimate-main5-Modal">送出估價</button>
                                     </div>
 
                                 </div>
